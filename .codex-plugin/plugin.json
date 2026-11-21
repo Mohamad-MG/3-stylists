@@ -1,0 +1,33 @@
+{
+  "name": "three-stylists",
+  "version": "0.6.0",
+  "description": "Audit, polish, enhance, or build web interfaces. Explore three bilingual directions on demand.",
+  "author": {
+    "name": "3 Stylists contributors"
+  },
+  "license": "MIT",
+  "repository": "https://github.com/Mohamad-MG/3-stylists",
+  "homepage": "https://github.com/Mohamad-MG/3-stylists",
+  "keywords": [
+    "design",
+    "frontend",
+    "ui",
+    "audit",
+    "polish",
+    "arabic",
+    "rtl",
+    "bilingual"
+  ],
+  "skills": "./skills/",
+  "interface": {
+    "displayName": "3 Stylists",
+    "shortDescription": "Audit, polish, enhance, and build web interfaces.",
+    "developerName": "3 Stylists contributors",
+    "category": "Design",
+    "defaultPrompt": [
+      "Audit this site and list confirmed issues.",
+      "Polish this page within its current design.",
+      "Build a working frontend from my brief."
+    ]
+  }
+}

@@ -1,0 +1,551 @@
+{
+ "schema": 1,
+ "status": "v4",
+ "method": "All 62 Google Fonts families with the Arabic subset, fetched from github.com/google/fonts at 29b4ec6, measured with fontTools and rendered in Chrome with the real files (document.fonts confirmed loaded). The rendered shortlist was reviewed and 8 faces were approved on 2026-11-14; every other face was removed.",
+ "faces": [
+  {
+   "family": "Alyamama",
+   "designer": "Yazeed Omar",
+   "licence": "OFL-1.1",
+   "source": "https://github.com/google/fonts/tree/29b4ec6df2522a8aee279414b78a07910b065874/ofl/alyamama",
+   "google_fonts": "https://fonts.google.com/specimen/Alyamama",
+   "added": "2026-01-09",
+   "structure": "naskh-contemporary",
+   "role": "both",
+   "fits": "contemporary premium, culture, hospitality, statement",
+   "weights": [
+    300,
+    900
+   ],
+   "axes": {
+    "wght": [
+     300,
+     900
+    ]
+   },
+   "coverage": {
+    "arabic": "36/36",
+    "persian": "6/6",
+    "urdu": "7/7",
+    "arabic_indic_digits": true,
+    "latin": true
+   },
+   "metrics": {
+    "arabic_body_em": 0.364,
+    "arabic_extent_em": 1.174,
+    "beh_over_own_x": 0.81,
+    "default_line_em": 1.43
+   },
+   "file_kb": 215,
+   "notes": "New (2026). Contrasted contemporary forms with Naskh roots; strong at display sizes. Fresh: not on the Arabic rut.",
+   "cautions": [],
+   "status": "approved (2026-11-14)",
+   "review": "approved; highlighted on the headline line of the shortlist render",
+   "pairs": [
+    {
+     "latin": "Spectral",
+     "rank": "primary",
+     "native": false,
+     "latin_source": "https://github.com/google/fonts/tree/29b4ec6df2522a8aee279414b78a07910b065874/ofl/spectral",
+     "licence": "OFL-1.1",
+     "arabic_size_adjust": "104%",
+     "weights": {
+      "latin_400": 500,
+      "latin_700": 900
+     },
+     "full_match_scale": 1.16,
+     "notes": "Quiet text serif after Alyamama's own Latin and Bodoni Moda were rejected in review. Static files (400, 700): build it with the static-file recipe. Approved by the owner on 2026-11-14.",
+     "static_files": [
+      400,
+      700
+     ]
+    }
+   ],
+   "pairs_rejected": [
+    "Alyamama (own Latin)",
+    "Bodoni Moda"
+   ]
+  },
+  {
+   "family": "Markazi Text",
+   "designer": "Borna Izadpanah, Florian Runge, Fiona Ross",
+   "licence": "OFL-1.1",
+   "source": "https://github.com/google/fonts/tree/29b4ec6df2522a8aee279414b78a07910b065874/ofl/markazitext",
+   "google_fonts": "https://fonts.google.com/specimen/Markazi+Text",
+   "added": "2018-06-06",
+   "structure": "naskh",
+   "role": "both",
+   "fits": "editorial, literary, cultural, heritage with restraint",
+   "weights": [
+    400,
+    700
+   ],
+   "axes": {
+    "wght": [
+     400,
+     700
+    ]
+   },
+   "coverage": {
+    "arabic": "36/36",
+    "persian": "6/6",
+    "urdu": "7/7",
+    "arabic_indic_digits": true,
+    "latin": true
+   },
+   "metrics": {
+    "arabic_body_em": 0.277,
+    "arabic_extent_em": 1.078,
+    "beh_over_own_x": 0.76,
+    "default_line_em": 1.2
+   },
+   "file_kb": 290,
+   "notes": "Superb text Naskh with its own Latin. Arabic body reads small at equal size: scale Arabic up.",
+   "cautions": [],
+   "status": "approved (2026-11-14)",
+   "review": "approved; highlighted on the headline line of the shortlist render",
+   "pairs": [
+    {
+     "latin": "Source Serif 4",
+     "rank": "primary",
+     "native": false,
+     "latin_source": "https://github.com/google/fonts/tree/29b4ec6df2522a8aee279414b78a07910b065874/ofl/sourceserif4",
+     "licence": "OFL-1.1",
+     "arabic_size_adjust": "145%",
+     "weights": {
+      "latin_400": 400,
+      "latin_700": 650
+     },
+     "full_match_scale": 1.611,
+     "notes": "Optical-size text serif with enough body to carry Markazi's large Arabic. The only partner after Markazi's own Latin was rejected in review."
+    }
+   ],
+   "pairs_rejected": [
+    "Markazi Text (own Latin)"
+   ]
+  },
+  {
+   "family": "Firjar",
+   "designer": "Yazeed Omar",
+   "licence": "OFL-1.1",
+   "source": "https://github.com/google/fonts/tree/29b4ec6df2522a8aee279414b78a07910b065874/ofl/firjar",
+   "google_fonts": "https://fonts.google.com/specimen/Firjar",
+   "added": "2026-10-15",
+   "structure": "sans-geometric",
+   "role": "both",
+   "fits": "tech, product, sport, systems",
+   "weights": [
+    100,
+    800
+   ],
+   "axes": {
+    "wdth": [
+     75,
+     125
+    ],
+    "wght": [
+     100,
+     800
+    ]
+   },
+   "coverage": {
+    "arabic": "36/36",
+    "persian": "6/6",
+    "urdu": "7/7",
+    "arabic_indic_digits": true,
+    "latin": true
+   },
+   "metrics": {
+    "arabic_body_em": 0.38,
+    "arabic_extent_em": 1.129,
+    "beh_over_own_x": 0.86,
+    "default_line_em": 1.4
+   },
+   "file_kb": 140,
+   "notes": "New (2026). Rare width axis (75–125) plus weight: one family for condensed headlines and normal text.",
+   "cautions": [],
+   "status": "approved (2026-11-14)",
+   "review": "approved; highlighted on the headline line of the shortlist render",
+   "pairs": [
+    {
+     "latin": "Firjar",
+     "rank": "primary",
+     "native": true,
+     "latin_source": "same family",
+     "licence": "OFL-1.1",
+     "arabic_size_adjust": "104%",
+     "weights": {
+      "latin_400": 350,
+      "latin_700": 650
+     },
+     "full_match_scale": 1.16,
+     "notes": "Designed together; geometric with a width axis for condensed headlines."
+    },
+    {
+     "latin": "Sora",
+     "rank": "alternate",
+     "native": false,
+     "latin_source": "https://github.com/google/fonts/tree/29b4ec6df2522a8aee279414b78a07910b065874/ofl/sora",
+     "licence": "OFL-1.1",
+     "arabic_size_adjust": "126%",
+     "weights": {
+      "latin_400": 400,
+      "latin_700": 700
+     },
+     "full_match_scale": 1.4,
+     "notes": "Wider, friendlier geometric Latin; strong at headline weights."
+    }
+   ]
+  },
+  {
+   "family": "Alan Sans",
+   "designer": "Raphaël Ronot, Samar Zureik",
+   "licence": "OFL-1.1",
+   "source": "https://github.com/google/fonts/tree/29b4ec6df2522a8aee279414b78a07910b065874/ofl/alansans",
+   "google_fonts": "https://fonts.google.com/specimen/Alan+Sans",
+   "added": "2025-09-05",
+   "structure": "sans-grotesque",
+   "role": "both",
+   "fits": "contemporary brand, product, tech, statement",
+   "weights": [
+    300,
+    900
+   ],
+   "axes": {
+    "wght": [
+     300,
+     900
+    ]
+   },
+   "coverage": {
+    "arabic": "36/36",
+    "persian": "6/6",
+    "urdu": "7/7",
+    "arabic_indic_digits": true,
+    "latin": true
+   },
+   "metrics": {
+    "arabic_body_em": 0.405,
+    "arabic_extent_em": 1.337,
+    "beh_over_own_x": 0.81,
+    "default_line_em": 1.3
+   },
+   "file_kb": 193,
+   "notes": "New (2025, Ronot & Zureik). Robust grotesque Arabic with a matching Latin; holds poster weights. Fresh.",
+   "cautions": [],
+   "status": "approved (2026-11-14)",
+   "review": "approved; highlighted on the headline line of the shortlist render",
+   "pairs": [
+    {
+     "latin": "Alan Sans",
+     "rank": "primary",
+     "native": true,
+     "latin_source": "same family",
+     "licence": "OFL-1.1",
+     "arabic_size_adjust": "103%",
+     "weights": {
+      "latin_400": 400,
+      "latin_700": 700
+     },
+     "full_match_scale": 1.143,
+     "notes": "Designed together; Arabic and Latin weights map 1:1."
+    },
+    {
+     "latin": "Hanken Grotesk",
+     "rank": "alternate",
+     "native": false,
+     "latin_source": "https://github.com/google/fonts/tree/29b4ec6df2522a8aee279414b78a07910b065874/ofl/hankengrotesk",
+     "licence": "OFL-1.1",
+     "arabic_size_adjust": "103%",
+     "weights": {
+      "latin_400": 350,
+      "latin_700": 600
+     },
+     "full_match_scale": 1.143,
+     "notes": "Quieter grotesque Latin; same size ratio as the native pair."
+    }
+   ]
+  },
+  {
+   "family": "Vazirmatn",
+   "designer": "Saber Rastikerdar",
+   "licence": "OFL-1.1",
+   "source": "https://github.com/google/fonts/tree/29b4ec6df2522a8aee279414b78a07910b065874/ofl/vazirmatn",
+   "google_fonts": "https://fonts.google.com/specimen/Vazirmatn",
+   "added": "2022-03-16",
+   "structure": "sans",
+   "role": "both",
+   "fits": "UI, product, general reading",
+   "weights": [
+    100,
+    900
+   ],
+   "axes": {
+    "wght": [
+     100,
+     900
+    ]
+   },
+   "coverage": {
+    "arabic": "36/36",
+    "persian": "6/6",
+    "urdu": "7/7",
+    "arabic_indic_digits": true,
+    "latin": true
+   },
+   "metrics": {
+    "arabic_body_em": 0.351,
+    "arabic_extent_em": 1.327,
+    "beh_over_own_x": 0.66,
+    "default_line_em": 1.562
+   },
+   "file_kb": 236,
+   "notes": "Widely trusted Persian/Arabic sans, full weights. Its Latin is borrowed and generic: pair with the engine's Latin face.",
+   "cautions": [],
+   "status": "approved (2026-11-14)",
+   "review": "approved; highlighted on the headline line of the shortlist render",
+   "pairs": [
+    {
+     "latin": "Onest",
+     "rank": "primary",
+     "native": false,
+     "latin_source": "https://github.com/google/fonts/tree/29b4ec6df2522a8aee279414b78a07910b065874/ofl/onest",
+     "licence": "OFL-1.1",
+     "arabic_size_adjust": "133%",
+     "weights": {
+      "latin_400": 250,
+      "latin_700": 500
+     },
+     "full_match_scale": 1.478,
+     "notes": "Neutral, slightly warm grotesque. Replaces Figtree and Albert Sans, both rejected in review. Approved on 2026-11-14."
+    }
+   ],
+   "pairs_rejected": [
+    "Figtree",
+    "Albert Sans"
+   ]
+  },
+  {
+   "family": "Beiruti",
+   "designer": "Boutros Fonts, Arlette Boutros, Volker Schnebel",
+   "licence": "OFL-1.1",
+   "source": "https://github.com/google/fonts/tree/29b4ec6df2522a8aee279414b78a07910b065874/ofl/beiruti",
+   "google_fonts": "https://fonts.google.com/specimen/Beiruti",
+   "added": "2024-06-07",
+   "structure": "sans-condensed",
+   "role": "both",
+   "fits": "editorial-news, fashion, dense layouts",
+   "weights": [
+    200,
+    900
+   ],
+   "axes": {
+    "wght": [
+     200,
+     900
+    ]
+   },
+   "coverage": {
+    "arabic": "36/36",
+    "persian": "6/6",
+    "urdu": "7/7",
+    "arabic_indic_digits": true,
+    "latin": true
+   },
+   "metrics": {
+    "arabic_body_em": 0.388,
+    "arabic_extent_em": 1.187,
+    "beh_over_own_x": 0.99,
+    "default_line_em": 1.2
+   },
+   "file_kb": 663,
+   "notes": "New (2024, Boutros). Condensed; Arabic and Latin match in size (beh/x ≈ 1).",
+   "cautions": [],
+   "status": "approved (2026-11-14)",
+   "review": "approved; highlighted on the headline line of the shortlist render",
+   "pairs": [
+    {
+     "latin": "Sofia Sans Condensed",
+     "rank": "primary",
+     "native": false,
+     "latin_source": "https://github.com/google/fonts/tree/29b4ec6df2522a8aee279414b78a07910b065874/ofl/sofiasanscondensed",
+     "licence": "OFL-1.1",
+     "arabic_size_adjust": "115%",
+     "weights": {
+      "latin_400": 400,
+      "latin_700": 600
+     },
+     "full_match_scale": 1.28,
+     "notes": "Condensed grotesque matching Beiruti's narrow build. The only partner after Beiruti's own Latin was rejected in review."
+    }
+   ],
+   "pairs_rejected": [
+    "Beiruti (own Latin)"
+   ]
+  },
+  {
+   "family": "Baloo Bhaijaan 2",
+   "designer": "Ek Type",
+   "licence": "OFL-1.1",
+   "source": "https://github.com/google/fonts/tree/29b4ec6df2522a8aee279414b78a07910b065874/ofl/baloobhaijaan2",
+   "google_fonts": "https://fonts.google.com/specimen/Baloo+Bhaijaan+2",
+   "added": "2021-10-29",
+   "structure": "sans-rounded",
+   "role": "both",
+   "fits": "children, playful consumer",
+   "weights": [
+    400,
+    800
+   ],
+   "axes": {
+    "wght": [
+     400,
+     800
+    ]
+   },
+   "coverage": {
+    "arabic": "36/36",
+    "persian": "6/6",
+    "urdu": "7/7",
+    "arabic_indic_digits": true,
+    "latin": true
+   },
+   "metrics": {
+    "arabic_body_em": 0.385,
+    "arabic_extent_em": 1.314,
+    "beh_over_own_x": 0.84,
+    "default_line_em": 1.712
+   },
+   "file_kb": 279,
+   "notes": "Rounded and warm; reads younger than Playpen.",
+   "cautions": [],
+   "status": "approved (2026-11-14)",
+   "review": "approved; highlighted on the headline line of the shortlist render",
+   "pairs": [
+    {
+     "latin": "Baloo 2",
+     "rank": "primary",
+     "native": true,
+     "latin_source": "https://github.com/google/fonts/tree/29b4ec6df2522a8aee279414b78a07910b065874/ofl/baloo2",
+     "licence": "OFL-1.1",
+     "arabic_size_adjust": "112%",
+     "weights": {
+      "latin_400": 400,
+      "latin_700": 650
+     },
+     "full_match_scale": 1.24,
+     "notes": "Same family by Ek Type (its own Latin)."
+    },
+    {
+     "latin": "Nunito",
+     "rank": "alternate",
+     "native": false,
+     "latin_source": "https://github.com/google/fonts/tree/29b4ec6df2522a8aee279414b78a07910b065874/ofl/nunito",
+     "licence": "OFL-1.1",
+     "arabic_size_adjust": "115%",
+     "weights": {
+      "latin_400": 400,
+      "latin_700": 550
+     },
+     "full_match_scale": 1.28,
+     "notes": "Softer, rounder Latin; calmer than Baloo 2."
+    }
+   ]
+  },
+  {
+   "family": "Playpen Sans Arabic",
+   "designer": "TypeTogether, Azza Alameddine, Laura Meseguer, Veronika Burian, José Scaglione",
+   "licence": "OFL-1.1",
+   "source": "https://github.com/google/fonts/tree/29b4ec6df2522a8aee279414b78a07910b065874/ofl/playpensansarabic",
+   "google_fonts": "https://fonts.google.com/specimen/Playpen+Sans+Arabic",
+   "added": "2025-03-11",
+   "structure": "handwriting",
+   "role": "both",
+   "fits": "children, education, playful brands, family",
+   "weights": [
+    100,
+    800
+   ],
+   "axes": {
+    "wght": [
+     100,
+     800
+    ]
+   },
+   "coverage": {
+    "arabic": "36/36",
+    "persian": "6/6",
+    "urdu": "7/7",
+    "arabic_indic_digits": true,
+    "latin": true
+   },
+   "metrics": {
+    "arabic_body_em": 0.456,
+    "arabic_extent_em": 1.315,
+    "beh_over_own_x": 0.85,
+    "default_line_em": 1.65
+   },
+   "file_kb": 740,
+   "notes": "Handwriting-based, drawn with care (TypeTogether, Azza Alameddine); playful without being cheap. Full weight range.",
+   "cautions": [],
+   "status": "approved (2026-11-14)",
+   "review": "approved; highlighted on the headline line of the shortlist render",
+   "pairs": [
+    {
+     "latin": "Playpen Sans",
+     "rank": "primary",
+     "native": true,
+     "latin_source": "https://github.com/google/fonts/tree/29b4ec6df2522a8aee279414b78a07910b065874/ofl/playpensans",
+     "licence": "OFL-1.1",
+     "arabic_size_adjust": "105%",
+     "weights": {
+      "latin_400": 400,
+      "latin_700": 700
+     },
+     "full_match_scale": 1.167,
+     "notes": "Same family by TypeTogether (its own Latin)."
+    },
+    {
+     "latin": "Nunito",
+     "rank": "alternate",
+     "native": false,
+     "latin_source": "https://github.com/google/fonts/tree/29b4ec6df2522a8aee279414b78a07910b065874/ofl/nunito",
+     "licence": "OFL-1.1",
+     "arabic_size_adjust": "96%",
+     "weights": {
+      "latin_400": 400,
+      "latin_700": 600
+     },
+     "full_match_scale": 1.067,
+     "notes": "Rounded neutral Latin when handwriting should stay Arabic-only."
+    }
+   ]
+  }
+ ],
+ "pairs_method": "Candidates were OFL Latin faces outside Impeccable's list of training-data defaults. In Chrome with the real files, Latin x-height was measured against Arabic body height (ب), and stem thickness against weight (l against ا). Recommended size = 0.9 × full match (families designed together set Arabic at 0.81–0.88 of full match), never below a designed-together pair's own ratio. Weights are mapped so Arabic stems match Latin stems after scaling.",
+ "pairs_review": {
+  "date": "2026-11-14",
+  "by": "maintainer review of real renders",
+  "rejected": {
+   "Alyamama": [
+    "Alyamama (own Latin)",
+    "Bodoni Moda"
+   ],
+   "Markazi Text": [
+    "Markazi Text (own Latin)"
+   ],
+   "Vazirmatn": [
+    "Figtree",
+    "Albert Sans"
+   ],
+   "Beiruti": [
+    "Beiruti (own Latin)"
+   ]
+  },
+  "ranks": "primary and alternate are both approved. Every pair in this catalog is approved.",
+  "approved_later": [
+   "Alyamama + Spectral",
+   "Vazirmatn + Onest"
+  ]
+ }
+}

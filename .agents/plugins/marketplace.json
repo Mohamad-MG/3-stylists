@@ -1,0 +1,20 @@
+{
+  "name": "three-stylists",
+  "interface": {
+    "displayName": "3 Stylists"
+  },
+  "plugins": [
+    {
+      "name": "three-stylists",
+      "source": {
+        "source": "local",
+        "path": "./"
+      },
+      "policy": {
+        "installation": "AVAILABLE",
+        "authentication": "ON_USE"
+      },
+      "category": "Design"
+    }
+  ]
+}

@@ -1,0 +1,322 @@
+{
+  "$comment": "Pinned upstream engines. 3 Stylists runs them as they are; it never rewrites them. Bump a commit only after reading the upstream changes, then run `node scripts/engines.mjs fetch && node scripts/engines.mjs verify`.",
+  "schema": 1,
+  "engines": [
+    {
+      "id": "impeccable",
+      "repo": "https://github.com/pbakaus/impeccable",
+      "commit": "d41d9860b0094dcb68030657da63461212835aaa",
+      "license": "Apache-2.0",
+      "role": {
+        "primary": "manifesto"
+      },
+      "sparse": [
+        ".claude/skills/impeccable/",
+        ".claude/agents/",
+        ".agents/skills/impeccable/",
+        "LICENSE",
+        "NOTICE.md"
+      ],
+      "entry": {
+        "claude": ".claude/skills/impeccable/SKILL.md",
+        "codex": ".agents/skills/impeccable/SKILL.md"
+      },
+      "agents": {
+        "finish-reviewer": ".claude/agents/impeccable-finish-reviewer.md",
+        "documenter": ".claude/agents/impeccable-documenter.md",
+        "asset-producer": ".claude/agents/impeccable-asset-producer.md",
+        "motion-reviewer": ".claude/agents/impeccable-motion-reviewer.md"
+      },
+      "requires": [
+        "its own launcher (scripts/impeccable); downloads its binary on first run"
+      ],
+      "gates": [
+        "reference/craft-floor.md (Verify list)",
+        "detector via the launcher when available",
+        "audit"
+      ],
+      "requiredPaths": [
+        ".claude/skills/impeccable/scripts/impeccable",
+        ".claude/skills/impeccable/reference/new-work.md",
+        ".claude/skills/impeccable/reference/craft-floor.md",
+        ".claude/skills/impeccable/reference/init.md",
+        ".claude/skills/impeccable/reference/degraded/documenter.md",
+        ".claude/skills/impeccable/reference/degraded/finish-reviewer.md",
+        ".claude/agents/impeccable-finish-reviewer.md",
+        ".claude/agents/impeccable-documenter.md",
+        ".claude/skills/impeccable/reference/new-work-world.md",
+        ".claude/skills/impeccable/reference/new-work-comp.md",
+        ".claude/skills/impeccable/reference/animate.md",
+        ".claude/skills/impeccable/reference/degraded/motion-reviewer.md",
+        ".claude/agents/impeccable-motion-reviewer.md",
+        ".claude/skills/impeccable/reference/mode-operate.md"
+      ]
+    },
+    {
+      "id": "taste-skill",
+      "repo": "https://github.com/Leonxlnx/taste-skill",
+      "commit": "f6b76575f949707b4e3c37cd86cb44b0b98643e8",
+      "license": "MIT",
+      "role": {
+        "primary": "atelier"
+      },
+      "sparse": [
+        "skills/taste-skill/",
+        "LICENSE"
+      ],
+      "entry": {
+        "claude": "skills/taste-skill/SKILL.md",
+        "codex": "skills/taste-skill/SKILL.md"
+      },
+      "requires": [
+        "node>=22",
+        "chrome"
+      ],
+      "gates": [
+        "scripts/gate.mjs (GATE: PASS | OPEN)",
+        "scripts/copy-lint.mjs",
+        "scripts/consistency.mjs",
+        "assets/layout/check.mjs",
+        "scripts/perf.mjs"
+      ],
+      "requiredPaths": [
+        "skills/taste-skill/scripts/gate.mjs",
+        "skills/taste-skill/scripts/start.mjs",
+        "skills/taste-skill/scripts/moments.mjs",
+        "skills/taste-skill/scripts/copy-lint.mjs",
+        "skills/taste-skill/scripts/photos.mjs",
+        "skills/taste-skill/assets/starter.html",
+        "skills/taste-skill/assets/layout/deal.mjs",
+        "skills/taste-skill/references/copy.md",
+        "skills/taste-skill/references/sections.md"
+      ]
+    },
+    {
+      "id": "cinematic-ui",
+      "repo": "https://github.com/akseolabs-seo/cinematic-ui",
+      "commit": "1052c2cead980a9f8a0f219381373910ceedbc30",
+      "license": "MIT",
+      "role": {
+        "primary": "cinema"
+      },
+      "sparse": null,
+      "entry": {
+        "claude": "SKILL.md",
+        "codex": "SKILL.md"
+      },
+      "requires": [
+        "node",
+        "playwright-core in the working folder (npm i -D playwright-core)",
+        "ffmpeg (optional, for render-film)"
+      ],
+      "gates": [
+        "scripts/screening.mjs (and --reduced)",
+        "scripts/copy-check.mjs"
+      ],
+      "requiredPaths": [
+        "scripts/screening.mjs",
+        "scripts/grade-from-stills.mjs",
+        "kit/type-fx.js",
+        "kit/reel.js",
+        "kit/site-dom.html",
+        "references/film-research.md",
+        "references/award-reel.md"
+      ]
+    },
+    {
+      "id": "emil-skills",
+      "repo": "https://github.com/emilkowalski/skills",
+      "commit": "64eb3deb9a5fbfa041faf783e0bc3fd635872e9c",
+      "license": "MIT",
+      "role": {
+        "support": [
+          "manifesto",
+          "cinema"
+        ]
+      },
+      "sparse": null,
+      "entry": {
+        "claude": "skills/",
+        "codex": "skills/"
+      },
+      "use": [
+        "emil-design-eng",
+        "animate",
+        "review-animations",
+        "apple-design",
+        "choreograph",
+        "animation-performance"
+      ],
+      "notConfiguredFor": {
+        "atelier": "Taste Skill owns its motion layer and forbids overriding it"
+      },
+      "requiredPaths": [
+        "skills/emil-design-eng/SKILL.md",
+        "skills/animate/SKILL.md",
+        "skills/review-animations/SKILL.md",
+        "skills/apple-design/SKILL.md",
+        "skills/choreograph/SKILL.md",
+        "skills/animation-performance/SKILL.md",
+        "skills/break-ui/SKILL.md",
+        "skills/mobile-native/SKILL.md",
+        "skills/ask-emil/SKILL.md",
+        "skills/gestures/SKILL.md",
+        "skills/pick-ui-library/SKILL.md"
+      ]
+    },
+    {
+      "id": "gsap-skills",
+      "repo": "https://github.com/greensock/gsap-skills",
+      "commit": "aed9cfd3277740755f6bfc1155c7aa645403b760",
+      "license": "MIT",
+      "role": {
+        "support": [
+          "manifesto",
+          "cinema"
+        ]
+      },
+      "sparse": null,
+      "entry": {
+        "claude": "skills/",
+        "codex": "skills/"
+      },
+      "use": [
+        "gsap-core",
+        "gsap-timeline",
+        "gsap-scrolltrigger",
+        "gsap-plugins",
+        "gsap-performance"
+      ],
+      "requiredPaths": [
+        "skills/gsap-core/SKILL.md",
+        "skills/gsap-timeline/SKILL.md",
+        "skills/gsap-scrolltrigger/SKILL.md",
+        "skills/gsap-plugins/SKILL.md",
+        "skills/gsap-performance/SKILL.md"
+      ]
+    },
+    {
+      "id": "threejs-skills",
+      "repo": "https://github.com/CloudAI-X/threejs-skills",
+      "commit": "0e181866f095b5f06d005133876e926515390d95",
+      "license": "MIT",
+      "role": {
+        "support": [
+          "cinema"
+        ]
+      },
+      "sparse": null,
+      "entry": {
+        "claude": "skills/",
+        "codex": "skills/"
+      },
+      "requiredPaths": [
+        "skills/threejs-fundamentals/SKILL.md",
+        "skills/threejs-performance/SKILL.md",
+        "skills/threejs-shaders/SKILL.md"
+      ]
+    },
+    {
+      "id": "awwwards-rubric",
+      "repo": "https://github.com/SandroHub013/awwwards-skill",
+      "commit": "08417dd4461165fd7ec6b56e0c7f7213f2541164",
+      "license": "MIT",
+      "role": {
+        "support": [
+          "cinema"
+        ]
+      },
+      "sparse": [
+        "SKILL.md",
+        "references/",
+        "assets/checklists/",
+        "LICENSE"
+      ],
+      "entry": {
+        "claude": "SKILL.md",
+        "codex": "SKILL.md"
+      },
+      "use": [
+        "references/01-scoring.md",
+        "references/14-anti-patterns.md",
+        "references/15-audit.md"
+      ],
+      "requiredPaths": [
+        "references/01-scoring.md",
+        "references/14-anti-patterns.md",
+        "references/15-audit.md"
+      ]
+    },
+    {
+      "id": "mengto-web-design",
+      "repo": "https://github.com/MengTo/Skills",
+      "commit": "3cc93458c4949c39a04e938ea7892a1d6d3d40bf",
+      "license": "MIT",
+      "role": {
+        "support": [
+          "cinema"
+        ]
+      },
+      "sparse": [
+        "agent-skills/web-design/",
+        "LICENSE"
+      ],
+      "entry": {
+        "claude": "agent-skills/web-design/",
+        "codex": "agent-skills/web-design/"
+      },
+      "use": [
+        "build-awwwards-quality-sites",
+        "cinematic-gsap-lenis-motion-system",
+        "cinematic-scroll-storytelling",
+        "scroll-world-storytelling",
+        "build-threejs-scroll-worlds",
+        "horizontal-scroll-scenes",
+        "scroll-scrubbed-visual-sequence"
+      ],
+      "requiredPaths": [
+        "agent-skills/web-design/build-awwwards-quality-sites/SKILL.md",
+        "agent-skills/web-design/cinematic-gsap-lenis-motion-system/SKILL.md",
+        "agent-skills/web-design/scroll-world-storytelling/SKILL.md",
+        "agent-skills/web-design/horizontal-scroll-scenes/SKILL.md",
+        "agent-skills/web-design/scroll-scrubbed-visual-sequence/SKILL.md",
+        "agent-skills/web-design/cinematic-scroll-storytelling/SKILL.md",
+        "agent-skills/web-design/build-threejs-scroll-worlds/SKILL.md"
+      ]
+    },
+    {
+      "id": "ui-skills",
+      "repo": "https://github.com/ibelick/ui-skills",
+      "commit": "65cc0edb4f64fe8bfe7e9c59466074de25bece76",
+      "license": "MIT",
+      "role": {
+        "gate": [
+          "all"
+        ]
+      },
+      "sparse": [
+        "skills/",
+        "LICENSE"
+      ],
+      "entry": {
+        "claude": "skills/",
+        "codex": "skills/"
+      },
+      "use": [
+        "fixing-accessibility",
+        "fixing-motion-performance"
+      ],
+      "requiredPaths": [
+        "skills/fixing-accessibility/SKILL.md",
+        "skills/fixing-motion-performance/SKILL.md"
+      ]
+    }
+  ],
+  "studiedNotUsed": [
+    {
+      "repo": "https://github.com/Z4YT0N/awwwards-skill",
+      "commit": "acaf02194e13e7a21c902a11ff45f3fb4d0f16d2",
+      "reason": "no licence: study only, never fetched or redistributed"
+    }
+  ]
+}

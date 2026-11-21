@@ -1,0 +1,14 @@
+{
+  "name": "three-stylists",
+  "description": "Audit, polish, enhance, or build web interfaces. Explore three bilingual directions on demand.",
+  "owner": {
+    "name": "3 Stylists contributors"
+  },
+  "plugins": [
+    {
+      "name": "three-stylists",
+      "source": "./",
+      "description": "Audit, polish, enhance, or build web interfaces. Explore three bilingual directions on demand."
+    }
+  ]
+}
