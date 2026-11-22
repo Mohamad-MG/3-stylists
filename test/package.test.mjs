@@ -61,6 +61,7 @@ test('every path a document points to exists', () => {
     const targets = [];
     for (const m of body.matchAll(/\]\((?!https?:|#|mailto:)([^)\s]+)\)/g)) targets.push(path.join(path.dirname(file), m[1].split('#')[0]));
     for (const m of body.matchAll(/`<(plugin|refs)>\/([^`\s]+)`/g)) targets.push(path.join(m[1] === 'refs' ? REFS : '.', m[2]));
+    for (const m of body.matchAll(/\bsrc="(?!https?:)([^"\s]+)"/g)) targets.push(path.join(path.dirname(file), m[1])); // README art
     for (const target of targets.flatMap(expand)) {
       if (/[<>*…]/.test(target)) continue; // a placeholder the reader fills in
       if (!existsSync(at(target))) missing.push(file + ' → ' + target.replaceAll('\\', '/'));

@@ -24,6 +24,10 @@ The registry is the source for commits, sparse paths and the files each adapter 
 
 The [Arabic type catalog](skills/three-stylists/references/arabic-type/README.md) describes eight faces from [Google Fonts](https://github.com/google/fonts), all under OFL-1.1, with measurements and renders made for this project. No font files are shipped here. A page that uses a face must self-host it together with its `OFL.txt`.
 
+## Artwork
+
+The README art in `.github/assets/` is original to this project. Its lettering is outlined from Bodoni Moda, Archivo Black, Unbounded, Hanken Grotesk and Markazi Text, all from [Google Fonts](https://github.com/google/fonts) under OFL-1.1. The files contain outlines only, no font data.
+
 ## Research
 
 The [source study](docs/source-study.md) and the [surface study](docs/surfaces-study.md) record what each tool contains and why it was chosen. They describe the commits studied at the time; the registry holds the versions that run.

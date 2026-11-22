@@ -31,6 +31,7 @@ engines/registry.json            pinned engines: repository, commit, licence, ro
 scripts/                         engines, env-probe, rtl-edges, fetch-font, ttf2woff2, lib, sync-manifests
 test/package.test.mjs            package checks, run with node --test
 docs/                            the research behind the engine choices
+.github/assets/                  README art: static SVG, display lettering outlined so no font is needed
 ```
 
 ## Rules that keep it maintainable

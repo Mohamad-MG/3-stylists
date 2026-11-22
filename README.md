@@ -1,23 +1,42 @@
-# 3 Stylists
+<img src=".github/assets/hero.svg" alt="3 Stylists. Design craft for coding agents: audit, polish, enhance, build, explore" width="100%">
 
-A plugin for the visual quality of web interfaces. Audit a site, polish its current design, enhance one journey, or build a new frontend from a brief, with Arabic and English treated as first-class. On request, explore three independent design directions side by side.
+[![Release](https://img.shields.io/github/v/release/Mohamad-MG/3-stylists?style=flat-square&label=release&labelColor=0A3226&color=F3DC5E)](https://github.com/Mohamad-MG/3-stylists/releases) [![Checks](https://img.shields.io/github/actions/workflow/status/Mohamad-MG/3-stylists/check.yml?branch=main&style=flat-square&label=checks&labelColor=0A3226)](https://github.com/Mohamad-MG/3-stylists/actions/workflows/check.yml) [![Hosts](https://img.shields.io/badge/hosts-Claude_Code%2C_Codex%2C_ChatGPT-F7A1B8?style=flat-square&labelColor=0A3226)](#install) [![Licence](https://img.shields.io/badge/licence-MIT-C9B8FF?style=flat-square&labelColor=0A3226)](LICENSE)
 
-It works in **Claude Code** and in **Codex and ChatGPT**, on a project you already have or one you are starting.
+3 Stylists is a plugin that makes a coding agent good at the visual side of web work. It audits a site, polishes its details, improves one journey, or builds a new frontend from a brief, and it measures the page in a real browser before and after each change. Arabic and English are both first-class.
+
+When the direction is still open, it builds three independent designs of the same brief so you can choose by looking.
 
 ## Install
 
-### Claude Code
-
-From a terminal:
+**Claude Code**
 
 ~~~sh
 claude plugin marketplace add Mohamad-MG/3-stylists
 claude plugin install three-stylists@three-stylists
 ~~~
 
-Or inside a session: `/plugin marketplace add Mohamad-MG/3-stylists`, then `/plugin install three-stylists@three-stylists`.
+Inside a session the same two steps are `/plugin marketplace add Mohamad-MG/3-stylists` and `/plugin install three-stylists@three-stylists`.
 
-Start a new session in your project and run a mode:
+**Codex and the ChatGPT desktop app**
+
+~~~sh
+codex plugin marketplace add Mohamad-MG/3-stylists
+~~~
+
+Then open the plugin browser, `/plugins` in the Codex CLI or the **Plugins** tab in the desktop app, and install **3 Stylists**.
+
+<details>
+<summary>ChatGPT workspaces</summary>
+
+A workspace admin imports the repository once: **Admin Console → Plugins → Add → Import marketplace**, with the source `https://github.com/Mohamad-MG/3-stylists` and an empty path. Members then install it from the **Plugins** tab. What a session can reach (code, previews, a browser) depends on the host.
+
+</details>
+
+## Use it
+
+Start a new session in your project and name a mode and a target.
+
+In Claude Code:
 
 ~~~text
 /three-stylists:audit Review the Arabic product pages on a phone and list verified issues
@@ -27,25 +46,13 @@ Start a new session in your project and run a mode:
 /three-stylists:explore Compare three bilingual directions for my brief
 ~~~
 
-### Codex and the ChatGPT desktop app
-
-~~~sh
-codex plugin marketplace add Mohamad-MG/3-stylists
-~~~
-
-Then open the plugin browser, `/plugins` in the Codex CLI or the **Plugins** tab in the desktop app, and install **3 Stylists**. Start a new session in your project and name the mode and the target:
+In Codex and ChatGPT, say it in a sentence, or type `@` and pick the plugin or its `three-stylists` skill:
 
 ~~~text
 Use 3 Stylists to audit the mobile product page. Findings only.
 ~~~
 
-You can also type `@` and pick the plugin or its `three-stylists` skill.
-
-### ChatGPT workspaces
-
-A workspace admin imports the repository once: **Admin Console → Plugins → Add → Import marketplace**, with the source `https://github.com/Mohamad-MG/3-stylists` and an empty path. Members then install it from the **Plugins** tab. What a session can reach (code, previews, a browser) depends on the host.
-
-## Modes
+## Five modes
 
 | Mode | Use it when | You get |
 | --- | --- | --- |
@@ -55,18 +62,60 @@ A workspace admin imports the repository once: **Admin Console → Plugins → A
 | **build** | You are starting from a brief | A working first slice in your stack |
 | **explore** | You want to see directions before you commit | Three independent Arabic and English variants to pick from |
 
-**An existing project:** start with audit on a page you know well, then polish or enhance what it finds.
-**A new project:** start with build, or with explore when the direction is still open.
+> [!TIP]
+> **An existing project:** start with `audit` on a page you know well, then `polish` or `enhance` what it finds.
+> **A new project:** start with `build`, or with `explore` while the direction is still open.
 
 ## What it measures
 
-With a browser tool in the session, the standard modes run one bundled script on the page and quote its numbers before and after a change: horizontal overflow and its cause, tap targets under 44 px, inputs under 16 px, fixed bars over content, the heading outline, how many font sizes, weights, radii, shadows and button shapes the page really uses, web fonts that did not load, letter-spacing on Arabic, repeated and truncated text, broken and oversized images, and the space between sections.
+<img src=".github/assets/fit.svg" alt="Four of the measured checks: no sideways scroll at 390 px, tap targets of 44 px, input text of 16 px, and Arabic and English direction" width="100%">
 
-For Arabic and right-to-left pages it applies a set of typesetting, bidi and motion rules, and it treats the phone as its own composition, not a narrower desktop.
+With a browser tool in the session, the standard modes run one bundled script, the probe, on the page at phone and desktop widths, and quote its numbers before and after a change.
 
-## Explore
+| On the page | What the probe reports |
+| --- | --- |
+| Layout | Horizontal overflow and the element that causes it, fixed bars over content, the space between sections |
+| Touch | Tap targets under 44 px, inputs under 16 px |
+| Type | The heading outline, how many font sizes and weights the page really uses, web fonts that did not load, letter-spacing on Arabic |
+| Surfaces | The radii, shadows and button shapes in use |
+| Content | Repeated and truncated text, broken and oversized images |
 
-Explore runs three third-party design engines, pinned and unmodified, each in its own isolated agent on the same facts. It needs git, Node.js 22+, Chrome or Chromium, and a host with subagents. The first run fetches the engines into `~/.3stylists/engines`. See the [Explore workflow](skills/three-stylists/references/explore.md) and the [sources and licences](SOURCES.md). The other four modes need none of this.
+<details>
+<summary>A readout</summary>
+
+Trimmed output from the probe on a test page with planted defects, at 390 px:
+
+~~~json
+{
+  "page": { "width": 390, "overflowX": 146, "overflowFrom": ["div.wide 16..536"] },
+  "copy": { "duplicates": ["2× «The same sentence appears twice on this page, on purpose.»"] },
+  "images": { "broken": ["missing.png"], "missingAlt": ["missing.png"] },
+  "fixedBars": ["fixed div.bar 390×64 at y780"],
+  "gate": { "phone": ["overflow 146px", "tap 24×24 ×", "tap 178×22 email", "input font 14px email"] }
+}
+~~~
+
+</details>
+
+## Arabic and English
+
+Arabic is typeset, not translated. The plugin applies rules for Arabic type, mixed-direction text and the direction of motion, checks that the web font really loaded, and keeps letter-spacing off Arabic. The phone is treated as its own composition, not a narrower desktop.
+
+The rules are in the [Arabic and English reference](skills/three-stylists/references/bilingual.md) and the [phone reference](skills/three-stylists/references/phone.md), with a [catalog of eight tested Arabic faces](skills/three-stylists/references/arabic-type/README.md) and their Latin pairs.
+
+## Explore: one brief, three stylists
+
+<img src=".github/assets/stylists.svg" alt="The three stylists: Atelier runs Taste Skill, Manifesto runs Impeccable, Cinema runs cinematic-ui" width="100%">
+
+Explore runs three third-party design engines, pinned and unmodified, each in its own isolated agent on the same facts. You get three built, bilingual variants side by side.
+
+| Stylist | Engine | How it works |
+| --- | --- | --- |
+| **Atelier** | [Taste Skill](https://github.com/Leonxlnx/taste-skill) | A production kit for company-grade sites: photo-led pages, the copy written first, a finish gate in the browser |
+| **Manifesto** | [Impeccable](https://github.com/pbakaus/impeccable) | A design-direction system that deals visual worlds against the habits of the category, then builds one |
+| **Cinema** | [cinematic-ui](https://github.com/akseolabs-seo/cinematic-ui) | A film production for a site: a director, a colour grade, a storyboard and a scroll-driven camera |
+
+Explore needs git, Node.js 22+, Chrome or Chromium, and a host with subagents. The first run fetches the engines into `~/.3stylists/engines`. The other four modes need none of this. See the [Explore workflow](skills/three-stylists/references/explore.md) and the [sources and licences](SOURCES.md).
 
 ## Update or remove
 
@@ -79,29 +128,6 @@ codex plugin marketplace upgrade three-stylists
 codex plugin marketplace remove three-stylists
 ~~~
 
-## بالعربي
-
-**3 Stylists** بلجن لجودة الواجهات: يراجع موقعك ويطلّع العيوب بالدليل، يظبط التفاصيل جوّه نفس التصميم، يحسّن رحلة مستخدم بعينها، أو يبني واجهة جديدة من بريف. العربي والإنجليزي عنده لغتين أصليتين، مش ترجمة.
-
-التنصيب على Claude Code:
-
-~~~sh
-claude plugin marketplace add Mohamad-MG/3-stylists
-claude plugin install three-stylists@three-stylists
-~~~
-
-وعلى Codex وتطبيق ChatGPT: نفّذ `codex plugin marketplace add Mohamad-MG/3-stylists` ثم نصّب **3 Stylists** من `/plugins` أو من تبويب Plugins.
-
-| الوضع | امتى تستخدمه |
-| --- | --- |
-| `audit` | عايز تعرف إيه الغلط قبل ما تلمس حاجة، بلا أي تعديل |
-| `polish` | التصميم مظبوط والتفاصيل لأ |
-| `enhance` | رحلة أو صفحة بعينها محتاجة تتحسّن |
-| `build` | بتبدأ مشروع جديد من بريف |
-| `explore` | عايز تشوف تلات اتجاهات قبل ما تختار |
-
-مشروع قديم: ابدأ بـ`audit` ثم `polish` أو `enhance`. مشروع جديد: ابدأ بـ`build`.
-
 ## Develop
 
 ~~~sh
@@ -110,4 +136,4 @@ node scripts/sync-manifests.mjs    # after editing plugin.json
 claude plugin validate .
 ~~~
 
-[Architecture](ARCHITECTURE.md) · [Changelog](CHANGELOG.md) · [Sources and licences](SOURCES.md) · [MIT licence](LICENSE)
+Read the [architecture](ARCHITECTURE.md) before changing the package and the [changelog](CHANGELOG.md) for what shipped. 3 Stylists is released under the [MIT licence](LICENSE).
