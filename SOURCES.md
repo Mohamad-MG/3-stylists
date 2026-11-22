@@ -26,7 +26,7 @@ The [Arabic type catalog](skills/altero/references/arabic-type/README.md) descri
 
 ## Artwork
 
-The README art in `.github/assets/` is original to this project. Its lettering is outlined from Bodoni Moda, Archivo Black, Unbounded, Hanken Grotesk and Markazi Text, all from [Google Fonts](https://github.com/google/fonts) under OFL-1.1. The files contain outlines only, no font data.
+The Altero logo and the README art in `.github/assets/` are original to this project. Lettering in the art is outlined from Bodoni Moda, Archivo Black, Unbounded, Hanken Grotesk and Markazi Text, all from [Google Fonts](https://github.com/google/fonts) under OFL-1.1. The files contain outlines only, no font data.
 
 ## Research
 
