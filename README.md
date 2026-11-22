@@ -1,6 +1,6 @@
 <img src=".github/assets/hero.svg" alt="3 Stylists. Design craft for coding agents: audit, polish, enhance, build, explore" width="100%">
 
-[![Release](https://img.shields.io/github/v/release/Mohamad-MG/3-stylists?style=flat-square&label=release&labelColor=0A3226&color=F3DC5E)](https://github.com/Mohamad-MG/3-stylists/releases) [![Checks](https://img.shields.io/github/actions/workflow/status/Mohamad-MG/3-stylists/check.yml?branch=main&style=flat-square&label=checks&labelColor=0A3226)](https://github.com/Mohamad-MG/3-stylists/actions/workflows/check.yml) [![Hosts](https://img.shields.io/badge/hosts-Claude_Code%2C_Codex%2C_ChatGPT-F7A1B8?style=flat-square&labelColor=0A3226)](#install) [![Licence](https://img.shields.io/badge/licence-MIT-C9B8FF?style=flat-square&labelColor=0A3226)](LICENSE)
+[![Checks](https://img.shields.io/github/actions/workflow/status/Mohamad-MG/3-stylists/check.yml?branch=main&style=flat-square&label=checks&labelColor=0A3226)](https://github.com/Mohamad-MG/3-stylists/actions/workflows/check.yml) [![Hosts](https://img.shields.io/badge/hosts-Claude_Code%2C_Codex%2C_ChatGPT-F7A1B8?style=flat-square&labelColor=0A3226)](#install) [![Licence](https://img.shields.io/badge/licence-MIT-C9B8FF?style=flat-square&labelColor=0A3226)](LICENSE)
 
 3 Stylists is a plugin that makes a coding agent good at the visual side of web work. It audits a site, polishes its details, improves one journey, or builds a new frontend from a brief, and it measures the page in a real browser before and after each change. Arabic and English are both first-class.
 
@@ -64,6 +64,7 @@ Use 3 Stylists to audit the mobile product page. Findings only.
 
 > [!TIP]
 > **An existing project:** start with `audit` on a page you know well, then `polish` or `enhance` what it finds.
+>
 > **A new project:** start with `build`, or with `explore` while the direction is still open.
 
 ## What it measures
