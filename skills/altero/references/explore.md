@@ -17,9 +17,9 @@ node scripts/engines.mjs doctor
 node scripts/engines.mjs fetch      # first run, or after a registry change
 node scripts/engines.mjs verify     # must pass before step 5
 ```
-On a host other than Claude Code set `STYLISTS_PLATFORM=codex`. If `verify` fails, stop and report: a stylist without its pinned engine falls back to paraphrased taste, which is the failure this workflow exists to prevent.
+On a host other than Claude Code set `ALTERO_PLATFORM=codex`. If `verify` fails, stop and report: a stylist without its pinned engine falls back to paraphrased taste, which is the failure this workflow exists to prevent.
 
-Then create `RUN_DIR` (`<project>/.3stylists/runs/<YYYYMMDD-HHMM>/`) and probe the machine:
+Then create `RUN_DIR` (`<project>/.altero/runs/<YYYYMMDD-HHMM>/`) and probe the machine:
 ```bash
 node scripts/env-probe.mjs <RUN_DIR> --image-generation <yes|no>   # yes only if you have an image-generation tool
 ```
@@ -44,19 +44,19 @@ Read `<refs>/engine-inputs.md` and write each engine's native input file into it
 
 ## 5. Fork
 Start one stylist per primary engine in `<plugin>/engines/registry.json` (`role.primary`: atelier, manifesto, cinema), **in parallel**, each in its own subagent:
-- Claude Code: the plugin agent `three-stylists:stylist`, once per stylist id.
+- Claude Code: the plugin agent `altero:stylist`, once per stylist id.
 - Other hosts: one generic subagent per stylist id, told to read `<plugin>/agents/stylist.md` first and follow it.
 
 Give each one only: its stylist id, the plugin root, `RUN_DIR`, its folder, and the paths to `brief.md`, `answers.md`, `facts.json`, `env.md` and its engine input file. Nothing else: no summaries, no suggestions, no other stylist's output.
 
-Before Atelier starts, copy `<project>/.3stylists/taste-history/*` (if it exists) into `atelier/.taste-skill/`; after it returns, copy `atelier/.taste-skill/{history,layout-history}.json` back. Taste's dealers use this history to keep pages different across runs.
+Before Atelier starts, copy `<project>/.altero/taste-history/*` (if it exists) into `atelier/.taste-skill/`; after it returns, copy `atelier/.taste-skill/{history,layout-history}.json` back. Taste's dealers use this history to keep pages different across runs.
 
 **Without subagents or a browser:** report that Explore cannot be verified on this host. Offer a single build direction or prepare the briefs for a capable host.
 
 ## 5b. Fresh-eyes reviews
 The engines want reviewers with a fresh context, and so does the phone layer. A stylist running as a subagent usually cannot spawn one, so it returns with a status, and you run the review:
-- **Manifesto, `"status": "awaiting-review"`:** start a new subagent whose instructions are the full text of Impeccable's shipped reviewer (`engines.mjs path impeccable` → `.claude/agents/impeccable-finish-reviewer.md`), with tool limits as that file declares, and the packet at `manifesto/.3stylists/review-packet.md`. Send its disposition back to the Manifesto stylist (continue the same agent), which acts on it under Impeccable's rules. Repeat as Impeccable's step 7 directs.
-- **Manifesto, `"status": "awaiting-motion-review"`:** the same, with Impeccable's shipped motion reviewer (`.claude/agents/impeccable-motion-reviewer.md`) and the packet at `manifesto/.3stylists/motion-packet.md`.
+- **Manifesto, `"status": "awaiting-review"`:** start a new subagent whose instructions are the full text of Impeccable's shipped reviewer (`engines.mjs path impeccable` → `.claude/agents/impeccable-finish-reviewer.md`), with tool limits as that file declares, and the packet at `manifesto/.altero/review-packet.md`. Send its disposition back to the Manifesto stylist (continue the same agent), which acts on it under Impeccable's rules. Repeat as Impeccable's step 7 directs.
+- **Manifesto, `"status": "awaiting-motion-review"`:** the same, with Impeccable's shipped motion reviewer (`.claude/agents/impeccable-motion-reviewer.md`) and the packet at `manifesto/.altero/motion-packet.md`.
 - **Cinema, `"status": "awaiting-test-screening"`:** start a new subagent that sees only the contact sheets listed in `cinema/NOTES.md` and answers cinematic-ui's four test-screening questions (what the product is, what to do, what the lead is, which frame is the climax). Send the answers back to the Cinema stylist to compare with its logline.
 - **Any stylist, `"status": "awaiting-phone-screening"`:** start a new subagent that sees only the screenshots listed under `NOTES.md → Phone cut → screening` and the phone cut plan, and answers the four questions in `<refs>/phone.md` §3. Send the answers back to that stylist.
 

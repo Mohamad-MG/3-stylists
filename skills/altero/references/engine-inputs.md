@@ -22,7 +22,7 @@ Impeccable's init writes this file after interviewing. The Explore interview alr
 ## Platform
 web
 ## Stack
-delegated: static HTML/CSS for the 3 Stylists demo slice; final build: <R1 answer or "not decided">
+delegated: static HTML/CSS for the Altero demo slice; final build: <R1 answer or "not decided">
 ## Users
 <Q1: primary visitor, situation, job>
 ## Product Purpose
@@ -77,7 +77,7 @@ stand-in photographs: <yes | no>
 <copy line>
 ```
 
-**Dealer history (keeps pages different across runs):** Taste's dealers read and write `.taste-skill/history.json` and `layout-history.json` in the folder they run in. Before the fork, copy `<project>/.3stylists/taste-history/*` into `atelier/.taste-skill/` if it exists. After the run, copy them back. Without this, every run starts with an empty history and the dealers repeat themselves.
+**Dealer history (keeps pages different across runs):** Taste's dealers read and write `.taste-skill/history.json` and `layout-history.json` in the folder they run in. Before the fork, copy `<project>/.altero/taste-history/*` into `atelier/.taste-skill/` if it exists. After the run, copy them back. Without this, every run starts with an empty history and the dealers repeat themselves.
 
 ---
 

@@ -1,13 +1,13 @@
 {
-  "name": "three-stylists",
-  "version": "0.6.0",
+  "name": "altero",
+  "version": "0.7.0",
   "description": "Audit, polish, enhance, or build web interfaces. Explore three bilingual directions on demand.",
   "author": {
-    "name": "3 Stylists contributors"
+    "name": "Altero contributors"
   },
   "license": "MIT",
-  "repository": "https://github.com/Mohamad-MG/3-stylists",
-  "homepage": "https://github.com/Mohamad-MG/3-stylists",
+  "repository": "https://github.com/Mohamad-MG/altero",
+  "homepage": "https://github.com/Mohamad-MG/altero",
   "keywords": [
     "design",
     "frontend",
@@ -20,9 +20,9 @@
   ],
   "skills": "./skills/",
   "interface": {
-    "displayName": "3 Stylists",
+    "displayName": "Altero",
     "shortDescription": "Audit, polish, enhance, and build web interfaces.",
-    "developerName": "3 Stylists contributors",
+    "developerName": "Altero contributors",
     "category": "Design",
     "defaultPrompt": [
       "Audit this site and list confirmed issues.",

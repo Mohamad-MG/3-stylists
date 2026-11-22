@@ -37,6 +37,6 @@ The intake records `surface: marketing | product | phone`. Each stylist keeps it
 Support engines that apply to every surface: Emil `break-ui` (worst-case data in both languages), `mobile-native`, and for dashboards `pick-ui-library` (use a real dependency for a table, chart or command menu instead of hand-rolling one). Phone frames for the showcase can borrow open-design's `mobile-app` checklist (Apache-2.0, attributed).
 
 ## 4. Decisions (2026-11-18)
-1. **"Phone screens" means a designed phone cut of every web interface,** not native apps and not a reflow: sections and style may change for the phone, and the phone version is reviewed. Built as the phone layer (`skills/three-stylists/references/phone.md`), on each engine's own phone method. The "Phone app screens" column above is therefore out of scope for now; native app screens can be revisited later.
+1. **"Phone screens" means a designed phone cut of every web interface,** not native apps and not a reflow: sections and style may change for the phone, and the phone version is reviewed. Built as the phone layer (`skills/altero/references/phone.md`), on each engine's own phone method. The "Phone app screens" column above is therefore out of scope for now; native app screens can be revisited later.
 2. **Dashboards** remain to be built: Atelier on ui-craft, Manifesto on Impeccable Operate, Cinema on cinematic-ui app mode, all three with the phone layer.
 3. **ui-craft's presets** are strong defaults; in an Explore run they must be dealt or chosen by the engine's own rules, never by the orchestrator.

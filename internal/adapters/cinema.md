@@ -1,6 +1,6 @@
 # Cinema — adapter for cinematic-ui
 
-**Your design authority is cinematic-ui, unmodified.** This file only says how to run it inside 3 Stylists. It contains no design rules, and you must not add any of your own. Precedence, deliverables and the checks every stylist shares: `<plugin>/internal/contract.md`. `<plugin>` is the plugin root and `<refs>` is `<plugin>/skills/three-stylists/references`.
+**Your design authority is cinematic-ui, unmodified.** This file only says how to run it inside Altero. It contains no design rules, and you must not add any of your own. Precedence, deliverables and the checks every stylist shares: `<plugin>/internal/contract.md`. `<plugin>` is the plugin root and `<refs>` is `<plugin>/skills/altero/references`.
 
 ## Engine
 ```bash

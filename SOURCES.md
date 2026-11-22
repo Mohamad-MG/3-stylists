@@ -1,6 +1,6 @@
 # Sources and licences
 
-3 Stylists is MIT licensed. Its own files (the workflows, the Arabic and English layer, the phone layer, the probe, the adapters, the scripts and the showcase) contain no code, prompts or assets copied from the tools below.
+Altero is MIT licensed. Its own files (the workflows, the Arabic and English layer, the phone layer, the probe, the adapters, the scripts and the showcase) contain no code, prompts or assets copied from the tools below.
 
 ## Engines used by Explore
 
@@ -22,7 +22,7 @@ The registry is the source for commits, sparse paths and the files each adapter 
 
 ## Arabic type
 
-The [Arabic type catalog](skills/three-stylists/references/arabic-type/README.md) describes eight faces from [Google Fonts](https://github.com/google/fonts), all under OFL-1.1, with measurements and renders made for this project. No font files are shipped here. A page that uses a face must self-host it together with its `OFL.txt`.
+The [Arabic type catalog](skills/altero/references/arabic-type/README.md) describes eight faces from [Google Fonts](https://github.com/google/fonts), all under OFL-1.1, with measurements and renders made for this project. No font files are shipped here. A page that uses a face must self-host it together with its `OFL.txt`.
 
 ## Artwork
 

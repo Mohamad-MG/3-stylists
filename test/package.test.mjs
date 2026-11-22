@@ -19,7 +19,7 @@ const walk = (dir) => readdirSync(at(dir), { withFileTypes: true }).flatMap((e) 
 });
 
 const MODES = ['audit', 'polish', 'enhance', 'build', 'explore'];
-const SKILL = 'skills/three-stylists';
+const SKILL = 'skills/altero';
 const REFS = SKILL + '/references';
 const files = walk('.');
 const text = files.filter((f) => /\.(md|mjs|js|json|html|yml)$/.test(f));
@@ -30,7 +30,7 @@ test('host manifests are generated from plugin.json', () => {
   for (const [file, expected] of Object.entries(hostManifests(source))) {
     assert.deepEqual(json(file), JSON.parse(JSON.stringify(expected)), file + ' is out of date: run node scripts/sync-manifests.mjs');
   }
-  assert.match(source.repository, /^https:\/\/github\.com\/[A-Za-z0-9-]+\/3-stylists$/);
+  assert.match(source.repository, /^https:\/\/github\.com\/[A-Za-z0-9-]+\/altero$/);
   assert.equal(source.homepage, source.repository);
   // The install commands people copy must name the same repository.
   const slug = source.repository.replace('https://github.com/', '');
@@ -41,7 +41,7 @@ test('host manifests are generated from plugin.json', () => {
 });
 
 test('one public skill, and one thin Claude command per mode', () => {
-  assert.deepEqual(readdirSync(at('skills')), ['three-stylists']);
+  assert.deepEqual(readdirSync(at('skills')), ['altero']);
   assert.deepEqual(readdirSync(at('commands')).sort(), MODES.map((m) => m + '.md').sort());
   const skill = read(SKILL + '/SKILL.md');
   for (const mode of MODES) {
@@ -71,8 +71,8 @@ test('every path a document points to exists', () => {
 });
 
 test('no residue from earlier layouts', () => {
-  // Old folder names, placeholder owners, and an account name that never existed on GitHub.
-  const residue = /bilingual-core|phone-core|stylist-(atelier|manifesto|cinema)|adapters\/codex|\bOWNER\b|emarketbank|owner rule|owner-approved|Thuluth/;
+  // Old folder names, the name before Altero, placeholder owners, and an account name that never existed on GitHub.
+  const residue = /three-stylists|3 Stylists|3-stylists|.3stylists|STYLISTS_|bilingual-core|phone-core|stylist-(atelier|manifesto|cinema)|adapters\/codex|\bOWNER\b|emarketbank|owner rule|owner-approved|Thuluth/;
   const hits = text.filter((f) => f !== 'CHANGELOG.md' && f !== 'test/package.test.mjs' && residue.test(read(f)));
   assert.deepEqual(hits, []);
 });

@@ -1,5 +1,5 @@
 {
-  "$comment": "Pinned upstream engines. 3 Stylists runs them as they are; it never rewrites them. Bump a commit only after reading the upstream changes, then run `node scripts/engines.mjs fetch && node scripts/engines.mjs verify`.",
+  "$comment": "Pinned upstream engines. Altero runs them as they are; it never rewrites them. Bump a commit only after reading the upstream changes, then run `node scripts/engines.mjs fetch && node scripts/engines.mjs verify`.",
   "schema": 1,
   "engines": [
     {

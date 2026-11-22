@@ -1,9 +1,9 @@
 ---
-name: three-stylists
+name: altero
 description: Audit, polish, enhance, or build web interfaces. Use to review UI quality, refine an existing design, improve a user journey, or build a new frontend from a brief. Explore three bilingual variants only on explicit request.
 ---
 
-# 3 Stylists
+# Altero
 
 Resolve references relative to this loaded skill. Keep the project and the plugin
 installation separate. Reply in the user's language.

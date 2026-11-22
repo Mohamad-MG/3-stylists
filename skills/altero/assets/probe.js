@@ -1,5 +1,5 @@
 /*
-  3 Stylists probe: measured facts about the page in view. It reads the page and changes nothing.
+  Altero probe: measured facts about the page in view. It reads the page and changes nothing.
 
   Evaluate this whole file as one function in the page, with any browser tool that can run a script
   (Playwright page.evaluate, a browser MCP's evaluate tool, the DevTools console). Run it at each

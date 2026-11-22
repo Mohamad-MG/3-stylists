@@ -1,4 +1,4 @@
-// Helpers shared by the 3 Stylists scripts. Zero dependencies.
+// Helpers shared by the Altero scripts. Zero dependencies.
 import { execFileSync, execSync } from 'node:child_process';
 import { existsSync } from 'node:fs';
 import { createRequire } from 'node:module';

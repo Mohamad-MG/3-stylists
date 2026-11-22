@@ -1,5 +1,5 @@
 #!/usr/bin/env node
-// 3 Stylists engines: fetch, verify and locate the pinned upstream engines used by Explore. Zero dependencies (needs git).
+// Altero engines: fetch, verify and locate the pinned upstream engines used by Explore. Zero dependencies (needs git).
 //
 //   node scripts/engines.mjs doctor            check the machine (node, git, chrome, ffmpeg)
 //   node scripts/engines.mjs fetch [id...]     clone each engine at its pinned commit (sparse where set)
@@ -8,8 +8,8 @@
 //   node scripts/engines.mjs entry <id>        print the engine's entry file for this platform
 //   node scripts/engines.mjs list              show the registry
 //
-// Engines live in $STYLISTS_ENGINES or ~/.3stylists/engines/<id>@<commit7>.
-// Set STYLISTS_PLATFORM=codex to resolve Codex entry files (default: claude).
+// Engines live in $ALTERO_ENGINES or ~/.altero/engines/<id>@<commit7>.
+// Set ALTERO_PLATFORM=codex to resolve Codex entry files (default: claude).
 
 import { execFileSync } from 'node:child_process';
 import fs from 'node:fs';
@@ -21,15 +21,15 @@ import { chromePath, onPath } from './lib.mjs';
 const here = path.dirname(fileURLToPath(import.meta.url));
 const registryPath = path.resolve(here, '..', 'engines', 'registry.json');
 const registry = JSON.parse(fs.readFileSync(registryPath, 'utf8'));
-const base = process.env.STYLISTS_ENGINES || path.join(os.homedir(), '.3stylists', 'engines');
-const platform = process.env.STYLISTS_PLATFORM === 'codex' ? 'codex' : 'claude';
+const base = process.env.ALTERO_ENGINES || path.join(os.homedir(), '.altero', 'engines');
+const platform = process.env.ALTERO_PLATFORM === 'codex' ? 'codex' : 'claude';
 
 const [cmd, ...args] = process.argv.slice(2);
 
 function dirOf(e) { return path.join(base, `${e.id}@${e.commit.slice(0, 7)}`); }
 function find(id) {
   const e = registry.engines.find((x) => x.id === id);
-  if (!e) { console.error(`[3stylists] unknown engine: ${id}`); process.exit(2); }
+  if (!e) { console.error(`[altero] unknown engine: ${id}`); process.exit(2); }
   return e;
 }
 function pick(ids) { return ids.length ? ids.map(find) : registry.engines; }
@@ -65,7 +65,7 @@ function verifyOne(e) {
     if (!fs.existsSync(entry)) problems.push(`missing entry ${e.entry[platform]}`);
     const lic = fs.existsSync(dir) && fs.readdirSync(dir).find((f) => /^licen[cs]e/i.test(f));
     if (!lic) problems.push('missing licence file');
-    // Every path a 3 Stylists adapter relies on must exist at this commit.
+    // Every path a Altero adapter relies on must exist at this commit.
     const missing = (e.requiredPaths || []).filter((p) => !fs.existsSync(path.join(dir, p)));
     if (missing.length) problems.push(`adapter paths missing: ${missing.join(', ')}`);
   }
@@ -87,7 +87,7 @@ switch (cmd) {
     break;
   }
   case 'fetch': {
-    if (!onPath('git')) { console.error('[3stylists] git is required'); process.exit(1); }
+    if (!onPath('git')) { console.error('[altero] git is required'); process.exit(1); }
     let failed = 0;
     for (const e of pick(args)) {
       try { fetchOne(e); } catch (err) { failed++; console.error(`! ${e.id}: ${String(err.stderr || err.message).trim().split('\n').pop()}`); }

@@ -1,12 +1,12 @@
 {
-  "name": "three-stylists",
+  "name": "altero",
   "description": "Audit, polish, enhance, or build web interfaces. Explore three bilingual directions on demand.",
   "owner": {
-    "name": "3 Stylists contributors"
+    "name": "Altero contributors"
   },
   "plugins": [
     {
-      "name": "three-stylists",
+      "name": "altero",
       "source": "./",
       "description": "Audit, polish, enhance, or build web interfaces. Explore three bilingual directions on demand."
     }

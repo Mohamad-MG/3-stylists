@@ -1,5 +1,21 @@
 # Changelog
 
+## 0.7.0 — 2026-11-22
+
+### Changed
+- **Renamed from 3 Stylists to Altero.** The plugin is `altero`, the commands are `/altero:audit`, `:polish`, `:enhance`, `:build` and `:explore`, and the repository is `Mohamad-MG/altero`.
+- Caches moved from `~/.3stylists/` to `~/.altero/`, Explore runs from `.3stylists/runs/` to `.altero/runs/`, and the environment variables from `STYLISTS_*` to `ALTERO_*`.
+- The README leads with a measured before and after, and explains the workflow, the Arabic rules and common questions.
+
+To move from 0.6.0, remove the old plugin and add the new marketplace:
+
+```sh
+claude plugin uninstall three-stylists@three-stylists
+claude plugin marketplace remove three-stylists
+claude plugin marketplace add Mohamad-MG/altero
+claude plugin install altero@altero
+```
+
 ## 0.6.0 — 2026-11-21
 
 First public release. Versions 0.1 to 0.5 were private pre-releases.

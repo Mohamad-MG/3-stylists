@@ -1,5 +1,5 @@
 #!/usr/bin/env node
-// 3 Stylists showcase server — zero dependencies.
+// Altero showcase server — zero dependencies.
 // Usage: node serve.mjs <run-folder> [--port 4173] [--host 127.0.0.1]
 // Serves the run folder. compare.html falls back to this skill's assets/ folder
 // when the run folder does not contain it.
@@ -23,7 +23,7 @@ const host = flag('--host', '127.0.0.1');
 let port = Number(flag('--port', 4173));
 
 if (!fs.existsSync(root) || !fs.statSync(root).isDirectory()) {
-  console.error(`[3stylists] run folder not found: ${root}`);
+  console.error(`[altero] run folder not found: ${root}`);
   process.exit(1);
 }
 
@@ -102,12 +102,12 @@ server.on('error', (err) => {
     port += 1;
     server.listen(port, host);
   } else {
-    console.error(`[3stylists] server error: ${err.message}`);
+    console.error(`[altero] server error: ${err.message}`);
     process.exit(1);
   }
 });
 
 server.listen(port, host, () => {
-  console.log(`3 Stylists showcase: http://${host}:${port}/compare.html`);
+  console.log(`Altero showcase: http://${host}:${port}/compare.html`);
   console.log(`Serving: ${root}`);
 });

@@ -1,11 +1,11 @@
 {
-  "name": "three-stylists",
+  "name": "altero",
   "interface": {
-    "displayName": "3 Stylists"
+    "displayName": "Altero"
   },
   "plugins": [
     {
-      "name": "three-stylists",
+      "name": "altero",
       "source": {
         "source": "local",
         "path": "./"

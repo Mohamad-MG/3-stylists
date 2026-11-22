@@ -1,6 +1,6 @@
 # Manifesto — adapter for Impeccable
 
-**Your design authority is Impeccable, unmodified.** This file only says how to run it inside 3 Stylists. It contains no design rules, and you must not add any of your own. Precedence, deliverables and the checks every stylist shares: `<plugin>/internal/contract.md`. `<plugin>` is the plugin root and `<refs>` is `<plugin>/skills/three-stylists/references`.
+**Your design authority is Impeccable, unmodified.** This file only says how to run it inside Altero. It contains no design rules, and you must not add any of your own. Precedence, deliverables and the checks every stylist shares: `<plugin>/internal/contract.md`. `<plugin>` is the plugin root and `<refs>` is `<plugin>/skills/altero/references`.
 
 ## Engine
 ```bash
@@ -22,8 +22,8 @@ node <plugin>/scripts/engines.mjs entry impeccable     # → the SKILL.md you fo
 4. **Build path.** Take the path concept-seed prints. `RUN_DIR/env.md` says whether image generation exists here; without it the build is code-led. If it is comp-led but image generation would spend money the user did not approve (`facts.json → policy.ai_assets: false`), build code-led and say so.
 5. **Commit, record, build.** Steps 4–6 exactly as written: colour strategy, faces, the direction contract in the surface brief, full commitment. Read `craft-floor.md` immediately before any UI edit, as Impeccable requires.
 6. **Inspect and finish (step 7).** Batched screenshots at desktop and mobile, then `impeccable detect --json` on the changed targets.
-   - **Finish reviewer:** if you can spawn agents, spawn `impeccable-finish-reviewer` exactly as step 7 says. If you cannot (a stylist usually runs as a subagent), write `RUN_DIR/manifesto/.3stylists/review-packet.md` with everything step 7 lists for the reviewer, set `"status": "awaiting-review"` in `stylist.json`, and return. The orchestrator runs Impeccable's real reviewer with fresh eyes and sends you its disposition; act on it under step 7's four disposition words.
-   - **Motion reviewer:** when the build implements motion, Impeccable's `animate` asks for `impeccable motion-capture` (normal and `--reduced-motion`) and a fresh `impeccable-motion-reviewer`. Capture as it says. If you cannot spawn the reviewer, write `RUN_DIR/manifesto/.3stylists/motion-packet.md` with everything its Input Contract lists (request, motion thesis, both capture directories, DESIGN.md motion rules if any, the craft-floor path), set `"status": "awaiting-motion-review"`, and return. Act on its disposition the same way.
+   - **Finish reviewer:** if you can spawn agents, spawn `impeccable-finish-reviewer` exactly as step 7 says. If you cannot (a stylist usually runs as a subagent), write `RUN_DIR/manifesto/.altero/review-packet.md` with everything step 7 lists for the reviewer, set `"status": "awaiting-review"` in `stylist.json`, and return. The orchestrator runs Impeccable's real reviewer with fresh eyes and sends you its disposition; act on it under step 7's four disposition words.
+   - **Motion reviewer:** when the build implements motion, Impeccable's `animate` asks for `impeccable motion-capture` (normal and `--reduced-motion`) and a fresh `impeccable-motion-reviewer`. Capture as it says. If you cannot spawn the reviewer, write `RUN_DIR/manifesto/.altero/motion-packet.md` with everything its Input Contract lists (request, motion thesis, both capture directories, DESIGN.md motion rules if any, the craft-floor path), set `"status": "awaiting-motion-review"`, and return. Act on its disposition the same way.
    - **Documenter:** a new world needs DESIGN.md at finish. Spawn `impeccable-documenter`, or, if you cannot, follow `reference/degraded/documenter.md`.
 
 ## Support engines (only where Impeccable leaves the detail open)

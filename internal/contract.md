@@ -4,7 +4,7 @@ Explore runs three proven design engines **as their authors wrote them** and add
 
 Paraphrasing an engine throws away its scripts, dealers, detectors and gates and keeps only a diluted taste. So nothing in this plugin restates an engine's design rules.
 
-Paths: `<plugin>` is the plugin root. `<refs>` is `<plugin>/skills/three-stylists/references`.
+Paths: `<plugin>` is the plugin root. `<refs>` is `<plugin>/skills/altero/references`.
 
 ## Who owns what
 
@@ -54,7 +54,7 @@ Level 1 is deliberately thin. It says *what must be delivered*, never *how it sh
 ## Run layout
 
 ```
-<project>/.3stylists/runs/<YYYYMMDD-HHMM>/     RUN_DIR
+<project>/.altero/runs/<YYYYMMDD-HHMM>/     RUN_DIR
 ├── brief.md  answers.md  facts.json           intake, interview, the facts lock
 ├── env.md  env.json                           what this machine can do
 ├── run.json  compare.html                     the showcase and its index

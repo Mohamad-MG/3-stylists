@@ -6,14 +6,14 @@
 // Usage:  node fetch-font.mjs <folder> [<folder> ...]      e.g.  node fetch-font.mjs fraunces dmsans
 // Prints: one line per family: "<folder> <licence dir> <absolute path>" then its font files, or "<folder> not-found".
 // Folder names are google/fonts directory names (lowercase, no spaces): "Source Serif 4" → sourceserif4.
-// Env: STYLISTS_GFONTS (default ~/.3stylists/gfonts), STYLISTS_GFONTS_COMMIT (default the pinned commit below).
+// Env: ALTERO_GFONTS (default ~/.altero/gfonts), ALTERO_GFONTS_COMMIT (default the pinned commit below).
 import { execFileSync } from 'node:child_process';
 import { existsSync, mkdirSync, readdirSync, rmSync, statSync } from 'node:fs';
 import { join } from 'node:path';
 import { homedir } from 'node:os';
 
-const COMMIT = process.env.STYLISTS_GFONTS_COMMIT || '29b4ec6df2522a8aee279414b78a07910b065874';
-const ROOT = process.env.STYLISTS_GFONTS || join(homedir(), '.3stylists', 'gfonts');
+const COMMIT = process.env.ALTERO_GFONTS_COMMIT || '29b4ec6df2522a8aee279414b78a07910b065874';
+const ROOT = process.env.ALTERO_GFONTS || join(homedir(), '.altero', 'gfonts');
 const LOCK = ROOT + '.lock';
 const names = process.argv.slice(2).map(s => s.toLowerCase().replace(/[^a-z0-9]/g, ''));
 if (!names.length) { console.error('usage: node fetch-font.mjs <folder> [...]'); process.exit(2); }

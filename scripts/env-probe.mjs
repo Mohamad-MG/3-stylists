@@ -73,7 +73,7 @@ P(`- Stock photographs (Unsplash): ${ok(C.unsplash) ? 'reachable' : 'blocked: Ta
 P(`- Image generation: ${imageGen === 'yes' ? 'available: Impeccable can take its comp-led path when policy.ai_assets allows' : imageGen === 'no' ? '**none: Impeccable runs code-led (no comps, no plates); cinematic-ui has no generated stills**' : 'unknown: the orchestrator did not state it'}.`);
 P('');
 P('## Serving pages');
-P(`- Serve your own folder with \`node ${join(PLUGIN, 'skills/three-stylists/scripts/serve.mjs')} <folder>\`; it picks a free port. Never open another stylist's folder.`);
+P(`- Serve your own folder with \`node ${join(PLUGIN, 'skills/altero/scripts/serve.mjs')} <folder>\`; it picks a free port. Never open another stylist's folder.`);
 
 env.degraded = [];
 if (!ok(C.impeccable_service)) env.degraded.push('impeccable-roll');
