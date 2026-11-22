@@ -9,9 +9,9 @@
 </p>
 
 <p align="center">
-  <a href="https://github.com/Mohamad-MG/altero/actions/workflows/check.yml"><img alt="Checks" src="https://img.shields.io/github/actions/workflow/status/Mohamad-MG/altero/check.yml?branch=main&style=flat-square&label=checks&labelColor=0A3226"></a>
-  <a href="#install"><img alt="Hosts: Claude Code, Codex, ChatGPT" src="https://img.shields.io/badge/hosts-Claude_Code%2C_Codex%2C_ChatGPT-F7A1B8?style=flat-square&labelColor=0A3226"></a>
-  <a href="LICENSE"><img alt="MIT licence" src="https://img.shields.io/badge/licence-MIT-C9B8FF?style=flat-square&labelColor=0A3226"></a>
+  <a href="https://github.com/Mohamad-MG/altero/actions/workflows/check.yml"><img alt="Checks" src="https://img.shields.io/github/actions/workflow/status/Mohamad-MG/altero/check.yml?branch=main&style=flat-square&label=checks&labelColor=0D0D0D"></a>
+  <a href="#install"><img alt="Hosts: Claude Code, Codex, ChatGPT" src="https://img.shields.io/badge/hosts-Claude_Code%2C_Codex%2C_ChatGPT-F2660F?style=flat-square&labelColor=0D0D0D"></a>
+  <a href="LICENSE"><img alt="MIT licence" src="https://img.shields.io/badge/licence-MIT-F4F3EF?style=flat-square&labelColor=0D0D0D"></a>
 </p>
 
 <p align="center">
