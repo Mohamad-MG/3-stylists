@@ -87,21 +87,19 @@ Every finding comes with the measurement behind it, and every fix is checked wit
 
 #### New directions
 
-Explore builds three independent directions for the same brief. These show the kind of change it proposes.
-
 <table>
   <tr>
-    <td width="33%" valign="top">
-      <img src=".github/assets/gallery/brightbay-dental.jpg" alt="Brightbay Dental, a family dental clinic site. Before: three button styles and uneven service cards. After: a new, darker direction with one button style and matching cards.">
-      <p><b>Brightbay Dental</b><br>healthcare</p>
+    <td width="52%" valign="top">
+      <img src=".github/assets/gallery/brightbay-dental.gif" alt="Brightbay Dental, a family dental clinic site, wiping between before and after. Before: a standard light layout with three button styles and uneven service cards. After: a new, darker direction with a glass dome around a tooth, one button style and matching service cards.">
+      <p><b>Brightbay Dental</b> &nbsp;healthcare &nbsp;<code>explore</code></p>
     </td>
-    <td width="33%" valign="top">
+    <td width="48%" valign="top">
+      <p>Explore does not polish what exists. It builds three independent directions for the same brief, each by a different design engine, so you choose by looking.</p>
+      <p>On the left, one of them: the same sections as the old page, with a different world around them.</p>
       <img src=".github/assets/gallery/orbit-freight.jpg" alt="Orbit Freight, a logistics tracking site. Before: low-contrast headline, a scattered card layout and a banner covering content. After: a strong headline, a clear tracking field and three aligned service cards.">
-      <p><b>Orbit Freight</b><br>logistics</p>
-    </td>
-    <td width="33%" valign="top">
+      <p><b>Orbit Freight</b> &nbsp;logistics &nbsp;<code>explore</code></p>
       <img src=".github/assets/gallery/pulse-room.jpg" alt="Pulse Room, a music streaming page. Before: a flat gradient page with the track list hidden under a cookie banner. After: a bold album page with the full track list visible.">
-      <p><b>Pulse Room</b><br>music</p>
+      <p><b>Pulse Room</b> &nbsp;music &nbsp;<code>explore</code></p>
     </td>
   </tr>
 </table>
