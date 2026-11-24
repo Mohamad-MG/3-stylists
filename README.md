@@ -39,50 +39,46 @@ Every finding comes with the measurement behind it, and every fix is checked wit
 
 ### What a pass can look like
 
-Seven fictional brands, before on the left and after on the right. Polish keeps the design and fixes what breaks it. Enhance reworks one journey. Explore proposes a new direction.
+<img src=".github/assets/gallery/forma-field.gif" alt="Forma Field, an architecture studio homepage, wiping between before and after. Before: a purple gradient, mixed button styles, a cramped hero and project cards of different shapes. After: the same sections with one type scale, a calm warm palette, one button style and aligned cards." width="100%">
+
+<p><b>Forma Field</b> &nbsp;architecture &nbsp;<code>polish</code> &nbsp;The same sections, one type scale, one button style, and cards that line up.</p>
+
+Six more fictional brands, before on the left and after on the right. Polish keeps the design and fixes what breaks it. Enhance reworks one journey. Explore proposes a new direction.
 
 <table>
   <tr>
     <td width="50%" valign="top">
-      <img src=".github/assets/gallery/forma-field.jpg" alt="Forma Field, an architecture studio site. Before: mismatched link styles, a cramped hero and project cards of different shapes. After: the same layout with one type scale, calm spacing and aligned cards.">
-      <p><b>Forma Field</b> &nbsp;architecture &nbsp;<code>polish</code></p>
-    </td>
-    <td width="50%" valign="top">
       <img src=".github/assets/gallery/mawja.jpg" alt="Mawja, an Arabic aquarium booking page on a phone. Before: the headline faded into the photo, ticket types cut off at the screen edge and a form crushed by the bottom bar. After: readable Arabic, all ticket types on screen and a full-width booking button.">
       <p><b>Mawja</b> &nbsp;aquarium, Arabic &nbsp;<code>polish</code></p>
     </td>
-  </tr>
-  <tr>
     <td width="50%" valign="top">
       <img src=".github/assets/gallery/madar-energy.jpg" alt="Madar Energy, an Arabic solar company site. Before: a washed-out hero, a misaligned savings form and service cards of different weights. After: the same right-to-left layout with a clear hero, an aligned form and even cards.">
       <p><b>Madar Energy</b> &nbsp;solar, Arabic &nbsp;<code>polish</code></p>
     </td>
+  </tr>
+  <tr>
     <td width="50%" valign="top">
       <img src=".github/assets/gallery/morrow-skin.jpg" alt="Morrow Skin, a skincare product page on a phone. Before: crowded tabs, clashing price and title styles and a small add button. After: one product story, a clear price and a full-width Add to bag button.">
       <p><b>Morrow Skin</b> &nbsp;skincare &nbsp;<code>enhance</code></p>
     </td>
-  </tr>
-  <tr>
     <td width="50%" valign="top">
       <img src=".github/assets/gallery/brightbay-dental.jpg" alt="Brightbay Dental, a family dental clinic site. Before: three button styles and uneven service cards. After: a new, darker direction with one button style and matching cards.">
       <p><b>Brightbay Dental</b> &nbsp;healthcare &nbsp;<code>explore</code></p>
     </td>
+  </tr>
+  <tr>
     <td width="50%" valign="top">
       <img src=".github/assets/gallery/orbit-freight.jpg" alt="Orbit Freight, a logistics tracking site. Before: low-contrast headline, a scattered card layout and a banner covering content. After: a strong headline, a clear tracking field and three aligned service cards.">
       <p><b>Orbit Freight</b> &nbsp;logistics &nbsp;<code>explore</code></p>
     </td>
-  </tr>
-  <tr>
     <td width="50%" valign="top">
       <img src=".github/assets/gallery/pulse-room.jpg" alt="Pulse Room, a music streaming page. Before: a flat gradient page with the track list hidden under a cookie banner. After: a bold album page with the full track list visible.">
       <p><b>Pulse Room</b> &nbsp;music &nbsp;<code>explore</code></p>
     </td>
-    <td width="50%" valign="top">
-      <br>
-      <p><sub>These are illustrations made for this README, not output from the plugin. The measured example above is real.</sub></p>
-    </td>
   </tr>
 </table>
+
+<sub>These are illustrations made for this README, not output from the plugin. The measured example above is real.</sub>
 
 ## Install
 
