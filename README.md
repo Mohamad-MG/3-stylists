@@ -164,7 +164,12 @@ The rules are in the [Arabic and English reference](skills/altero/references/bil
 
 <img src=".github/assets/stylists.svg" alt="The three stylists: Atelier runs Taste Skill, Manifesto runs Impeccable, Cinema runs cinematic-ui" width="100%">
 
-Explore hands the same brief and the same facts to three third-party design engines, each pinned to an exact commit, unmodified, and run in its own isolated agent. You get three built, bilingual pages side by side, not three mood boards.
+Explore starts from your real page, not from a blank one. It takes a light copy of your front end, asks five questions, and then three third-party design engines, each pinned to an exact commit and unmodified, rebuild that page in three directions, each in its own isolated agent. You compare them with your current site in one showcase, and you apply the one you pick.
+
+1. **A light copy.** One command saves the rendered page and the files it loads, at phone and desktop width, front end only. Your repository, backend, database and secrets are never touched, and nothing is asked of them.
+2. **Five questions.** Who visits and what must they do, what is truly different and what proof you have, what is fixed and what is open, which part of the page the directions cover, and what would feel wrong. They never ask about colours or style.
+3. **Three directions.** A short preview says what each stylist will do for your visitor and what it will not do, then they build in parallel. The showcase opens at once with your current site, and each direction appears as it lands.
+4. **One applied.** You take one direction and Altero carries it into your real project, then measures the page again against the copy.
 
 | Stylist | Engine | How it works |
 | --- | --- | --- |
@@ -172,7 +177,7 @@ Explore hands the same brief and the same facts to three third-party design engi
 | **Manifesto** | [Impeccable](https://github.com/pbakaus/impeccable) | A design-direction system that deals visual worlds against the habits of the category, then builds one |
 | **Cinema** | [cinematic-ui](https://github.com/akseolabs-seo/cinematic-ui) | A film production for a site: a director, a colour grade, a storyboard and a scroll-driven camera |
 
-Explore needs git, Node.js 22+, Chrome or Chromium, and a host with subagents. The first run fetches the engines into `~/.altero/engines`. The other four modes need none of this. Read the [Explore workflow](skills/altero/references/explore.md) and the [sources and licences](SOURCES.md).
+Explore needs git, Node.js 22+, Chrome or Chromium with Playwright, and a host with subagents. The first run fetches the engines into `~/.altero/engines`. The other four modes need none of this. Read the [Explore workflow](skills/altero/references/explore.md) and the [sources and licences](SOURCES.md).
 
 ## Questions
 

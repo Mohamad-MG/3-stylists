@@ -1,13 +1,13 @@
 # Explore workflow
 
-Three proven design engines build the same product as three independent Arabic and English variants, and the user picks one. You are the producer: you do not design, and you add no taste to anyone's prompt. Your job is to feed each engine its native inputs, keep the three apart, and show the results.
+Three proven design engines rebuild the same page of the user's product in three directions, and the user takes one of them. You are the producer: you do not design, and you add no taste to anyone's prompt. Your job is to take a light copy of the real front end, ask five questions, feed each engine its native inputs, keep the three apart, show the results as fast as they land, and carry only the chosen one into the user's project.
 
 Explore needs git, Node.js 22+, a browser the engines can drive, and subagents. Paths: `<plugin>` is the installed plugin root, two folders above this skill's folder. `<refs>` is the folder this file is in.
 
 Read `<plugin>/internal/contract.md` once per session: who owns what, the precedence table and the collisions this workflow relies on.
 
 ```
-0 Engines → 1 Intake → 2 Interview → 3 Facts → 4 Engine inputs → 5 Fork → 6 Gate → 7 Showcase → pick
+0 Engines → 1 Snapshot → 2 Intake → 3 Five questions → 4 Facts → 5 Directions → 6 Engine inputs → 7 Fork → 8 Gate → 9 Showcase → Apply one
 ```
 
 ## 0. Engines
@@ -23,37 +23,53 @@ Then create `RUN_DIR` (`<project>/.altero/runs/<YYYYMMDD-HHMM>/`) and probe the 
 ```bash
 node scripts/env-probe.mjs <RUN_DIR> --image-generation <yes|no>   # yes only if you have an image-generation tool
 ```
-It writes `env.md` (what works here: npm, Playwright, fonts, WOFF2, CDNs, each engine's services, image generation) and `env.json` with a `degraded` list. **If `degraded` is not empty, tell the user before the interview, in one short message, what each item costs:** `impeccable-roll` → Manifesto runs Impeccable's degraded roll (no challengers, no QUALITY BAR boards); `no-image-generation` → Manifesto builds code-led and Cinema has no generated stills; `no-stock-photos` → photo frames become client slots; `no-browser-checks` → stop, nothing can be verified. The user may prefer to run on a machine where these work.
+It writes `env.md` (what works here: npm, Playwright, fonts, WOFF2, CDNs, each engine's services, image generation) and `env.json` with a `degraded` list. **If `degraded` is not empty, tell the user before the questions, in one short message, what each item costs:** `impeccable-roll` → Manifesto runs Impeccable's degraded roll (no challengers, no QUALITY BAR boards); `no-image-generation` → Manifesto builds code-led and Cinema has no generated stills; `no-stock-photos` → photo frames become client slots; `no-browser-checks` → stop, nothing can be verified. The user may prefer to run on a machine where these work.
 
-## 1. Intake
-- **Existing front end:** inspect stack, routes, content (both languages if present), tokens, logo, imagery, and what the brand has already committed to. Treat the current look as evidence, not authority.
-- **Brief:** read it; infer only what the brief strongly implies and mark every inference.
+## 1. Snapshot: a light copy of the front end
+Skip this step for a brief with no existing site. Otherwise take the copy **before anything else**, because every later step works on it and the user's repository, backend and database are never needed:
+```bash
+node scripts/snapshot.mjs <url-of-the-live-or-local-page> <RUN_DIR>/base [--page /another-path]
+```
+It saves the rendered page and the stylesheets, scripts, fonts and images it loads, at phone and desktop width, into `RUN_DIR/base/`, with the page's measured baseline (`baseline.json`) and a screenshot of each width. By default it takes one page, the one the user named. It is front end only: fetch and XHR responses, cookies, forms' targets, server code, databases and secrets are never captured, so booking forms and live data will not work in it and nothing is asked of the user's backend. Add `--page` only for another page the slice needs.
 
-Write `brief.md`: product and offer · audience and situation (stated or inferred, marked) · current visual state · constraints · real material on hand · proposed slice and why.
+If the user has no URL but has a local project, ask for the dev server's address and snapshot that. If the host cannot reach any URL, work from the user's built front-end folder and copy only its HTML, CSS, fonts and images. Say so in `brief.md`.
 
-## 2. Interview
-Read `<refs>/interview.md`. Ask exactly six questions; replace any already answered by Intake with a reserve. The questions come from what the engines themselves ask. **Never ask aesthetic questions** (feel, colours, fonts, style, references to imitate): each engine owns its aesthetic process, and a look named in a question becomes the answer.
+The snapshot is also the "before" of every comparison. It is served as the showcase's first panel, **Current site**.
+
+## 2. Intake
+- **The snapshot:** read `snapshot.json`, `baseline.json` and the saved page: content in each language present, the logo, the colours and fonts in use, the structure of the sections, imagery, and what the brand has committed to. Treat the current look as evidence, not authority.
+- **Brief:** read what the user wrote; infer only what it strongly implies and mark every inference.
+
+Write `brief.md`: product and offer · audience and situation (stated or inferred, marked) · current visual state (with the baseline's numbers) · constraints · real material on hand · the slice and why.
+
+## 3. Five questions
+Read `<refs>/interview.md`. Ask exactly five questions, in one message, replacing any that Intake or the snapshot already answered with a reserve. **Never ask aesthetic questions** (feel, colours, fonts, style, references to imitate): each engine owns its aesthetic process, and a look named in a question becomes the answer.
 
 Ask in the user's language, with your structured question tool if you have one. Write `answers.md` (raw answers and the derived fields listed in the reference).
 
-## 3. Facts
-Write `facts.json` (`<refs>/facts-schema.md`). It is the lock: engines write their own copy, but every claim, price, number and promise must trace to it. Show the user a short summary of the facts and confirm them in one message (not one of the six questions).
+## 4. Facts
+Write `facts.json` (`<refs>/facts-schema.md`). It is the lock: engines write their own copy, but every claim, price, number and promise must trace to it. With a snapshot, the page's existing content is the first source of facts, and nothing on it may change in meaning. Show the user a short summary of the facts and confirm them in one message (not one of the five questions).
 
-## 4. Engine inputs
-Read `<refs>/engine-inputs.md` and write each engine's native input file into its stylist folder. Copy `../assets/compare.html` into the run folder and write `run.json` (schema in `<refs>/facts-schema.md`).
+## 5. Directions
+Write `directions.md` as `<refs>/interview.md` describes: three short entries, one per stylist, saying what each engine will do for this visitor and what it will not do. Show them in one message and go straight on. It is a preview of the work, not a question.
 
-## 5. Fork
+## 6. Engine inputs
+Read `<refs>/engine-inputs.md` and write each engine's native input file into its stylist folder. Copy `../assets/compare.html` into the run folder and write `run.json` (schema in `<refs>/facts-schema.md`), listing `base` first when a snapshot exists.
+
+## 7. Fork
 Start one stylist per primary engine in `<plugin>/engines/registry.json` (`role.primary`: atelier, manifesto, cinema), **in parallel**, each in its own subagent:
 - Claude Code: the plugin agent `altero:stylist`, once per stylist id.
 - Other hosts: one generic subagent per stylist id, told to read `<plugin>/agents/stylist.md` first and follow it.
 
-Give each one only: its stylist id, the plugin root, `RUN_DIR`, its folder, and the paths to `brief.md`, `answers.md`, `facts.json`, `env.md` and its engine input file. Nothing else: no summaries, no suggestions, no other stylist's output.
+With a snapshot, copy `RUN_DIR/base/` into each stylist's folder as its starting page (`RUN_DIR/<id>/page/`) before it starts. Each stylist rebuilds that page in its own direction inside its copy, keeping the page's real content and the meaning of its structure, and never touches `base/` or another stylist's folder.
+
+Give each one only: its stylist id, the plugin root, `RUN_DIR`, its folder, and the paths to `brief.md`, `answers.md`, `directions.md`, `facts.json`, `env.md` and its engine input file. Nothing else: no summaries, no suggestions, no other stylist's output.
 
 Before Atelier starts, copy `<project>/.altero/taste-history/*` (if it exists) into `atelier/.taste-skill/`; after it returns, copy `atelier/.taste-skill/{history,layout-history}.json` back. Taste's dealers use this history to keep pages different across runs.
 
 **Without subagents or a browser:** report that Explore cannot be verified on this host. Offer a single build direction or prepare the briefs for a capable host.
 
-## 5b. Fresh-eyes reviews
+## 7b. Fresh-eyes reviews
 The engines want reviewers with a fresh context, and so does the phone layer. A stylist running as a subagent usually cannot spawn one, so it returns with a status, and you run the review:
 - **Manifesto, `"status": "awaiting-review"`:** start a new subagent whose instructions are the full text of Impeccable's shipped reviewer (`engines.mjs path impeccable` → `.claude/agents/impeccable-finish-reviewer.md`), with tool limits as that file declares, and the packet at `manifesto/.altero/review-packet.md`. Send its disposition back to the Manifesto stylist (continue the same agent), which acts on it under Impeccable's rules. Repeat as Impeccable's step 7 directs.
 - **Manifesto, `"status": "awaiting-motion-review"`:** the same, with Impeccable's shipped motion reviewer (`.claude/agents/impeccable-motion-reviewer.md`) and the packet at `manifesto/.altero/motion-packet.md`.
@@ -62,14 +78,20 @@ The engines want reviewers with a fresh context, and so does the phone layer. A 
 
 Never add your own opinion to any of these messages.
 
-## 6. Gate
+## 8. Gate
 Read `<refs>/gate-checklist.md`. For each variant: confirm its engine gate result in `NOTES.md` (for Atelier on an RTL page, the split result its adapter defines, backed by `scripts/rtl-edges.mjs`), then run the technical checks on both language pages at 390 and 1440 in a real browser with web fonts loaded. Fix only what the checklist allows; send anything else back to the stylist. Write `gate-report.md`. A variant whose Arabic was only seen in fallback fonts is **unverified**, not passed.
 
-## 7. Showcase
+## 9. Showcase
+Start the showcase **as soon as the snapshot exists**, not when the stylists finish:
 ```bash
 node <this skill's folder>/scripts/serve.mjs <RUN_DIR>
 ```
-Open `<URL>/compare.html` in the user's browser or preview pane. If the user cannot reach a local server (a remote session) and the host can publish a multi-file page, publish `compare.html` as the entry with only the files the pages actually load (record them by loading each page at 390 and 1440 and scrolling it), never the engines' whole kits. Introduce each variant in two lines from its `NOTES.md`, naming its engine. Do not rank or hint at a favourite.
+Open `<URL>/compare.html` in the user's browser or preview pane. It shows **Current site** first and adds each stylist's page by itself as its manifest appears, so the user watches the three directions arrive instead of waiting for all of them. "One at a time" flips between the current site and a direction in place. If the user cannot reach a local server (a remote session) and the host can publish a multi-file page, publish `compare.html` as the entry with only the files the pages actually load (record them by loading each page at 390 and 1440 and scrolling it), never the engines' whole kits. Introduce each variant in two lines from its `NOTES.md`, naming its engine. Do not rank or hint at a favourite.
 
-## After the pick
-Record `"picked"` in `run.json`. Write `apply-plan.md`: how to carry the chosen variant into the user's real stack, using the same engine for the full build (its tokens, components, motion layer, fonts and RTL setup). Applying it is a separate task the user starts, in build or enhance mode.
+## Apply one
+The user takes **one** direction, not three. Record `"picked"` in `run.json`. Then, only for the chosen stylist, in build or enhance mode on the user's real project:
+1. Read the chosen page in `RUN_DIR/<id>/page/` against `RUN_DIR/base/`: what changed in markup, styles, fonts and images.
+2. Find where each part lives in the real project (`stack` and `real_source` in `answers.md`) and carry the change there, using the same engine's tokens, components, motion layer, fonts and RTL setup. Content, routes, forms, analytics and business logic stay as they are.
+3. Run the probe at 390 and 1440 and report its numbers against `base/baseline.json`, before and after.
+
+Write `apply-plan.md` first and show it. Nothing is written to the user's project until they agree.

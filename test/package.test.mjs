@@ -87,6 +87,14 @@ test('every stylist in the registry is wired end to end', () => {
   }
 });
 
+test('Explore asks five questions, from a snapshot of the real page', () => {
+  const interview = read(REFS + '/interview.md');
+  assert.deepEqual([...interview.matchAll(/^### Q(\d) /gm)].map((m) => m[1]), ['1', '2', '3', '4', '5']);
+  const explore = read(REFS + '/explore.md');
+  for (const needle of ['scripts/snapshot.mjs', 'directions.md', 'Five questions', 'Apply one']) assert.ok(explore.includes(needle), 'explore.md does not mention ' + needle);
+  assert.ok(existsSync(at('scripts/snapshot.mjs')));
+});
+
 test('every engine in the registry is credited in SOURCES.md', () => {
   const sources = read('SOURCES.md');
   for (const engine of json('engines/registry.json').engines) {

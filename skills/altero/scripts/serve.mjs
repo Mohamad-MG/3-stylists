@@ -59,22 +59,61 @@ function inside(base, target) {
   return rel === '' || (!rel.startsWith('..') && !path.isAbsolute(rel));
 }
 
-function resolveFile(urlPath) {
-  let file = path.resolve(root, '.' + urlPath);
-  if (!inside(root, file)) return null;
+// A snapshot folder (altero snapshot) keeps a map of query-keyed files and each file's real content type.
+const snapshots = new Map();
+function snapshotOf(dir) {
+  if (!snapshots.has(dir)) {
+    let data = null;
+    try { data = JSON.parse(fs.readFileSync(path.join(dir, 'snapshot.json'), 'utf8')); } catch {}
+    snapshots.set(dir, data);
+  }
+  return snapshots.get(dir);
+}
+
+function locate(base, urlPath, search) {
+  const snap = snapshotOf(base);
+  const mapped = snap && snap.queryMap && snap.queryMap[urlPath + search];
+  let file = path.resolve(base, '.' + (mapped || urlPath));
+  if (!inside(base, file)) return null;
   if (fs.existsSync(file) && fs.statSync(file).isDirectory()) file = path.join(file, 'index.html');
-  if (fs.existsSync(file)) return file;
+  return fs.existsSync(file) ? file : null;
+}
+
+function resolveFile(urlPath, search = '', referer = '') {
+  const direct = locate(root, urlPath, search);
+  if (direct) return { file: direct, base: root };
+  // A page inside a folder (the snapshot, a stylist) asks for root-relative files: look in that folder.
+  try {
+    const seg = new URL(referer).pathname.split('/')[1];
+    if (seg) {
+      const dir = path.join(root, decodeURIComponent(seg));
+      if (inside(root, dir) && fs.existsSync(dir) && fs.statSync(dir).isDirectory()) {
+        const viaReferer = locate(dir, urlPath, search);
+        if (viaReferer) return { file: viaReferer, base: dir };
+      }
+    }
+  } catch {}
+  // The browser may send no Referer (a strict referrer policy): try any snapshot folder.
+  try {
+    for (const entry of fs.readdirSync(root, { withFileTypes: true })) {
+      if (!entry.isDirectory() || !snapshotOf(path.join(root, entry.name))) continue;
+      const found = locate(path.join(root, entry.name), urlPath, search);
+      if (found) return { file: found, base: path.join(root, entry.name) };
+    }
+  } catch {}
   if (FALLBACK.has(urlPath)) {
     const asset = path.join(assetsDir, urlPath.slice(1));
-    if (fs.existsSync(asset)) return asset;
+    if (fs.existsSync(asset)) return { file: asset, base: root };
   }
   return null;
 }
 
 const server = http.createServer((req, res) => {
-  let urlPath;
+  let urlPath, search = '';
   try {
-    urlPath = decodeURIComponent(new URL(req.url, 'http://x').pathname);
+    const u = new URL(req.url, 'http://x');
+    urlPath = decodeURIComponent(u.pathname);
+    search = u.search;
   } catch {
     res.writeHead(400).end('Bad request');
     return;
@@ -83,13 +122,14 @@ const server = http.createServer((req, res) => {
     res.writeHead(302, { Location: '/compare.html' }).end();
     return;
   }
-  const file = resolveFile(urlPath);
+  const hit = resolveFile(urlPath, search, req.headers.referer || '');
+  const file = hit && hit.file;
   if (!file) {
     res.writeHead(404, { 'Content-Type': 'text/plain; charset=utf-8' }).end('Not found');
     return;
   }
   res.writeHead(200, {
-    'Content-Type': MIME[path.extname(file).toLowerCase()] || 'application/octet-stream',
+    'Content-Type': MIME[path.extname(file).toLowerCase()] || (snapshotOf(hit.base)?.types?.['/' + path.relative(hit.base, file).split(path.sep).join('/')]) || 'application/octet-stream',
     'Cache-Control': 'no-store'
   });
   fs.createReadStream(file).pipe(res);

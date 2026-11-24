@@ -1,6 +1,6 @@
 # Explore contract
 
-Explore runs three proven design engines **as their authors wrote them** and adds only what none of them has: an interview that feeds each engine its native inputs, isolation between the three, an Arabic and English layer, a designed phone cut, and a side-by-side showcase.
+Explore runs three proven design engines **as their authors wrote them** and adds only what none of them has: a light snapshot of the real front end, five questions that feed each engine its native inputs, isolation between the three, an Arabic and English layer, a designed phone cut, and a side-by-side showcase.
 
 Paraphrasing an engine throws away its scripts, dealers, detectors and gates and keeps only a diluted taste. So nothing in this plugin restates an engine's design rules.
 
@@ -10,7 +10,7 @@ Paths: `<plugin>` is the plugin root. `<refs>` is `<plugin>/skills/altero/refere
 
 | Part | Owns | Never does |
 |---|---|---|
-| Orchestrator (`<refs>/explore.md`) | the interview, the facts, translating answers into each engine's native inputs, starting the stylists, the gate, the showcase | add taste to a stylist's prompt; rank the variants |
+| Orchestrator (`<refs>/explore.md`) | the snapshot, the five questions, the facts, `directions.md`, translating answers into each engine's native inputs, starting the stylists, the gate, the showcase, applying the one direction the user picks | add taste to a stylist's prompt; rank the variants |
 | Stylist (`<plugin>/agents/stylist.md`) | one isolated run of one primary engine | read another stylist's folder; mix in another primary engine |
 | Adapter (`<plugin>/internal/adapters/<id>.md`) | how to feed, run and finish its engine inside Explore | restate or paraphrase the engine's design rules |
 | Primary engine | every design decision: process, world, layout, type, colour, motion, copy voice, its own gates | (it runs unmodified) |
@@ -55,11 +55,14 @@ Level 1 is deliberately thin. It says *what must be delivered*, never *how it sh
 
 ```
 <project>/.altero/runs/<YYYYMMDD-HHMM>/     RUN_DIR
-├── brief.md  answers.md  facts.json           intake, interview, the facts lock
+├── brief.md  answers.md  facts.json           intake, the five answers, the facts lock
+├── directions.md                              the three directions, one per stylist
+├── base/                                      the snapshot: the current page, front end only (never edited)
 ├── env.md  env.json                           what this machine can do
 ├── run.json  compare.html                     the showcase and its index
 ├── gate-report.md
 └── <stylist id>/                              one folder per stylist, the engine's own project root
+    ├── page/                                  a copy of base/ the stylist rebuilds in its direction
     ├── the engine's native input file         written by the orchestrator (`<refs>/engine-inputs.md`)
     ├── the engine's own output                in its native layout
     ├── stylist.json                           the deliverable manifest (`<refs>/facts-schema.md`)

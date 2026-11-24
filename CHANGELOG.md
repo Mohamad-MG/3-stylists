@@ -1,5 +1,14 @@
 # Changelog
 
+## 0.8.0 — 2026-11-25
+
+### Changed
+- **Explore now starts from a light snapshot of your real front end.** `scripts/snapshot.mjs` saves the rendered page and the files it loads, at phone and desktop width, with its measured baseline. No repository, backend or database is needed.
+- **Five questions instead of six**, asked in one message before any stylist starts. The slice and the languages are one question, and the asset policy is part of what is fixed and what is open. Anything the snapshot already shows is not asked.
+- **`directions.md`:** a short preview of what each of the three directions does for this visitor and what it will not do, built from the answers.
+- **The showcase opens first and fills in.** It starts with **Current site**, adds each direction as it lands, and the server resolves a snapshot's root-relative files by itself.
+- **Apply one.** Only the direction you pick is carried into your real project, with the probe's numbers before and after.
+
 ## 0.7.0 — 2026-11-22
 
 ### Changed

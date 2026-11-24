@@ -51,6 +51,7 @@ A visitor must be able to see which numbers and promises are not confirmed. An a
   "created": "2026-11-13T23:40:00+02:00",
   "lead": "ar",
   "variants": [
+    { "id": "base",      "title": "Current site" },
     { "id": "atelier",   "title": "Atelier" },
     { "id": "manifesto", "title": "Manifesto" },
     { "id": "cinema",    "title": "Cinema" }
@@ -73,4 +74,4 @@ A visitor must be able to see which numbers and promises are not confirmed. An a
 }
 ```
 
-The showcase opens `<stylist>/<pages[lang]>`. Paths are relative to the stylist's folder, so each engine keeps its native layout.
+The showcase opens `<stylist>/<pages[lang]>`. `base` is the snapshot (`scripts/snapshot.mjs` writes its `stylist.json`); list it first, and leave it out when there is no existing site. Paths are relative to the stylist's folder, so each engine keeps its native layout.

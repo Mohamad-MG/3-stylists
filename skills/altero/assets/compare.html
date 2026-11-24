@@ -292,7 +292,7 @@
       if (!v.manifest || !v.manifest.pages || !v.manifest.pages[state.lang]) {
         foot.appendChild(el('span', 'missing', ui.missing));
       }
-      foot.appendChild(pick);
+      if (v.id !== 'base') foot.appendChild(pick);
 
       panel.appendChild(head);
       panel.appendChild(stage);
@@ -336,7 +336,18 @@
     return Promise.all(state.variants.map(function (v) {
       return getJSON(v.id + '/stylist.json').then(function (m) { v.manifest = m; });
     }));
-  }).then(render);
+  }).then(render).then(function () {
+    // Stylists finish at different times: pick up pages and manifests as they appear, without a reload.
+    var polls = 0;
+    var timer = setInterval(function () {
+      polls += 1;
+      var waiting = state.variants.filter(function (v) { return !v.manifest || !v.manifest.pages || !v.manifest.pages.ar && !v.manifest.pages.en; });
+      if (!waiting.length || polls > 360) { clearInterval(timer); return; }
+      Promise.all(waiting.map(function (v) {
+        return getJSON(v.id + '/stylist.json').then(function (m) { if (m) v.manifest = m; return !!m; });
+      })).then(function (found) { if (found.some(Boolean)) render(); });
+    }, 5000);
+  });
 })();
 </script>
 </body>
