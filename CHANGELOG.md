@@ -1,5 +1,12 @@
 # Changelog
 
+## 0.8.1 — 2026-11-25
+
+### Changed
+- **The five questions are now about the look and feel, and all closed.** Each is a pick of two or three options, with "you choose" always allowed: the feel, how far the colours may move, how much goes on a screen, how much the page moves, and how far to go from the current page. They no longer ask about the business, the call to action, the proof or the images.
+- **Images are the stylist's call.** Each stylist may use the page's own photographs, or take better ones from a stock or image library when that clearly improves the page, and keeps the page's own when nothing better exists.
+- The page's own content is no longer sent back to the user for confirmation.
+
 ## 0.8.0 — 2026-11-25
 
 ### Changed

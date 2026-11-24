@@ -43,12 +43,12 @@ The snapshot is also the "before" of every comparison. It is served as the showc
 Write `brief.md`: product and offer · audience and situation (stated or inferred, marked) · current visual state (with the baseline's numbers) · constraints · real material on hand · the slice and why.
 
 ## 3. Five questions
-Read `<refs>/interview.md`. Ask exactly five questions, in one message, replacing any that Intake or the snapshot already answered with a reserve. **Never ask aesthetic questions** (feel, colours, fonts, style, references to imitate): each engine owns its aesthetic process, and a look named in a question becomes the answer.
+Read `<refs>/interview.md`. Ask exactly five questions, together, all about how the page should look and feel, all closed: the user picks one of two or three options, or says "you choose". Never ask open questions, and never ask about the business, the call to action, the proof or the images: the snapshot already shows them, so Intake marks them `(inferred)`.
 
-Ask in the user's language, with your structured question tool if you have one. Write `answers.md` (raw answers and the derived fields listed in the reference).
+Ask in the user's language, with your structured question tool and its options. Write `answers.md` (the five choices and the derived fields listed in the reference).
 
 ## 4. Facts
-Write `facts.json` (`<refs>/facts-schema.md`). It is the lock: engines write their own copy, but every claim, price, number and promise must trace to it. With a snapshot, the page's existing content is the first source of facts, and nothing on it may change in meaning. Show the user a short summary of the facts and confirm them in one message (not one of the five questions).
+Write `facts.json` (`<refs>/facts-schema.md`). It is the lock: engines write their own copy, but every claim, price, number and promise must trace to it. With a snapshot, the page's existing content is the first source of facts, and nothing on it may change in meaning. Do not ask the user to confirm the page's own content: it is the user's, already live. Mention only what you inferred that the page does not state.
 
 ## 5. Directions
 Write `directions.md` as `<refs>/interview.md` describes: three short entries, one per stylist, saying what each engine will do for this visitor and what it will not do. Show them in one message and go straight on. It is a preview of the work, not a question.

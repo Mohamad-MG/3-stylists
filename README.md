@@ -167,7 +167,7 @@ The rules are in the [Arabic and English reference](skills/altero/references/bil
 Explore starts from your real page, not from a blank one. It takes a light copy of your front end, asks five questions, and then three third-party design engines, each pinned to an exact commit and unmodified, rebuild that page in three directions, each in its own isolated agent. You compare them with your current site in one showcase, and you apply the one you pick.
 
 1. **A light copy.** One command saves the rendered page and the files it loads, at phone and desktop width, front end only. Your repository, backend, database and secrets are never touched, and nothing is asked of them.
-2. **Five questions.** Who visits and what must they do, what is truly different and what proof you have, what is fixed and what is open, which part of the page the directions cover, and what would feel wrong. They never ask about colours or style.
+2. **Five questions, all closed.** How the page should feel, how far the colours may move, how much goes on each screen, how much it moves, and how far to go from the current page. Each is a pick of two or three, and "you choose" is always allowed. They never ask about your business, your call to action or your photos: Altero reads those from the page.
 3. **Three directions.** A short preview says what each stylist will do for your visitor and what it will not do, then they build in parallel. The showcase opens at once with your current site, and each direction appears as it lands.
 4. **One applied.** You take one direction and Altero carries it into your real project, then measures the page again against the copy.
 

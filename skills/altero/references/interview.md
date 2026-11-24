@@ -1,82 +1,76 @@
 # The five questions
 
-Exactly five. Explore asks them after the snapshot and before any stylist starts, because the answers do two jobs: they give each engine the real inputs it would otherwise guess, and they decide what each of the three directions is for. Intake and the snapshot answer a lot already, so ask only what they could not.
+Exactly five, all about how the page should look and feel, all closed: **pick one of two or three**. Nothing is open text, nothing is a yes or no about the business. The business is already on the page: the snapshot shows the offer, the visitor's path, the proof (reviews, work, address) and the call to action, so Explore reads them and marks them `(inferred)` instead of asking.
 
-| Engine | What it asks before designing |
-|---|---|
-| Impeccable (init, new-work) | primary user, situation and job · the product's different mechanism · durable constraints, assets, evidence · who must act, what they should believe, which real proof · what would make a polished result feel wrong · stack |
-| Taste Skill (run step 1) | the kind of business · what is sold · who buys it · the one main action · the real material (logo, screens, photographs, prices, address, hours) |
-| cinematic-ui (development, asset call) | the product truth and the one action · what can honestly be claimed · the audience arc · every asset: supplied, licensed library, AI-generated (with cost), or redesigned around a stand-in |
+## What is never asked
+- **The call to action.** Every page ends in one: a WhatsApp button, a booking form, a phone number. Keep the page's own, and make sure each direction places it well. Whether it exists is not a question.
+- **Whether the proof is "strong enough".** This is marketing, not a courtroom: use what the page has, and do not invent anything.
+- **Images.** Each stylist may use the page's own photographs, and may also take better ones from a stock or image library when that clearly makes the page better (keep the licence in `NOTES.md`). When nothing better exists, it keeps the page's own images and uses them with care. AI-generated images only if the host has an image tool and the user has said yes before; never ask now.
+- **Languages and the slice.** The snapshot shows the languages. The slice is the page that was snapshotted, whole. Lead with the language the page leads with. Take these from `brief.md`.
 
-## Rules
-- **Five questions, no more.** Replace any question Intake or the snapshot already answered with a reserve. Ask them in one message, with your structured question tool if you have one, in the user's language, concretely, with options where they help.
-- **No aesthetic questions.** Never ask about feel, mood, colours, fonts, styles or sites to imitate. Each engine runs its own direction process, and Impeccable warns that a look named in a question becomes the answer. Q5 collects what to avoid without naming a look.
-- **Nothing is asked twice.** What the snapshot shows (languages, the logo, the colours in use, the stack, the page's content) is evidence, not a question.
+## How to ask
+Ask all five together, in the user's language, with your structured question tool and its options. If the tool takes four at most, send four and the fifth straight after, without commentary in between. Give every option a short, concrete label and one line saying what it means for the page. The user may also answer "you choose" on any question: then the engine decides that axis by its own process.
 
 ---
 
-### Q1 — The visitor and the action
-- **AR:** مين الزائر الأساسي، وهو في أنهي موقف، وإيه الحاجة الواحدة اللي لازم يعملها في الموقع؟
-- **EN:** Who is the primary visitor, in what situation, and what is the one thing they must do?
-- **Feeds:** Impeccable `## Users`, Taste "who buys it" and the main action, cinematic-ui's audience arc.
+### Q1 — How should the page feel to the visitor?
+- **Options:** Calm and refined · Warm and personal · Bold and striking
+- **AR:** إحساس الصفحة للزائر: هادي وراقي · دافي وشخصي · جريء ولافت
+- **Feeds:** Impeccable `## Product Principles` and its direction deal, Taste's brief, cinematic-ui's tone. It states the feeling to serve, never a style to copy.
 
-### Q2 — What is truly different, and the proof
-- **AR:** إيه اللي بتقدّمه ومحدش جنبك يقدر يقوله بصدق؟ وإيه الدليل الحقيقي اللي عندك (أرقام، صور، تقييمات، عملاء)؟
-- **EN:** What do you offer that a neighbour could not truthfully claim, and what real proof do you have?
-- **Feeds:** Impeccable `## Positioning` and `## Evidence on Hand`, `facts.json → claims`, cinematic-ui's logline.
+### Q2 — How far may the colours move?
+- **Options:** Keep the brand colours exactly · Same family, fresher · Open to a new palette
+- **AR:** الألوان: نفس ألوان البراند بالظبط · نفس العيلة بس أحدث · مفتوح للون جديد
+- **Feeds:** Impeccable `## Brand Commitments`, Taste `start.mjs brand` (the client's own colours), cinematic-ui's grade.
 
-### Q3 — What is fixed, what is open, and what material you have
-- **AR:** إيه اللي متقرر ومش هيتغير: الاسم، اللوجو، ألوان أو خطوط البراند، طريقة الكلام؟ وإيه المفتوح تمامًا؟ وعندك إيه حقيقي من صور وفيديو؟ ولو مش كفاية، تسمح بصور بديلة مرخّصة؟ وبصور بالذكاء الاصطناعي (وده ليه تكلفة)؟
-- **EN:** What is already fixed (name, logo, brand colours or fonts, voice), and what is completely open? What real material do you have (photographs, video)? If it is not enough, may we use licensed stand-in photographs, or AI-generated images (which cost money)?
-- **Feeds:** Impeccable `## Brand Commitments`, Taste `start.mjs brand` and its photo path, cinematic-ui's asset call.
-- **Default if not answered:** keep the logo and name, use only the real material on hand, no stand-ins and no AI images.
+### Q3 — How much on each screen?
+- **Options:** Airy: few things and a lot of space · Balanced · Rich: more on every screen
+- **AR:** الكثافة: واسعة وهادية · متوازنة · غنية وفيها تفاصيل أكتر
+- **Feeds:** layout and section rhythm in all three engines; the phone cut plan.
 
-### Q4 — The slice and the languages
-- **AR:** الأقسام أو الصفحات اللي عايز نجرّب فيها الاتجاهات الجديدة: الهوم كله ولا جزء معيّن؟ ولو الموقع بأكتر من لغة، أنهي لغة نبدأ بيها، وإيه اللهجة العربية والأرقام؟
-- **EN:** Which page or sections should the new directions cover, the whole homepage or a part? If the site has more than one language, which leads, in which Arabic register, and with which digits?
-- **Feeds:** the proposed slice in `brief.md`, `bilingual.md` (lead language, register, numerals), each engine's lead-language run.
-- **Usually answered for you:** with a snapshot the languages are visible, so ask only about the slice, or replace the whole question with a reserve.
+### Q4 — How much should the page move?
+- **Options:** Still: almost no motion · Subtle: small touches · Expressive: the page moves with the visitor
+- **AR:** الحركة: ثابتة تقريبًا · لمسات خفيفة · معبّرة والصفحة بتتحرك مع الزائر
+- **Feeds:** Impeccable's motion layer, cinematic-ui's camera and scroll, Taste's moments. Motion never replaces content or delays the call to action.
 
-### Q5 — What would feel wrong
-- **AR:** لو الموقع طلع شيك ومتظبط بس حسّيت إنه غلط، إيه اللي هيكون غلط فيه؟
-- **EN:** If the result were polished but felt wrong for this product, what would be wrong about it?
-- **Feeds:** Impeccable new-work ("what would make a polished result feel wrong"), the refusals each engine weighs, and the "will not do" line of every direction. Ask it exactly this way: it collects the anti-direction without naming a look.
+### Q5 — How far from the current page?
+- **Options:** Close: same layout, finer · Recomposed: same content, new layout · Reinvented: a new idea for the page
+- **AR:** المسافة عن الصفحة الحالية: قريبة (نفس الترتيب بس أدق) · إعادة تركيب (نفس المحتوى وترتيب جديد) · فكرة جديدة للصفحة
+- **Feeds:** how much of `page/` each stylist keeps. Content and meaning never change in any option; only structure and look do.
 
 ---
 
-## Reserves (in order)
-- **R1 — Stack for the final build:** static HTML/CSS, a framework, or "you decide". With a snapshot, ask where the real source lives, because the chosen direction will be carried into it.
-- **R2 — The use scene:** where and when the visitor opens the site (on a phone at night, at a desk at work…). Impeccable picks light or dark from the use scene, never from the category.
-- **R3 — Hard requirements:** accessibility standard, legal text, regulated claims.
+## Defaults (when the user says "you choose")
+Each engine runs its own direction process for that axis. Record `engine decides` in `answers.md`, and have each engine write what it chose in `NOTES.md`.
 
 ## From answers to three directions
-After the facts are confirmed, write `directions.md`: three short entries, one per stylist, each saying what that stylist's engine will do **for this visitor**, in plain words, and what it will not do. The entries come from the answers and from what each engine is built for, never from a look:
+After Intake, write `directions.md`: three short entries, one per stylist, each saying in plain words what that stylist's engine will do **with these answers** for this page, and what it will not do. The entries come from the answers and from what each engine is built for, never from an invented look:
 
-- **Atelier (Taste Skill)** serves the answers about proof, trust and the main action: a company-grade page where the real material carries the page.
-- **Manifesto (Impeccable)** serves the answers about what is different: a page built around the one thing a neighbour could not claim.
-- **Cinema (cinematic-ui)** serves the answers about the visitor's path: a page that moves the visitor to the one action as a single story.
+- **Atelier (Taste Skill)** reads the answers as a company-grade page where the real material carries the page: photographs, proof and the main action first.
+- **Manifesto (Impeccable)** reads them as a page built around the one thing that is different here, with its own visual world.
+- **Cinema (cinematic-ui)** reads them as a single story that moves the visitor to the action.
 
-Each entry ends with the "will not do" line taken from Q5. Show the three entries to the user in one message, then start. It is a preview of the work, not a question.
+Each entry ends with a "will not do" line, taken from the answers (for instance "will not leave the brand colours" when Q2 is the first option). Show the three entries in one message, then start. It is a preview of the work, not a question.
 
 ## Derived fields (write into answers.md)
 ```
+feel:                 calm-refined | warm-personal | bold-striking | engine decides
+colour_policy:        keep | same-family | open | engine decides
+density:              airy | balanced | rich | engine decides
+motion:               still | subtle | expressive | engine decides
+distance:             close | recomposed | reinvented | engine decides
+# From the snapshot and brief, each marked (inferred):
 primary_visitor:      ...
 situation:            ...
-primary_action:       ...           # verb + object, e.g. "Book a visit"
+primary_action:       ...           # the page's own call to action, verb + object
 positioning:          ...
-proof:                [...]
-brand_commitments:    [...]         # pins engines must honour
-open:                 [...]
-assets:               [...]         # what exists, with paths
-stand_in_photos:      yes | no      # default no
-ai_assets:            yes | no      # default no, with any budget the user gave
-slice:                ...           # the page or sections the directions cover
+proof:                [...]         # what the page shows: reviews, work, address, hours
+brand_commitments:    [...]         # name, logo, and colours unless Q2 allows more
+assets:               [...]         # the page's own images, with paths
+image_policy:         own-first, better stock or library allowed when clearly better
 lead_language:        ar | en
 arabic_register:      egyptian | msa | gulf | levantine
 numerals:             western | arabic-indic
-feels_wrong:          ...
 stack:                static | <framework> | delegated
 real_source:          ...           # where the chosen direction will be applied, if known
-use_scene:            ...           # if asked
-requirements:         [...]         # if asked
 ```

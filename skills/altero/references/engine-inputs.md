@@ -9,7 +9,7 @@ Two contract rules travel inside every engine input, so each engine plans for th
 
 - **Phone line:** The phone version is designed as its own composition, not reflowed: sections may be reordered, merged, cut or replaced and restyled for the phone.
 - **Copy line:** No full stop at the end of any interface text, in Arabic or English (headlines, buttons, labels, card text, captions, ledes). Join two ideas with a comma or split them into two lines. Long-form reading text (legal pages, article bodies) is exempt.
-- **Page line (only when a snapshot exists):** The user's real page is in `page/`, a front-end-only copy. Rebuild it in your direction, keep its real content and the meaning of its structure, invent nothing, and treat forms and live data as out of scope: they do not work in the copy and need no work. Append it as the last line of every engine input file, together with the stylist's entry from `directions.md`.
+- **Page line (only when a snapshot exists):** The user's real page is in `page/`, a front-end-only copy. Rebuild it in your direction, keep its real content and the meaning of its structure, invent nothing, and treat forms and live data as out of scope: they do not work in the copy and need no work. Append it as the last line of every engine input file, after the five choices from `answers.md` and the stylist's entry from `directions.md`.
 
 ---
 
@@ -23,30 +23,30 @@ Impeccable's init writes this file after interviewing. The Explore interview alr
 ## Platform
 web
 ## Stack
-delegated: static HTML/CSS for the Altero demo slice; final build: <R1 answer or "not decided">
+delegated: static HTML/CSS for the Altero demo slice; final build: <stack from answers.md, or "not decided">
 ## Users
-<Q1: primary visitor, situation, job>
+<primary visitor, situation and job, from the snapshot (inferred)>
 ## Product Purpose
-<what it does, why it exists, what success means — from brief.md and Q1>
+<what it does, why it exists, what success means — from brief.md>
 ## Positioning
-<Q2: the claim a neighbour could not truthfully copy>
+<positioning, from the snapshot (inferred): what the page claims that a neighbour could not truthfully copy>
 ## Operating Context
-<the situation and rituals around use: Q1 situation, R2 use scene if asked>
+<the situation and rituals around use: the situation, inferred>
 ## Capabilities and Constraints
 <offer, prices, delivery, limits from facts.json; undecided facts listed as undecided>
 ## Brand Commitments
-<Q3 pins, if any>
+<brand_commitments from answers.md; the colour policy from Q2 stated as a choice>
 - Phone: <phone line>
 - Copy: <copy line>
 ## Evidence on Hand
-<Q2 proof and Q6 assets with paths; state every absence>
+<proof and the page's own images with paths, from the snapshot; state every absence>
 ## Product Principles
 <three to five strategic principles from the answers; no visual recipes>
 ## Accessibility & Inclusion
-<R3 if asked; Arabic and English, RTL as a first-class reading direction>
+<requirements if any; Arabic and English, RTL as a first-class reading direction>
 ```
 
-Do **not** write `DESIGN.md` (new-work creates the world) or `.impeccable/config.json` (Impeccable records only values the user chose). Q5 ("what would feel wrong") goes in `answers.md`; the stylist hands it to new-work step 2, which asks exactly that.
+Do **not** write `DESIGN.md` (new-work creates the world) or `.impeccable/config.json` (Impeccable records only values the user chose). Put the five choices from `answers.md` under `## Product Principles` as stated choices (for example "feel: calm and refined", "distance: recomposed"), never as a described look. Impeccable's new-work step 2 is answered from `answers.md` and `directions.md`; the stylist cannot reach the user.
 
 ---
 
@@ -58,13 +58,13 @@ Taste Skill's run step 1 reads the brief for: the kind, what is sold, who buys i
 # Brief for Taste Skill
 kind: <facts.json product.kind>            # Taste's table: software | gaming | tech | product | service | place
 what is sold: <product.category>
-who buys it: <Q1>
+who buys it: <primary_visitor, inferred>
 main action: <product.primary_action.en>   # a verb and an object
 lead language: <ar | en>
 ## Real material
 <every asset with path and rights; "none" where none exist>
 ## Client's own colours
-<only if Q3 pinned colours, for start.mjs brand; otherwise "none — deal">
+<only if colour_policy is keep or same-family: the page's brand colours, for start.mjs brand; otherwise "none — deal">
 ## Facts (locked)
 <offer, prices, claims with status; assumed facts marked to become data-assumed>
 ## Photograph policy
@@ -89,15 +89,15 @@ cinematic-ui's stage 1 (development) needs the product truth, the audience, the 
 ```markdown
 # Producer notes for cinematic-ui
 ## Product truth
-<what it is, who it is for, the one action (Q1), what can honestly be claimed (facts.json claims with status)>
+<what it is, who it is for, the one action (the page's own call to action), what can honestly be claimed (facts.json claims with status)>
 ## Audience
-<who arrives, in what situation; what they believe when they arrive (from Q1, Q2, Q5)>
+<who arrives, in what situation; what they believe when they arrive (from the answers and the snapshot)>
 ## Must not claim
 <forbidden>
 ## Asset call — answered in advance
-supplied by the client: <Q6 assets with paths, or "nothing">
-free licensed library (photographs, footage): <yes | no>
-AI-generated assets: <yes | no; budget if given>
+supplied by the client: <the page's own images with paths>
+free licensed library (photographs, footage): yes, when clearly better than the page's own, with the licence noted in NOTES.md
+AI-generated assets: no, unless the host has an image tool and the user has already agreed
 otherwise: redesign the shot around a stand-in
 ## Language
 lead: <ar | en>; Arabic register: <register>
