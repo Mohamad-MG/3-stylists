@@ -43,19 +43,33 @@ Every finding comes with the measurement behind it, and every fix is checked wit
 
 <p><b>Forma Field</b> &nbsp;architecture &nbsp;<code>polish</code> &nbsp;The same sections, one type scale, one button style, and cards that line up.</p>
 
-Six more fictional brands, before on the left and after on the right. Polish keeps the design and fixes what breaks it. Enhance reworks one journey. Explore proposes a new direction.
+#### Arabic, set right
 
 <table>
   <tr>
-    <td width="50%" valign="top">
-      <img src=".github/assets/gallery/mawja.jpg" alt="Mawja, an Arabic aquarium booking page on a phone. Before: the headline faded into the photo, ticket types cut off at the screen edge and a form crushed by the bottom bar. After: readable Arabic, all ticket types on screen and a full-width booking button.">
-      <p><b>Mawja</b> &nbsp;aquarium, Arabic &nbsp;<code>polish</code></p>
+    <td width="44%" valign="top">
+      <img src=".github/assets/gallery/mawja.gif" alt="Mawja, an Arabic aquarium booking page on a phone, wiping between before and after. Before: the headline fades into the photo, the ticket types run off the left edge, and the booking link sits under the bottom bar. After: a readable headline, all three ticket types on screen, a dated form and a full-width booking button.">
+      <p><b>Mawja</b> &nbsp;aquarium &nbsp;<code>polish</code></p>
     </td>
-    <td width="50%" valign="top">
+    <td width="56%" valign="top">
+      <p>Arabic breaks in ways an English-first agent does not look for. On this page:</p>
+      <ul>
+        <li>The headline sat on the brightest part of the photo and faded out</li>
+        <li>The ticket types ran off the left edge, which is where a right-to-left row overflows</li>
+        <li>The booking link was a small text link under the bottom bar</li>
+      </ul>
+      <p>After the pass the headline sits on a calm area, the row fits the screen, and booking is one full-width button.</p>
       <img src=".github/assets/gallery/madar-energy.jpg" alt="Madar Energy, an Arabic solar company site. Before: a washed-out hero, a misaligned savings form and service cards of different weights. After: the same right-to-left layout with a clear hero, an aligned form and even cards.">
-      <p><b>Madar Energy</b> &nbsp;solar, Arabic &nbsp;<code>polish</code></p>
+      <p><b>Madar Energy</b> &nbsp;solar &nbsp;<code>polish</code></p>
     </td>
   </tr>
+</table>
+
+#### Four more brands
+
+Before on the left, after on the right. Polish keeps the design and fixes what breaks it. Enhance reworks one journey. Explore proposes a new direction.
+
+<table>
   <tr>
     <td width="50%" valign="top">
       <img src=".github/assets/gallery/morrow-skin.jpg" alt="Morrow Skin, a skincare product page on a phone. Before: crowded tabs, clashing price and title styles and a small add button. After: one product story, a clear price and a full-width Add to bag button.">
