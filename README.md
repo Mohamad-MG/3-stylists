@@ -65,29 +65,43 @@ Every finding comes with the measurement behind it, and every fix is checked wit
   </tr>
 </table>
 
-#### Four more brands
-
-Before on the left, after on the right. Polish keeps the design and fixes what breaks it. Enhance reworks one journey. Explore proposes a new direction.
+#### One journey, reworked
 
 <table>
   <tr>
-    <td width="50%" valign="top">
-      <img src=".github/assets/gallery/morrow-skin.jpg" alt="Morrow Skin, a skincare product page on a phone. Before: crowded tabs, clashing price and title styles and a small add button. After: one product story, a clear price and a full-width Add to bag button.">
+    <td width="44%" valign="top">
+      <img src=".github/assets/gallery/morrow-skin.gif" alt="Morrow Skin, a skincare product page on a phone, wiping between before and after. Before: a cropped bottle, a loud title, crowded tabs, a list of ingredients and a small add button in a translucent bar. After: the product photographed whole, a calm title and price, three short benefits and a full-width Add to bag button.">
       <p><b>Morrow Skin</b> &nbsp;skincare &nbsp;<code>enhance</code></p>
     </td>
-    <td width="50%" valign="top">
-      <img src=".github/assets/gallery/brightbay-dental.jpg" alt="Brightbay Dental, a family dental clinic site. Before: three button styles and uneven service cards. After: a new, darker direction with one button style and matching cards.">
-      <p><b>Brightbay Dental</b> &nbsp;healthcare &nbsp;<code>explore</code></p>
+    <td width="56%" valign="top">
+      <p>Polish fixes what is broken and leaves the page as it is. Enhance takes one journey, here the way from a product to the bag, and reworks it end to end.</p>
+      <ul>
+        <li>The bottle was cropped and the price competed with the title</li>
+        <li>Four tabs and a list of ingredients stood between the visitor and the button</li>
+        <li>Add to bag was a small button in a translucent bar</li>
+      </ul>
+      <p>After the pass the product is shown whole, the title and price read in order, three benefits replace the tabs, and Add to bag is the one clear action.</p>
     </td>
   </tr>
+</table>
+
+#### New directions
+
+Explore builds three independent directions for the same brief. These show the kind of change it proposes.
+
+<table>
   <tr>
-    <td width="50%" valign="top">
-      <img src=".github/assets/gallery/orbit-freight.jpg" alt="Orbit Freight, a logistics tracking site. Before: low-contrast headline, a scattered card layout and a banner covering content. After: a strong headline, a clear tracking field and three aligned service cards.">
-      <p><b>Orbit Freight</b> &nbsp;logistics &nbsp;<code>explore</code></p>
+    <td width="33%" valign="top">
+      <img src=".github/assets/gallery/brightbay-dental.jpg" alt="Brightbay Dental, a family dental clinic site. Before: three button styles and uneven service cards. After: a new, darker direction with one button style and matching cards.">
+      <p><b>Brightbay Dental</b><br>healthcare</p>
     </td>
-    <td width="50%" valign="top">
+    <td width="33%" valign="top">
+      <img src=".github/assets/gallery/orbit-freight.jpg" alt="Orbit Freight, a logistics tracking site. Before: low-contrast headline, a scattered card layout and a banner covering content. After: a strong headline, a clear tracking field and three aligned service cards.">
+      <p><b>Orbit Freight</b><br>logistics</p>
+    </td>
+    <td width="33%" valign="top">
       <img src=".github/assets/gallery/pulse-room.jpg" alt="Pulse Room, a music streaming page. Before: a flat gradient page with the track list hidden under a cookie banner. After: a bold album page with the full track list visible.">
-      <p><b>Pulse Room</b> &nbsp;music &nbsp;<code>explore</code></p>
+      <p><b>Pulse Room</b><br>music</p>
     </td>
   </tr>
 </table>
