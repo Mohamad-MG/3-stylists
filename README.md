@@ -39,72 +39,11 @@ Every finding comes with the measurement behind it, and every fix is checked wit
 
 ### What a pass can look like
 
-<img src=".github/assets/gallery/forma-field.gif" alt="Forma Field, an architecture studio homepage, wiping between before and after. Before: a purple gradient, mixed button styles, a cramped hero and project cards of different shapes. After: the same sections with one type scale, a calm warm palette, one button style and aligned cards." width="100%">
+<img src=".github/assets/before-after.gif" alt="A looping slideshow of seven before and after pairs, each wiped from left to right by an orange line, with the brand, the mode and a one-line summary beside it. Forma Field, an architecture studio site, polished: one type scale, one button style, aligned project cards. Mawja, an Arabic aquarium booking page on a phone, polished: a readable headline, every ticket type on screen, one booking button. Madar Energy, an Arabic solar company site, polished: a clear hero, an aligned savings form, even service cards. Morrow Skin, a skincare product page on a phone, enhanced: the product shown whole, the price in order, one clear Add to bag. Brightbay Dental, Orbit Freight and Pulse Room, explored: a dental clinic, a logistics tracker and a music page, each rebuilt in a new direction." width="100%">
 
-<p><b>Forma Field</b> &nbsp;architecture &nbsp;<code>polish</code> &nbsp;The same sections, one type scale, one button style, and cards that line up.</p>
+Seven fictional brands, one after another. The first three are **polish**, which keeps the design and fixes what breaks it, and two of them are right-to-left Arabic pages. The fourth is **enhance**, which reworks a single journey from product to bag. The last three are **explore**, which proposes a new direction for the same brief.
 
-#### Arabic, set right
-
-<table>
-  <tr>
-    <td width="44%" valign="top">
-      <img src=".github/assets/gallery/mawja.gif" alt="Mawja, an Arabic aquarium booking page on a phone, wiping between before and after. Before: the headline fades into the photo, the ticket types run off the left edge, and the booking link sits under the bottom bar. After: a readable headline, all three ticket types on screen, a dated form and a full-width booking button.">
-      <p><b>Mawja</b> &nbsp;aquarium &nbsp;<code>polish</code></p>
-    </td>
-    <td width="56%" valign="top">
-      <p>Arabic breaks in ways an English-first agent does not look for. On this page:</p>
-      <ul>
-        <li>The headline sat on the brightest part of the photo and faded out</li>
-        <li>The ticket types ran off the left edge, which is where a right-to-left row overflows</li>
-        <li>The booking link was a small text link under the bottom bar</li>
-      </ul>
-      <p>After the pass the headline sits on a calm area, the row fits the screen, and booking is one full-width button.</p>
-      <img src=".github/assets/gallery/madar-energy.jpg" alt="Madar Energy, an Arabic solar company site. Before: a washed-out hero, a misaligned savings form and service cards of different weights. After: the same right-to-left layout with a clear hero, an aligned form and even cards.">
-      <p><b>Madar Energy</b> &nbsp;solar &nbsp;<code>polish</code></p>
-    </td>
-  </tr>
-</table>
-
-#### One journey, reworked
-
-<table>
-  <tr>
-    <td width="44%" valign="top">
-      <img src=".github/assets/gallery/morrow-skin.gif" alt="Morrow Skin, a skincare product page on a phone, wiping between before and after. Before: a cropped bottle, a loud title, crowded tabs, a list of ingredients and a small add button in a translucent bar. After: the product photographed whole, a calm title and price, three short benefits and a full-width Add to bag button.">
-      <p><b>Morrow Skin</b> &nbsp;skincare &nbsp;<code>enhance</code></p>
-    </td>
-    <td width="56%" valign="top">
-      <p>Polish fixes what is broken and leaves the page as it is. Enhance takes one journey, here the way from a product to the bag, and reworks it end to end.</p>
-      <ul>
-        <li>The bottle was cropped and the price competed with the title</li>
-        <li>Four tabs and a list of ingredients stood between the visitor and the button</li>
-        <li>Add to bag was a small button in a translucent bar</li>
-      </ul>
-      <p>After the pass the product is shown whole, the title and price read in order, three benefits replace the tabs, and Add to bag is the one clear action.</p>
-    </td>
-  </tr>
-</table>
-
-#### New directions
-
-<table>
-  <tr>
-    <td width="52%" valign="top">
-      <img src=".github/assets/gallery/brightbay-dental.gif" alt="Brightbay Dental, a family dental clinic site, wiping between before and after. Before: a standard light layout with three button styles and uneven service cards. After: a new, darker direction with a glass dome around a tooth, one button style and matching service cards.">
-      <p><b>Brightbay Dental</b> &nbsp;healthcare &nbsp;<code>explore</code></p>
-    </td>
-    <td width="48%" valign="top">
-      <p>Explore does not polish what exists. It builds three independent directions for the same brief, each by a different design engine, so you choose by looking.</p>
-      <p>On the left, one of them: the same sections as the old page, with a different world around them.</p>
-      <img src=".github/assets/gallery/orbit-freight.jpg" alt="Orbit Freight, a logistics tracking site. Before: low-contrast headline, a scattered card layout and a banner covering content. After: a strong headline, a clear tracking field and three aligned service cards.">
-      <p><b>Orbit Freight</b> &nbsp;logistics &nbsp;<code>explore</code></p>
-      <img src=".github/assets/gallery/pulse-room.jpg" alt="Pulse Room, a music streaming page. Before: a flat gradient page with the track list hidden under a cookie banner. After: a bold album page with the full track list visible.">
-      <p><b>Pulse Room</b> &nbsp;music &nbsp;<code>explore</code></p>
-    </td>
-  </tr>
-</table>
-
-<sub>These are illustrations made for this README, not output from the plugin. The measured example above is real.</sub>
+These are illustrations made for this README, not output from the plugin. The measured example above is real.
 
 ## Install
 
