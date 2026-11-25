@@ -3,6 +3,7 @@
 ## 0.11.1 — 2026-11-25
 
 ### Fixed
+- `copy-diff.mjs` no longer reports pieces with no letters (a slide counter such as "03 / 03") as new copy.
 - `snapshot.mjs` also saves images the page names but never loaded (a carousel's hidden slides), so the copy no longer shows gaps the live site does not have. Images the browser already drew are not fetched again in another form, so the copy stays light.
 - `serve.mjs` serves an extensionless file (an API-served photo) with its real type when the snapshot that holds it sits deeper than the run folder, such as a stylist's `page/` copy.
 - Interface punctuation under a copy lock splits sentences into lines instead of joining them with a comma, because joining lowercased the next sentence (found by the first polish run on a real site). A legal line (© name, rights) keeps its own punctuation.

@@ -59,7 +59,8 @@ await browser.close();
 
 const fresh = variant.filter((t) => {
   const n = norm(t);
-  return n.length > 2 && !original.includes(n) && !allow.includes(n);
+  // A piece with no letters (a slide counter such as "03 / 03") is interface, not copy.
+  return n.length > 2 && /\p{L}/u.test(n) && !original.includes(n) && !allow.includes(n);
 });
 console.log(JSON.stringify({ original: originalUrl, variant: variantUrl, pieces: variant.length, new: fresh }, null, 1));
 process.exit(fresh.length ? 1 : 0);
