@@ -1,139 +1,98 @@
 <!doctype html>
-<html lang="ar" dir="rtl">
+<html lang="en" dir="ltr">
 <head>
 <meta charset="utf-8">
 <meta name="viewport" content="width=device-width, initial-scale=1">
 <title>Altero</title>
-<link rel="icon" href="data:,">
+<!--
+  Altero showcase. One direction at a time, at full size, in tabs.
+  Reads run.json (the variants, the lead language) and each <id>/stylist.json (the pages, the tagline, the notes).
+  A variant whose page is not ready shows "Building" and appears by itself when its manifest lands.
+  Keys: left and right arrows or 1-9 switch tabs, D and M switch desktop and phone.
+-->
 <style>
   :root {
-    --ground: #0e0e0d;
-    --panel: #161615;
-    --rule: #2a2a28;
-    --ink: #ecebe6;
-    --muted: #8d8b84;
-    --accent: #d8c49a;
-    --radius: 10px;
-    color-scheme: dark;
+    --ink: #0d0d0d; --bar: #141414; --line: #2a2a2a; --paper: #f4f3ef; --muted: #9a9890;
+    --accent: #f2660f; --stage: #1b1b1b;
+    --ease: cubic-bezier(0.22, 1, 0.36, 1);
   }
   * { box-sizing: border-box; }
-  html, body { margin: 0; background: var(--ground); color: var(--ink); }
-  body {
-    font: 14px/1.5 system-ui, -apple-system, "Segoe UI", "Noto Sans Arabic", "Geeza Pro", Tahoma, sans-serif;
-    min-height: 100vh;
-  }
-  :lang(ar) body { line-height: 1.7; }
+  html, body { margin: 0; height: 100%; background: var(--ink); color: var(--paper); }
+  body { font: 14px/1.45 system-ui, -apple-system, "Segoe UI", "Noto Sans Arabic", Tahoma, sans-serif; display: grid; grid-template-rows: auto auto 1fr; overflow: hidden; }
+  button, a { font: inherit; color: inherit; }
+  button { cursor: pointer; }
+  :focus-visible { outline: 2px solid var(--accent); outline-offset: 2px; }
 
-  header {
-    position: sticky; inset-block-start: 0; z-index: 10;
-    display: flex; flex-wrap: wrap; align-items: center; gap: 12px 24px;
-    padding: 14px 24px;
-    background: color-mix(in srgb, var(--ground) 88%, transparent);
-    backdrop-filter: blur(8px);
-    border-block-end: 1px solid var(--rule);
-  }
-  .brand { display: flex; align-items: baseline; gap: 10px; margin-inline-end: auto; }
-  .brand b { font-size: 16px; font-weight: 600; letter-spacing: 0; }
-  .brand span { color: var(--muted); }
-  .controls { display: flex; flex-wrap: wrap; gap: 10px; }
-  .seg {
-    display: inline-flex; border: 1px solid var(--rule); border-radius: 999px; padding: 3px;
-  }
-  .seg button {
-    appearance: none; border: 0; background: transparent; color: var(--muted);
-    font: inherit; padding: 5px 14px; border-radius: 999px; cursor: pointer;
-    transition: background-color 160ms cubic-bezier(0.22, 1, 0.36, 1), color 160ms cubic-bezier(0.22, 1, 0.36, 1);
-  }
-  .seg button[aria-pressed="true"] { background: var(--ink); color: var(--ground); }
-  .seg button:focus-visible, .pick:focus-visible, .open:focus-visible, .tab:focus-visible {
-    outline: 2px solid var(--accent); outline-offset: 2px;
-  }
+  .bar { display: grid; grid-template-columns: 1fr auto 1fr; align-items: center; gap: 16px; padding: 10px 18px; background: var(--bar); border-block-end: 1px solid var(--line); }
+  .brand { display: flex; align-items: baseline; gap: 10px; min-width: 0; }
+  .brand b { font-size: 15px; letter-spacing: .02em; }
+  .brand span { color: var(--muted); white-space: nowrap; overflow: hidden; text-overflow: ellipsis; }
+  .tabs { display: flex; gap: 4px; padding: 4px; background: var(--ink); border: 1px solid var(--line); border-radius: 999px; }
+  .tab { display: flex; align-items: center; gap: 8px; border: 0; background: transparent; color: var(--muted); padding: 8px 18px; border-radius: 999px; font-weight: 600; white-space: nowrap; transition: background .2s var(--ease), color .2s var(--ease); }
+  .tab:hover { color: var(--paper); }
+  .tab[aria-selected="true"] { background: var(--paper); color: var(--ink); }
+  .tab .dot { width: 7px; height: 7px; border-radius: 50%; background: var(--muted); }
+  .tab .dot.ready { background: #3ecf8e; }
+  .tab .dot.base { background: var(--accent); }
+  .tab .dot.building { background: #e8b931; animation: pulse 1.4s ease-in-out infinite; }
+  @keyframes pulse { 50% { opacity: .35; } }
+  .controls { display: flex; justify-content: flex-end; align-items: center; gap: 8px; }
+  .seg { display: inline-flex; padding: 3px; border: 1px solid var(--line); border-radius: 999px; }
+  .seg button { border: 0; background: transparent; color: var(--muted); padding: 6px 12px; border-radius: 999px; }
+  .seg button[aria-pressed="true"] { background: #2c2c2c; color: var(--paper); }
+  .btn { display: inline-flex; align-items: center; gap: 6px; border: 1px solid var(--line); background: transparent; padding: 7px 14px; border-radius: 999px; text-decoration: none; white-space: nowrap; }
+  .btn:hover { border-color: #444; }
+  .btn.primary { background: var(--accent); border-color: var(--accent); color: var(--ink); font-weight: 700; }
+  .btn[hidden], .seg[hidden] { display: none; }
 
-  main { padding: 24px; }
-  .grid { display: grid; gap: 20px; grid-template-columns: repeat(3, minmax(0, 1fr)); }
-  .grid.focus { grid-template-columns: minmax(0, 1fr); }
-  .grid.focus .panel:not(.active) { display: none; }
-  @media (max-width: 1100px) { .grid { grid-template-columns: minmax(0, 1fr); } }
+  .info { display: flex; align-items: center; gap: 14px; padding: 8px 18px; color: var(--muted); border-block-end: 1px solid var(--line); min-height: 38px; }
+  .info strong { color: var(--paper); font-weight: 600; }
+  .info .engine { font-size: 12px; border: 1px solid var(--line); border-radius: 999px; padding: 2px 10px; white-space: nowrap; }
+  .info .tagline { overflow: hidden; text-overflow: ellipsis; white-space: nowrap; }
+  .info a { color: var(--paper); margin-inline-start: auto; white-space: nowrap; }
 
-  .tabs { display: none; gap: 8px; margin-block-end: 16px; }
-  .tabs.show { display: flex; }
-  .tab {
-    appearance: none; font: inherit; cursor: pointer;
-    background: transparent; color: var(--muted);
-    border: 1px solid var(--rule); border-radius: 999px; padding: 6px 16px;
-  }
-  .tab[aria-selected="true"] { color: var(--ground); background: var(--accent); border-color: var(--accent); }
+  .stage { position: relative; background: var(--stage); overflow: hidden; }
+  .view { position: absolute; inset: 0; display: none; }
+  .view.active { display: block; animation: in .28s var(--ease); }
+  @keyframes in { from { opacity: 0; } }
+  .holder { position: absolute; overflow: hidden; background: #fff; }
+  .holder iframe { border: 0; display: block; transform-origin: 0 0; background: #fff; }
+  .phone .holder { border-radius: 28px; box-shadow: 0 0 0 10px #050505, 0 0 0 11px #333, 0 30px 80px rgba(0,0,0,.5); }
+  .waiting { position: absolute; inset: 0; display: grid; place-content: center; gap: 10px; text-align: center; color: var(--muted); }
+  .waiting b { color: var(--paper); font-size: 18px; }
+  .waiting i { width: 44px; height: 4px; margin: 0 auto; border-radius: 4px; background: linear-gradient(90deg, transparent, var(--accent), transparent); background-size: 200% 100%; animation: sweep 1.2s linear infinite; }
+  @keyframes sweep { to { background-position: -200% 0; } }
 
-  .panel {
-    background: var(--panel); border: 1px solid var(--rule); border-radius: var(--radius);
-    overflow: hidden; display: flex; flex-direction: column;
-  }
-  .panel-head {
-    display: flex; align-items: baseline; gap: 10px; padding: 14px 16px;
-    border-block-end: 1px solid var(--rule);
-  }
-  .panel-head .n { color: var(--accent); font-variant-numeric: tabular-nums; }
-  .panel-head h2 { margin: 0; font-size: 15px; font-weight: 600; }
-  .panel-head p { margin: 0; color: var(--muted); font-size: 13px; margin-inline-start: auto; text-align: end; }
-  .panel-head .engine {
-    font-size: 12px; color: var(--muted); border: 1px solid var(--rule); border-radius: 999px; padding: 1px 8px;
-    direction: ltr; unicode-bidi: isolate; font-variant-numeric: tabular-nums;
-  }
-  .missing { align-self: center; color: var(--accent); font-size: 13px; }
+  .toast { position: fixed; inset-block-end: 20px; inset-inline-start: 50%; transform: translate(-50%, 12px); background: var(--paper); color: var(--ink); padding: 10px 18px; border-radius: 999px; opacity: 0; pointer-events: none; transition: opacity .2s var(--ease), transform .2s var(--ease); font-weight: 600; }
+  .toast.show { opacity: 1; transform: translate(-50%, 0); }
 
-  .stage { position: relative; background: #000; overflow: hidden; }
-  .stage.mobile { display: flex; justify-content: center; background: #0a0a0a; padding-block: 16px; }
-  .frame { position: absolute; inset-block-start: 0; inset-inline-start: 0; border: 0; transform-origin: top left; background: #fff; }
-  [dir="rtl"] .frame { transform-origin: top right; }
-  .stage.mobile .frame { position: relative; inset: auto; border-radius: 22px; box-shadow: 0 0 0 1px var(--rule); }
-  .stage.mobile .frame-holder { position: relative; }
-
-  .panel-foot { display: flex; gap: 8px; padding: 12px 16px; border-block-start: 1px solid var(--rule); }
-  .open, .pick {
-    font: inherit; text-decoration: none; cursor: pointer;
-    border-radius: 999px; padding: 6px 14px; border: 1px solid var(--rule);
+  @media (max-width: 900px) {
+    .bar { grid-template-columns: 1fr; justify-items: center; }
+    .brand, .controls { justify-content: center; }
+    .tabs { max-width: 100%; overflow-x: auto; }
   }
-  .open { color: var(--ink); background: transparent; }
-  .pick { color: var(--ground); background: var(--ink); border-color: var(--ink); margin-inline-start: auto; }
-
-  .toast {
-    position: fixed; inset-block-end: 24px; inset-inline-start: 50%; transform: translateX(-50%) translateY(12px);
-    background: var(--ink); color: var(--ground); padding: 10px 18px; border-radius: 999px;
-    opacity: 0; pointer-events: none;
-    transition: opacity 200ms cubic-bezier(0.22, 1, 0.36, 1), transform 200ms cubic-bezier(0.22, 1, 0.36, 1);
-  }
-  [dir="rtl"] .toast { transform: translateX(50%) translateY(12px); }
-  .toast.show { opacity: 1; transform: translateX(-50%) translateY(0); }
-  [dir="rtl"] .toast.show { transform: translateX(50%) translateY(0); }
-
-  @media (prefers-reduced-motion: reduce) {
-    *, *::before, *::after { transition: none !important; }
-  }
+  @media (prefers-reduced-motion: reduce) { * { animation: none !important; transition: none !important; } }
 </style>
 </head>
 <body>
-<header>
+<header class="bar">
   <div class="brand"><b>Altero</b><span id="run-name"></span></div>
+  <nav class="tabs" id="tabs" role="tablist" aria-label="Directions"></nav>
   <div class="controls">
-    <div class="seg" role="group" id="g-lang" aria-label="Language">
-      <button type="button" data-lang="ar">العربية</button>
-      <button type="button" data-lang="en">English</button>
-    </div>
-    <div class="seg" role="group" id="g-view" aria-label="Viewport">
+    <div class="seg" id="g-view" role="group" aria-label="Viewport">
       <button type="button" data-view="desktop" data-i18n="desktop"></button>
       <button type="button" data-view="mobile" data-i18n="mobile"></button>
     </div>
-    <div class="seg" role="group" id="g-layout" aria-label="Layout">
-      <button type="button" data-layout="side" data-i18n="side"></button>
-      <button type="button" data-layout="focus" data-i18n="focus"></button>
+    <div class="seg" id="g-lang" role="group" aria-label="Language" hidden>
+      <button type="button" data-lang="ar">ع</button>
+      <button type="button" data-lang="en">EN</button>
     </div>
+    <a class="btn" id="open" target="_blank" rel="noopener" data-i18n="open"></a>
+    <button class="btn primary" id="pick" type="button" data-i18n="pick"></button>
   </div>
 </header>
-
-<main>
-  <div class="tabs" id="tabs" role="tablist"></div>
-  <div class="grid" id="grid"></div>
-</main>
+<div class="info" id="info"></div>
+<main class="stage" id="stage"></main>
 <div class="toast" id="toast" role="status" aria-live="polite"></div>
 
 <script>
@@ -141,14 +100,15 @@
   'use strict';
 
   var UI = {
-    ar: { desktop: 'ديسكتوب', mobile: 'موبايل', side: 'جنب بعض', focus: 'واحدة واحدة', open: 'افتح', pick: 'اختار دي',
-          notes: 'ملاحظات الستايلست', missing: 'الصفحة دي مش موجودة', degraded: 'شغال ناقص',
-          copied: 'اتنسخ — الصقه لـ Claude', pickText: function (id) { return 'Altero: اخترت نسخة "' + id + '"'; } },
-    en: { desktop: 'Desktop', mobile: 'Mobile', side: 'Side by side', focus: 'One at a time', open: 'Open', pick: 'Pick this',
-          notes: "Stylist's notes", missing: 'This page is missing', degraded: 'degraded',
-          copied: 'Copied — paste it to Claude', pickText: function (id) { return 'Altero: I pick "' + id + '"'; } }
+    ar: { desktop: 'ديسكتوب', mobile: 'موبايل', open: 'افتح', pick: 'اختار الاتجاه ده', notes: 'ملاحظات الستايلست',
+          building: 'جاري البناء', buildingHint: 'هيظهر هنا أول ما يخلص', missingLang: 'الاتجاه ده مالوش صفحة باللغة دي',
+          copied: 'اتنسخ، الصقه في المحادثة', current: 'موقعك الحالي، نسخة واجهة بس',
+          pickText: function (id) { return 'Altero: اخترت "' + id + '"'; } },
+    en: { desktop: 'Desktop', mobile: 'Phone', open: 'Open', pick: 'Pick this direction', notes: "Stylist's notes",
+          building: 'Building', buildingHint: 'It appears here as soon as it is done', missingLang: 'This direction has no page in this language',
+          copied: 'Copied, paste it in the chat', current: 'Your current site, front end only',
+          pickText: function (id) { return 'Altero: I pick "' + id + '"'; } }
   };
-
   var VIEWPORTS = { desktop: { w: 1440, h: 900 }, mobile: { w: 390, h: 844 } };
   var DEFAULT_VARIANTS = [
     { id: 'atelier', title: 'Atelier' },
@@ -156,172 +116,161 @@
     { id: 'cinema', title: 'Cinema' }
   ];
 
-  var state = { lang: 'ar', view: 'desktop', layout: 'side', active: 0, variants: DEFAULT_VARIANTS, run: null };
-  var grid = document.getElementById('grid');
-  var tabs = document.getElementById('tabs');
-  var observers = [];
+  var state = { lang: 'en', view: 'desktop', active: 0, variants: DEFAULT_VARIANTS, run: null };
+  var views = {};
+  var stage = document.getElementById('stage');
+  var $ = function (id) { return document.getElementById(id); };
+  var ui = function () { return UI[state.lang] || UI.en; };
 
-  function el(tag, cls, text) {
-    var n = document.createElement(tag);
-    if (cls) n.className = cls;
-    if (text != null) n.textContent = text;
-    return n;
-  }
+  function anyPage(v) { var p = v.manifest && v.manifest.pages; return !!(p && (p.ar || p.en)); }
+  function srcOf(v) { var p = v.manifest && v.manifest.pages; return p && p[state.lang] ? v.id + '/' + p[state.lang] : null; }
+  function text(t) { return !t ? '' : typeof t === 'string' ? t : (t[state.lang] || t.en || t.ar || ''); }
 
-  function tagline(v) {
-    var t = (v.manifest && v.manifest.tagline) || v.tagline;
-    if (!t) return '';
-    return typeof t === 'string' ? t : (t[state.lang] || '');
-  }
-
-  // Each stylist declares its pages in <id>/stylist.json, so every engine keeps its own layout.
-  function src(v) {
-    var pages = v.manifest && v.manifest.pages;
-    if (pages && pages[state.lang]) return v.id + '/' + pages[state.lang];
-    return 'about:blank';
-  }
-
-  function engineLabel(v) {
-    var m = v.manifest;
-    if (!m || !m.engine) return '';
-    var s = m.engine + (m.commit ? ' @ ' + String(m.commit).slice(0, 7) : '');
-    if (m.degraded && m.degraded.length) s += ' · ' + (UI[state.lang] || UI.en).degraded + ': ' + m.degraded.join(', ');
-    return s;
-  }
-
-  function fit(stage, holder, frame) {
-    var vp = VIEWPORTS[state.view];
-    var available = stage.clientWidth - (state.view === 'mobile' ? 32 : 0);
-    // Desktop never renders narrower than 1440px; wider stages show the page at their real width.
-    var w = state.view === 'desktop' ? Math.max(vp.w, available) : vp.w;
-    frame.style.width = w + 'px';
-    frame.style.height = vp.h + 'px';
-    var scale = Math.min(1, available / w);
-    frame.style.transform = 'scale(' + scale + ')';
+  // Desktop renders the page at 1440 wide (or wider) scaled to the stage width, filling the stage's height.
+  // Phone renders 390 wide in a device frame, scaled to fit the stage.
+  function fit(view) {
+    var holder = view.holder, frame = view.frame;
+    if (!frame) return;
+    var W = stage.clientWidth, H = stage.clientHeight;
     if (state.view === 'mobile') {
-      frame.style.transformOrigin = 'top center';
-      holder.style.width = vp.w * scale + 'px';
-      holder.style.height = vp.h * scale + 'px';
-      frame.style.position = 'absolute';
-      frame.style.insetInlineStart = (vp.w * scale - vp.w) / 2 + 'px';
-      stage.style.height = vp.h * scale + 32 + 'px';
+      var vp = VIEWPORTS.mobile, s = Math.min(1, (H - 48) / vp.h, (W - 48) / vp.w);
+      frame.style.width = vp.w + 'px'; frame.style.height = vp.h + 'px';
+      frame.style.transform = 'scale(' + s + ')';
+      holder.style.width = vp.w * s + 'px'; holder.style.height = vp.h * s + 'px';
+      holder.style.left = (W - vp.w * s) / 2 + 'px'; holder.style.top = (H - vp.h * s) / 2 + 'px';
     } else {
-      frame.style.transformOrigin = '';
-      frame.style.position = '';
-      frame.style.insetInlineStart = '';
-      holder.style.width = '';
-      holder.style.height = '';
-      stage.style.height = vp.h * scale + 'px';
+      var w = Math.max(VIEWPORTS.desktop.w, W), k = W / w;
+      frame.style.width = w + 'px'; frame.style.height = H / k + 'px';
+      frame.style.transform = 'scale(' + k + ')';
+      holder.style.width = W + 'px'; holder.style.height = H + 'px'; holder.style.left = '0'; holder.style.top = '0';
     }
+    view.el.classList.toggle('phone', state.view === 'mobile');
   }
 
-  function toast(msg) {
-    var t = document.getElementById('toast');
-    t.textContent = msg;
-    t.classList.add('show');
-    clearTimeout(toast.timer);
-    toast.timer = setTimeout(function () { t.classList.remove('show'); }, 2200);
-  }
-
-  function copy(text) {
-    var done = function () { toast(UI[state.lang].copied); };
-    if (navigator.clipboard && window.isSecureContext) {
-      navigator.clipboard.writeText(text).then(done, function () { prompt('', text); });
+  // One view per variant, language and viewport, kept alive so switching tabs is instant.
+  function ensureView(v) {
+    var key = v.id + '|' + state.lang + '|' + state.view;
+    var view = views[key];
+    var src = srcOf(v);
+    if (view && view.src === src) return view;
+    if (view) view.el.remove();
+    var el = document.createElement('section');
+    el.className = 'view';
+    view = { el: el, src: src, holder: null, frame: null };
+    if (src) {
+      var holder = document.createElement('div');
+      holder.className = 'holder';
+      var frame = document.createElement('iframe');
+      frame.title = v.title;
+      frame.src = src;
+      holder.appendChild(frame);
+      el.appendChild(holder);
+      view.holder = holder; view.frame = frame;
     } else {
-      prompt('', text);
+      var w = document.createElement('div');
+      w.className = 'waiting';
+      var building = !anyPage(v);
+      w.innerHTML = '<b></b><span></span>' + (building ? '<i></i>' : '');
+      w.querySelector('b').textContent = building ? ui().building : v.title;
+      w.querySelector('span').textContent = building ? ui().buildingHint : ui().missingLang;
+      el.appendChild(w);
+    }
+    stage.appendChild(el);
+    views[key] = view;
+    return view;
+  }
+
+  function renderTabs() {
+    var tabs = $('tabs');
+    tabs.textContent = '';
+    state.variants.forEach(function (v, i) {
+      var b = document.createElement('button');
+      b.type = 'button'; b.className = 'tab'; b.setAttribute('role', 'tab');
+      b.setAttribute('aria-selected', String(i === state.active));
+      var dot = document.createElement('span');
+      dot.className = 'dot ' + (v.id === 'base' ? 'base' : anyPage(v) ? 'ready' : 'building');
+      b.appendChild(dot);
+      b.appendChild(document.createTextNode(v.title));
+      b.addEventListener('click', function () { select(i); });
+      tabs.appendChild(b);
+    });
+  }
+
+  function renderInfo(v) {
+    var info = $('info');
+    info.textContent = '';
+    var name = document.createElement('strong'); name.textContent = v.title; info.appendChild(name);
+    var m = v.manifest || {};
+    if (v.id !== 'base' && m.engine) {
+      var e = document.createElement('span'); e.className = 'engine';
+      e.textContent = m.engine + (m.commit ? ' @ ' + String(m.commit).slice(0, 7) : '');
+      info.appendChild(e);
+    }
+    var t = document.createElement('span'); t.className = 'tagline';
+    t.textContent = v.id === 'base' ? ui().current : text(m.tagline);
+    info.appendChild(t);
+    if (m.notes && v.id !== 'base') {
+      var a = document.createElement('a'); a.href = v.id + '/' + m.notes; a.target = '_blank'; a.rel = 'noopener';
+      a.textContent = ui().notes; info.appendChild(a);
     }
   }
 
   function render() {
-    var ui = UI[state.lang];
     document.documentElement.lang = state.lang;
     document.documentElement.dir = state.lang === 'ar' ? 'rtl' : 'ltr';
-    document.querySelectorAll('[data-i18n]').forEach(function (n) { n.textContent = ui[n.getAttribute('data-i18n')]; });
-    document.querySelectorAll('#g-lang button').forEach(function (b) { b.setAttribute('aria-pressed', String(b.dataset.lang === state.lang)); });
+    document.querySelectorAll('[data-i18n]').forEach(function (n) { n.textContent = ui()[n.getAttribute('data-i18n')]; });
     document.querySelectorAll('#g-view button').forEach(function (b) { b.setAttribute('aria-pressed', String(b.dataset.view === state.view)); });
-    document.querySelectorAll('#g-layout button').forEach(function (b) { b.setAttribute('aria-pressed', String(b.dataset.layout === state.layout)); });
-    document.getElementById('run-name').textContent = state.run && state.run.name ? state.run.name : '';
+    document.querySelectorAll('#g-lang button').forEach(function (b) { b.setAttribute('aria-pressed', String(b.dataset.lang === state.lang)); });
+    // The current site is one language; offer the switch only when a direction has both.
+    var bilingual = state.variants.some(function (v) { var p = v.id !== 'base' && v.manifest && v.manifest.pages; return p && p.ar && p.en; });
+    $('g-lang').hidden = !bilingual;
+    $('run-name').textContent = state.run && state.run.name ? state.run.name : '';
 
-    observers.forEach(function (o) { o.disconnect(); });
-    observers = [];
-    grid.textContent = '';
-    tabs.textContent = '';
-    grid.classList.toggle('focus', state.layout === 'focus');
-    tabs.classList.toggle('show', state.layout === 'focus');
+    var v = state.variants[state.active];
+    renderTabs();
+    renderInfo(v);
+    Object.keys(views).forEach(function (k) { views[k].el.classList.remove('active'); });
+    var view = ensureView(v);
+    view.el.classList.add('active');
+    fit(view);
 
-    state.variants.forEach(function (v, i) {
-      var tab = el('button', 'tab', v.title);
-      tab.type = 'button';
-      tab.setAttribute('role', 'tab');
-      tab.setAttribute('aria-selected', String(i === state.active));
-      tab.addEventListener('click', function () { state.active = i; render(); });
-      tabs.appendChild(tab);
-
-      var panel = el('section', 'panel' + (i === state.active ? ' active' : ''));
-      var head = el('div', 'panel-head');
-      head.appendChild(el('span', 'n', String(i + 1).padStart(2, '0')));
-      head.appendChild(el('h2', null, v.title));
-      if (engineLabel(v)) head.appendChild(el('span', 'engine', engineLabel(v)));
-      head.appendChild(el('p', null, tagline(v)));
-
-      var stage = el('div', 'stage' + (state.view === 'mobile' ? ' mobile' : ''));
-      var holder = el('div', 'frame-holder');
-      var frame = el('iframe', 'frame');
-      frame.title = v.title;
-      frame.loading = 'lazy';
-      frame.src = src(v);
-      holder.appendChild(frame);
-      stage.appendChild(holder);
-
-      var foot = el('div', 'panel-foot');
-      var open = el('a', 'open', ui.open);
-      open.href = src(v);
-      open.target = '_blank';
-      open.rel = 'noopener';
-      var pick = el('button', 'pick', ui.pick);
-      pick.type = 'button';
-      pick.addEventListener('click', function () { copy(ui.pickText(v.id)); });
-      foot.appendChild(open);
-      if (v.manifest && v.manifest.notes) {
-        var notes = el('a', 'open', ui.notes);
-        notes.href = v.id + '/' + v.manifest.notes;
-        notes.target = '_blank';
-        notes.rel = 'noopener';
-        foot.appendChild(notes);
-      }
-      if (!v.manifest || !v.manifest.pages || !v.manifest.pages[state.lang]) {
-        foot.appendChild(el('span', 'missing', ui.missing));
-      }
-      if (v.id !== 'base') foot.appendChild(pick);
-
-      panel.appendChild(head);
-      panel.appendChild(stage);
-      panel.appendChild(foot);
-      grid.appendChild(panel);
-
-      var ro = new ResizeObserver(function () { fit(stage, holder, frame); });
-      ro.observe(stage);
-      observers.push(ro);
-    });
+    var src = srcOf(v);
+    $('open').hidden = !src;
+    if (src) $('open').href = src;
+    $('pick').hidden = v.id === 'base' || !src;
+    history.replaceState(null, '', '#' + v.id + '/' + state.view + '/' + state.lang);
   }
 
-  document.getElementById('g-lang').addEventListener('click', function (e) {
-    var b = e.target.closest('button'); if (!b || b.dataset.lang === state.lang) return;
-    state.lang = b.dataset.lang; render();
+  function select(i) {
+    state.active = (i + state.variants.length) % state.variants.length;
+    render();
+  }
+
+  $('g-view').addEventListener('click', function (e) { var b = e.target.closest('button'); if (b) { state.view = b.dataset.view; render(); } });
+  $('g-lang').addEventListener('click', function (e) { var b = e.target.closest('button'); if (b) { state.lang = b.dataset.lang; render(); } });
+  $('pick').addEventListener('click', function () {
+    var copyText = ui().pickText(state.variants[state.active].id);
+    var done = function () { var t = $('toast'); t.textContent = ui().copied; t.classList.add('show'); setTimeout(function () { t.classList.remove('show'); }, 2200); };
+    if (navigator.clipboard && window.isSecureContext) navigator.clipboard.writeText(copyText).then(done, function () { prompt('', copyText); });
+    else prompt('', copyText);
   });
-  document.getElementById('g-view').addEventListener('click', function (e) {
-    var b = e.target.closest('button'); if (!b) return;
-    state.view = b.dataset.view; render();
+  document.addEventListener('keydown', function (e) {
+    if (e.target.closest && e.target.closest('input, textarea')) return;
+    var rtl = state.lang === 'ar';
+    if (e.key === 'ArrowRight') select(state.active + (rtl ? -1 : 1));
+    else if (e.key === 'ArrowLeft') select(state.active + (rtl ? 1 : -1));
+    else if (/^[1-9]$/.test(e.key) && +e.key <= state.variants.length) select(+e.key - 1);
+    else if (e.key === 'd' || e.key === 'D') { state.view = 'desktop'; render(); }
+    else if (e.key === 'm' || e.key === 'M') { state.view = 'mobile'; render(); }
   });
-  document.getElementById('g-layout').addEventListener('click', function (e) {
-    var b = e.target.closest('button'); if (!b) return;
-    state.layout = b.dataset.layout; render();
-  });
+  new ResizeObserver(function () {
+    var v = state.variants[state.active];
+    var view = views[v.id + '|' + state.lang + '|' + state.view];
+    if (view) fit(view);
+  }).observe(stage);
 
   function getJSON(url) {
-    return fetch(url, { cache: 'no-store' })
-      .then(function (r) { return r.ok ? r.json() : null; })
-      .catch(function () { return null; });
+    return fetch(url, { cache: 'no-store' }).then(function (r) { return r.ok ? r.json() : null; }).catch(function () { return null; });
   }
 
   getJSON('run.json').then(function (run) {
@@ -331,20 +280,21 @@
       var lead = run.lead || run.primary;
       if (lead === 'en' || lead === 'ar') state.lang = lead;
     }
-    var q = new URLSearchParams(location.search);
-    if (q.get('lang') === 'ar' || q.get('lang') === 'en') state.lang = q.get('lang');
-    return Promise.all(state.variants.map(function (v) {
-      return getJSON(v.id + '/stylist.json').then(function (m) { v.manifest = m; });
-    }));
+    var h = location.hash.slice(1).split('/');
+    var at = state.variants.findIndex(function (v) { return v.id === h[0]; });
+    if (at >= 0) state.active = at;
+    if (h[1] === 'mobile' || h[1] === 'desktop') state.view = h[1];
+    if (h[2] === 'ar' || h[2] === 'en') state.lang = h[2];
+    return Promise.all(state.variants.map(function (v) { return getJSON(v.id + '/stylist.json').then(function (m) { v.manifest = m; }); }));
   }).then(render).then(function () {
-    // Stylists finish at different times: pick up pages and manifests as they appear, without a reload.
+    // Stylists finish at different times: pick up their pages as they land, without a reload.
     var polls = 0;
     var timer = setInterval(function () {
       polls += 1;
-      var waiting = state.variants.filter(function (v) { return !v.manifest || !v.manifest.pages || !v.manifest.pages.ar && !v.manifest.pages.en; });
+      var waiting = state.variants.filter(function (v) { return !anyPage(v); });
       if (!waiting.length || polls > 360) { clearInterval(timer); return; }
       Promise.all(waiting.map(function (v) {
-        return getJSON(v.id + '/stylist.json').then(function (m) { if (m) v.manifest = m; return !!m; });
+        return getJSON(v.id + '/stylist.json').then(function (m) { if (m) v.manifest = m; return !!(m && m.pages); });
       })).then(function (found) { if (found.some(Boolean)) render(); });
     }, 5000);
   });

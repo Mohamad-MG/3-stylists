@@ -1,5 +1,10 @@
 # Changelog
 
+## 0.9.1 — 2026-11-25
+
+### Changed
+- **The showcase shows one direction at a time, at full size, in tabs**, instead of a grid of small frames. Current site comes first. Desktop renders at 1440 and scales to the window; Phone renders at 390 in a device frame. A tab still building says so and fills in by itself. The arrow keys switch tabs, and each view stays loaded, so switching is instant.
+
 ## 0.9.0 — 2026-11-25
 
 ### Changed
