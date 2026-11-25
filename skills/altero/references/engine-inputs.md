@@ -9,7 +9,7 @@ Two contract rules travel inside every engine input, so each engine plans for th
 
 - **Phone line:** The phone version is designed as its own composition, not reflowed: sections may be reordered, merged, cut or replaced and restyled for the phone.
 - **Copy line:** No full stop at the end of any interface text, in Arabic or English (headlines, buttons, labels, card text, captions, ledes). Join two ideas with a comma or split them into two lines. Long-form reading text (legal pages, article bodies) is exempt.
-- **Page line (only when a snapshot exists):** The user's real page is in `page/`, a front-end-only copy. Rebuild it in your direction, keep its real content and the meaning of its structure, invent nothing, and treat forms and live data as out of scope: they do not work in the copy and need no work. Append it as the last line of every engine input file, after the five choices from `answers.md` and the stylist's entry from `directions.md`.
+- **Page line (only when a snapshot exists):** The user's real page is in `page/`, a front-end-only copy. Rebuild it in your direction with its own text, word for word: you may cut, reorder and split lines, but never reword one or add one. Keep the meaning of its structure, invent nothing, and treat forms and live data as out of scope: they do not work in the copy and need no work. Append it as the last line of every engine input file, after the five choices from `answers.md` and the stylist's entry from `directions.md`.
 
 ---
 

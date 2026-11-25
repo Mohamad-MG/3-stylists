@@ -28,7 +28,7 @@ agents/stylist.md                one isolated stylist; Explore starts it once pe
 internal/contract.md             Explore: who owns what, precedence, collisions, deliverables
 internal/adapters/<id>.md        Explore: how to run one engine
 engines/registry.json            pinned engines: repository, commit, licence, role, required paths
-scripts/                         engines, snapshot, env-probe, rtl-edges, fetch-font, ttf2woff2, lib, sync-manifests
+scripts/                         engines, snapshot, copy-diff, env-probe, rtl-edges, fetch-font, ttf2woff2, lib, sync-manifests
 test/package.test.mjs            package checks, run with node --test
 docs/                            the research behind the engine choices
 .github/assets/                  README art: static SVG, display lettering outlined so no font is needed

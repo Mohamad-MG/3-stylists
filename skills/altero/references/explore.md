@@ -79,7 +79,7 @@ The engines want reviewers with a fresh context, and so does the phone layer. A 
 Never add your own opinion to any of these messages.
 
 ## 8. Gate
-Read `<refs>/gate-checklist.md`. For each variant: confirm its engine gate result in `NOTES.md` (for Atelier on an RTL page, the split result its adapter defines, backed by `scripts/rtl-edges.mjs`), then run the technical checks on both language pages at 390 and 1440 in a real browser with web fonts loaded. Fix only what the checklist allows; send anything else back to the stylist. Write `gate-report.md`. A variant whose Arabic was only seen in fallback fonts is **unverified**, not passed.
+Read `<refs>/gate-checklist.md`. For each variant: confirm its engine gate result in `NOTES.md` (for Atelier on an RTL page, the split result its adapter defines, backed by `scripts/rtl-edges.mjs`), then run the technical checks on both language pages at 390 and 1440 in a real browser with web fonts loaded. Fix only what the checklist allows; send anything else back to the stylist. On a snapshot run, also run the copy lock (`scripts/copy-diff.mjs`) for each variant. Then the jury screening (section F) holds every variant to a premium bar. Write `gate-report.md`. A variant whose Arabic was only seen in fallback fonts is **unverified**, not passed.
 
 ## 9. Showcase
 Start the showcase **as soon as the snapshot exists**, not when the stylists finish:

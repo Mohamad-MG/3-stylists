@@ -26,7 +26,7 @@ Which engine each stylist runs, at which commit, and which engines support it: `
 | Level | Source | Covers |
 |---|---|---|
 | 0 | Hard limits | honesty (no invented facts, claims, reviews or figures), licences, privacy, safety |
-| 1 | This contract | the facts lock, the deliverables, isolation, unattended behaviour, the Arabic layer, the interface punctuation rule, the phone rule |
+| 1 | This contract | the facts lock, the copy lock on a snapshot run, the deliverables, isolation, unattended behaviour, the Arabic layer, the interface punctuation rule, the phone rule |
 | 2 | The stylist's **primary engine** | everything about the design, including its mandatory steps and its own gates |
 | 3 | Support engines | only what level 2 leaves open or delegates |
 | 4 | Defaults | only when nothing above speaks |
@@ -43,7 +43,7 @@ Level 1 is deliberately thin. It says *what must be delivered*, never *how it sh
 | An engine marks assumed facts invisibly (Taste's `data-assumed`) | The contract adds a visible marker; every engine carries `data-assumed` so the gate can count them (`<refs>/facts-schema.md`). |
 | A service or capability is missing on this machine (Impeccable's roll service, image generation, stock photographs) | `<plugin>/scripts/env-probe.mjs` finds it before the interview, the user is told what it costs, the engine runs its own documented degraded path, and `stylist.json → degraded` shows it in the showcase. |
 | An engine asks the user (Impeccable's decision page and init, cinematic-ui's asset call) | The interview already captured the answers. The adapter maps them to the engine's questions. Anything uncovered follows the engine's own documented unattended path, and the stylist says so in `NOTES.md`. |
-| An engine writes its own copy | Allowed and expected: the **facts** are locked, not the words. Every claim must trace to `facts.json`. |
+| An engine writes its own copy | **From a brief:** allowed and expected; the facts are locked, not the words, and every claim must trace to `facts.json`. **From a snapshot:** the words are locked too. The page's text is the user's, so every visible piece of text must already exist on `base/`: a stylist may cut, reorder and split it, never reword it or add a line. Taste's copy layer is run on the page's own text instead of writing new copy. `<plugin>/scripts/copy-diff.mjs` lists any new line, and the gate fails it. |
 | A support engine contradicts the primary engine (Emil's motion against Taste's motion layer) | The primary engine wins. Emil's motion skills are not configured for Atelier for this reason. `break-ui` and `mobile-native` test behaviour only, so they run for all three. |
 | Latin type when **Arabic leads** | The Arabic face is chosen first from `<refs>/arabic-type/`; the engine picks the Latin from that face's tested partners. Rejected partners listed in the catalog are never used. The override is recorded in `NOTES.md`. |
 | Latin type when **English leads** | The engine chooses the Latin freely. The Arabic face comes from the catalog; if the Latin is a tested partner, the pair's numbers apply, otherwise size and weights are computed and verified. |

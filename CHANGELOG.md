@@ -1,5 +1,14 @@
 # Changelog
 
+## 0.9.0 — 2026-11-25
+
+### Changed
+- **Copy lock on snapshot runs.** The page's text is the user's: a stylist may cut, reorder and split it, never reword it or add a line. Atelier runs Taste's copy layer on the page's own text instead of writing new copy. Found in the first real run, where one direction added 20 lines that were not on the page.
+- **A premium bar at the gate.** A fresh-eyes jury scores every variant with the award rubric (design, usability, creativity, content). Under 7.0, the variant goes back to its stylist once with the named anti-patterns.
+
+### Added
+- `scripts/copy-diff.mjs`: lists the visible text of a variant that is not on the original page.
+
 ## 0.8.1 — 2026-11-25
 
 ### Changed

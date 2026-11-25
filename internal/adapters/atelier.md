@@ -19,7 +19,7 @@ It needs Node 22+ and Chrome (`engines.mjs doctor`). The project folder for ever
 Read Taste's SKILL.md in full, then `copy.md`, `copy-voice.md`, `system.md`, `layout-v4.md` and `sections.md`, as it requires before the first page. Then:
 0. **Stack:** an empty folder → copy `<skill>/assets` into `atelier/assets` and start from `assets/starter.html`.
 1. **Read the brief** from `taste-brief.md`, then arm the gate **before any page exists**: `node <skill>/scripts/gate.mjs --start index.html --kind <kind> --category "<what is sold>" --primary "<main action>"`.
-2. **Write all the copy first** with Taste's copy layer, from `facts.json`.
+2. **Write all the copy first** with Taste's copy layer, from `facts.json`. **On a snapshot run, do not write copy:** the copy is the text already on `page/`, word for word. Use Taste's copy layer only to decide what to cut, how to order it and where to split a long line, and run `copy-lint.mjs` on that text for its punctuation and length checks. Before handing back, `node <plugin>/scripts/copy-diff.mjs <base-url> <your-page-url>` must list nothing.
 3. **Plan the page as screens.**
 4. **Deal, never choose by taste:** run its dealers with `--history .taste-skill/…` exactly as written; take the first palette and pairing it prints (its own exceptions apply). If `taste-brief.md` gives the client's own colours, use `start.mjs brand` instead, as Taste says.
 5. **Build** in `starter.html` as written.

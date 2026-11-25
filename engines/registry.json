@@ -224,6 +224,9 @@
       "role": {
         "support": [
           "cinema"
+        ],
+        "gate": [
+          "all"
         ]
       },
       "sparse": [

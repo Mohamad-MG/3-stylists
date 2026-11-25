@@ -14,7 +14,7 @@ Explore fetches these tools at run time into the user's own cache, at the exact 
 | [Emil Kowalski's skills](https://github.com/emilkowalski/skills) | MIT | motion detail for Manifesto and Cinema; behaviour checks for all three |
 | [GSAP skills](https://github.com/greensock/gsap-skills) | MIT | correct GSAP code for Manifesto and Cinema |
 | [Three.js skills](https://github.com/CloudAI-X/threejs-skills) | MIT | correct Three.js code for Cinema |
-| [Awwwards skill](https://github.com/SandroHub013/awwwards-skill) | MIT | the jury rubric in Cinema's screening |
+| [Awwwards skill](https://github.com/SandroHub013/awwwards-skill) | MIT | the jury rubric in Cinema's screening, and the premium bar every variant meets at the gate |
 | [Meng To's skills](https://github.com/MengTo/Skills) | MIT | scroll and WebGL techniques for Cinema |
 | [UI Skills](https://github.com/ibelick/ui-skills) | MIT | accessibility checks in the gate |
 

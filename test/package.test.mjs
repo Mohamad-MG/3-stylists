@@ -93,6 +93,10 @@ test('Explore asks five questions, from a snapshot of the real page', () => {
   const explore = read(REFS + '/explore.md');
   for (const needle of ['scripts/snapshot.mjs', 'directions.md', 'Five questions', 'Apply one']) assert.ok(explore.includes(needle), 'explore.md does not mention ' + needle);
   assert.ok(existsSync(at('scripts/snapshot.mjs')));
+  // On a snapshot run the page's words are locked, and the gate can prove it.
+  assert.ok(existsSync(at('scripts/copy-diff.mjs')));
+  assert.match(read('skills/altero/references/gate-checklist.md'), /copy-diff\.mjs/);
+  assert.match(read('internal/adapters/atelier.md'), /snapshot run, do not write copy/);
 });
 
 test('every engine in the registry is credited in SOURCES.md', () => {
