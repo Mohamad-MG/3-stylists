@@ -32,7 +32,14 @@ if (!startUrl || !outDir) {
 }
 const origin = new URL(startUrl).origin;
 const entry = new URL(startUrl);
-if (!pages.length) pages.push(entry.pathname + entry.search);
+// The URL's own page always comes first; --page adds more. Git Bash on Windows rewrites a bare
+// "/ar" into a drive path, so a value that looks like one is read back as the path it stood for.
+for (let i = 0; i < pages.length; i++) {
+  const m = /^[A-Za-z]:[\\/](?:Program Files\/)?Git(\/.*)$/.exec(pages[i]);
+  if (m) pages[i] = m[1];
+}
+const own = entry.pathname + entry.search;
+if (!pages.includes(own)) pages.unshift(own);
 
 const pw = findPlaywright();
 const chrome = chromePath();
@@ -67,8 +74,8 @@ const { chromium } = pw.load();
 const browser = await chromium.launch({ executablePath: chrome, headless: true });
 const probe = existsSync(probeFile) ? readFileSync(probeFile, 'utf8') : null;
 const baseline = {};
-let firstPage = '';
-let firstLang = '';
+// Each snapshotted page by its own language, so the showcase opens the right one per language.
+const byLang = {};
 
 for (const pagePath of pages) {
   for (const [name, width, height, mobile] of [['d1440', 1440, 900, false], ['m390', 390, 844, true]]) {
@@ -102,11 +109,9 @@ for (const pagePath of pages) {
     }
     await page.waitForTimeout(1200);
     await page.evaluate(() => window.scrollTo(0, 0));
-    // The first page decides the manifest: where it was saved (after any redirect) and its language.
-    if (!firstPage) {
-      firstPage = target(new URL(page.url()), 'text/html').replace(/^\//, '');
-      firstLang = (await page.evaluate(() => document.documentElement.lang || '')).slice(0, 2).toLowerCase();
-    }
+    // Where the page was saved (after any redirect) and its language; the first page per language wins.
+    const lang = (await page.evaluate(() => document.documentElement.lang || '')).slice(0, 2).toLowerCase() === 'ar' ? 'ar' : 'en';
+    if (!byLang[lang]) byLang[lang] = target(new URL(page.url()), 'text/html').replace(/^\//, '');
     if (probe) {
       try { baseline[pagePath + ' @' + name] = await page.evaluate('(' + probe + '\n)({})'); } catch {}
     }
@@ -132,11 +137,10 @@ const manifest = {
 writeFileSync(path.join(out, 'snapshot.json'), JSON.stringify(manifest, null, 1));
 writeFileSync(path.join(out, 'baseline.json'), JSON.stringify(baseline, null, 1));
 // The showcase lists the snapshot as "Current site", so it carries the same manifest every stylist does.
-const pageLang = firstLang === 'ar' ? 'ar' : 'en';
 writeFileSync(path.join(out, 'stylist.json'), JSON.stringify({
   engine: 'Current site, light copy',
-  lead: pageLang,
-  pages: { [pageLang]: firstPage || 'index.html' },
+  lead: Object.keys(byLang)[0] || 'en',
+  pages: Object.keys(byLang).length ? byLang : { en: 'index.html' },
   tagline: { ar: 'الموقع زي ما هو دلوقتي، نسخة واجهة بس', en: 'The site as it is now, front end only' },
 }, null, 1));
 console.log(`snapshot: ${saved.size} files, ${(bytes / 1048576).toFixed(1)} MB, ${pages.length} page(s) → ${out}`);

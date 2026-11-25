@@ -1,5 +1,11 @@
 # Changelog
 
+## 0.11.1 — 2026-11-25
+
+### Fixed
+- `snapshot.mjs` always captures the URL's own page first, even when `--page` names others, and reads back a `--page /ar` that Git Bash on Windows rewrote into a drive path.
+- The snapshot's `stylist.json` lists each captured page by its language (`{"en": "index.html", "ar": "ar/index.html"}`), so the showcase opens the right page per language for the current site too.
+
 ## 0.11.0 — 2026-11-25
 
 A consistency pass over the whole plugin.
