@@ -56,6 +56,18 @@ const skipped = [];
 const saved = new Set();
 let bytes = 0;
 
+function store(u, ct, body) {
+  if (body.length > 8 * 1048576) { skipped.push(u.pathname + ' (over 8 MB)'); return; }
+  if (bytes + body.length > maxMb * 1048576) { skipped.push(u.pathname + ' (over the size budget)'); return; }
+  const rel = target(u, ct);
+  const file = path.join(out, rel);
+  if (!path.resolve(file).startsWith(out)) return;
+  if (!saved.has(rel)) { bytes += body.length; saved.add(rel); }
+  mkdirSync(path.dirname(file), { recursive: true });
+  writeFileSync(file, body);
+  if (ct) types[rel] = ct.split(';')[0];
+}
+
 function target(u, contentType) {
   let p = decodeURIComponent(u.pathname);
   if (u.search) {
@@ -87,17 +99,7 @@ for (const pagePath of pages) {
         const kind = r.request().resourceType();
         if (u.origin !== origin || r.status() !== 200 || r.request().method() !== 'GET') return;
         if (['fetch', 'xhr', 'websocket', 'eventsource', 'ping'].includes(kind)) return;
-        const ct = r.headers()['content-type'] || '';
-        const body = await r.body();
-        if (body.length > 8 * 1048576) { skipped.push(u.pathname + ' (over 8 MB)'); return; }
-        if (bytes + body.length > maxMb * 1048576) { skipped.push(u.pathname + ' (over the size budget)'); return; }
-        const rel = target(u, ct);
-        const file = path.join(out, rel);
-        if (!path.resolve(file).startsWith(out)) return;
-        if (!saved.has(rel)) { bytes += body.length; saved.add(rel); }
-        mkdirSync(path.dirname(file), { recursive: true });
-        writeFileSync(file, body);
-        if (ct) types[rel] = ct.split(';')[0];
+        store(u, r.headers()['content-type'] || '', await r.body());
       } catch {}
     });
     await page.goto(new URL(pagePath, origin).href, { waitUntil: 'load', timeout: 60000 });
@@ -108,6 +110,33 @@ for (const pagePath of pages) {
       await page.waitForTimeout(350);
     }
     await page.waitForTimeout(1200);
+    // Images the page names but never showed (a carousel's hidden slides, the other breakpoint's
+    // sources) were never requested: fetch them too, or the copy shows broken images where the site does not.
+    const named = await page.evaluate(() => {
+      const urls = new Set();
+      // Only images that never loaded: one the browser already drew is saved in the form it chose.
+      for (const img of document.querySelectorAll('img')) {
+        if (img.currentSrc) continue;
+        const set = img.getAttribute('srcset');
+        if (img.getAttribute('src')) urls.add(img.getAttribute('src'));
+        else if (set) {
+          // With no src, one candidate from the set (the widest), not every width: the copy stays light.
+          const parts = set.split(',').map((p) => p.trim().split(/s+/)).filter((p) => p[0]);
+          parts.sort((x, y) => (parseFloat(y[1]) || 0) - (parseFloat(x[1]) || 0));
+          if (parts[0]) urls.add(parts[0][0]);
+        }
+      }
+      for (const v of document.querySelectorAll('video[poster]')) urls.add(v.getAttribute('poster'));
+      return [...urls].map((u) => { try { return new URL(u, location.href).href; } catch { return null; } }).filter(Boolean);
+    });
+    for (const href of named) {
+      const u = new URL(href);
+      if (u.origin !== origin || saved.has(target(u, ''))) continue;
+      try {
+        const r = await page.request.get(href);
+        if (r.ok()) store(u, r.headers()['content-type'] || '', await r.body());
+      } catch {}
+    }
     await page.evaluate(() => window.scrollTo(0, 0));
     // Where the page was saved (after any redirect) and its language; the first page per language wins.
     const lang = (await page.evaluate(() => document.documentElement.lang || '')).slice(0, 2).toLowerCase() === 'ar' ? 'ar' : 'en';

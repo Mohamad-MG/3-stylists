@@ -70,6 +70,17 @@ function snapshotOf(dir) {
   return snapshots.get(dir);
 }
 
+// A file with no extension (an API-served photo, say) takes its type from the nearest snapshot that holds it,
+// which may sit deeper than the folder the request resolved in (a stylist's page/ copy).
+function snapshotType(file) {
+  for (let dir = path.dirname(file); inside(root, dir); dir = path.dirname(dir)) {
+    const type = snapshotOf(dir)?.types?.['/' + path.relative(dir, file).split(path.sep).join('/')];
+    if (type) return type;
+    if (dir === root) break;
+  }
+  return null;
+}
+
 function locate(base, urlPath, search) {
   const snap = snapshotOf(base);
   const mapped = snap && snap.queryMap && snap.queryMap[urlPath + search];
@@ -129,7 +140,7 @@ const server = http.createServer((req, res) => {
     return;
   }
   res.writeHead(200, {
-    'Content-Type': MIME[path.extname(file).toLowerCase()] || (snapshotOf(hit.base)?.types?.['/' + path.relative(hit.base, file).split(path.sep).join('/')]) || 'application/octet-stream',
+    'Content-Type': MIME[path.extname(file).toLowerCase()] || snapshotType(file) || 'application/octet-stream',
     'Cache-Control': 'no-store'
   });
   fs.createReadStream(file).pipe(res);
