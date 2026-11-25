@@ -42,7 +42,7 @@ cinematic-ui gives the phone its own cut: `references/award-reel.md` §14 ("The 
 Run the two behaviour checks in `<plugin>/internal/contract.md` → Robustness before handback, and record them in `NOTES.md`.
 
 ## Bilingual
-Apply `<refs>/bilingual.md`. Produce the film in the **lead language**; the second language is a second cut of the same film, recomposed natively, never mirrored. Check `kit/type-fx.js` effects on the Arabic cut: Arabic is split by words or lines, never by characters. Screen both cuts. Arabic faces come from `<refs>/arabic-type/`, matched to the cast world's type.
+When the language scope has one language, build that page and skip the rest of this section. With two, apply `<refs>/bilingual.md`. Produce the film in the **lead language**; the second language is a second cut of the same film, recomposed natively, never mirrored. Check `kit/type-fx.js` effects on the Arabic cut: Arabic is split by words or lines, never by characters. Screen both cuts. Arabic faces come from `<refs>/arabic-type/`, matched to the cast world's type.
 
 ## Deliver
 - `NOTES.md` → **Phone cut**: the plan, the screening answers and what changed (`<refs>/phone.md`).

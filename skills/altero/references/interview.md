@@ -5,8 +5,8 @@ Exactly five, all about how the page should look and feel, all closed: **pick on
 ## What is never asked
 - **The call to action.** Every page ends in one: a WhatsApp button, a booking form, a phone number. Keep the page's own, and make sure each direction places it well. Whether it exists is not a question.
 - **Whether the proof is "strong enough".** This is marketing, not a courtroom: use what the page has, and do not invent anything.
-- **Images.** Each stylist may use the page's own photographs, and may also take better ones from a stock or image library when that clearly makes the page better (keep the licence in `NOTES.md`). When nothing better exists, it keeps the page's own images and uses them with care. AI-generated images only if the host has an image tool and the user has said yes before; never ask now.
-- **Languages and the slice.** The snapshot shows the languages. The slice is the page that was snapshotted, whole. Lead with the language the page leads with. Take these from `brief.md`.
+- **Images.** The premium floor decides (`<plugin>/internal/contract.md` → Premium floor, item 7): the business's own photographs for its work, results, team and premises; free library imagery for atmosphere, background and hero when it clearly lifts the page. AI-generated images only if the host has an image tool and the user has already agreed; never ask now.
+- **Languages and the slice.** The snapshot shows the languages, and the language scope follows them (`<plugin>/internal/contract.md` → Language scope). The slice is the page that was snapshotted, whole. Lead with the language the page leads with. Take these from `brief.md`.
 
 ## How to ask
 Ask all five together, in the user's language, with your structured question tool and its options. If the tool takes four at most, send four and the fifth straight after, without commentary in between. Give every option a short, concrete label and one line saying what it means for the page. The user may also answer "you choose" on any question: then the engine decides that axis by its own process.
@@ -68,7 +68,8 @@ positioning:          ...
 proof:                [...]         # what the page shows: reviews, work, address, hours
 brand_commitments:    [...]         # name, logo, and colours unless Q2 allows more
 assets:               [...]         # the page's own images, with paths
-image_policy:         own-first, better stock or library allowed when clearly better
+image_policy:         own photographs for the business's work; library imagery for atmosphere, background and hero (premium floor, item 7)
+languages:            [en] | [ar] | [ar, en]   # the language scope
 lead_language:        ar | en
 arabic_register:      egyptian | msa | gulf | levantine
 numerals:             western | arabic-indic

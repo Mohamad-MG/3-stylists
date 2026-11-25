@@ -18,7 +18,7 @@ How an interface reads natively in Arabic and in English. This layer decides **o
 - The same fact keeps the same number and the same unit in both languages.
 - An engine's English-only copy checks are waived on the Arabic page through that engine's waiver mechanism, with the reason stated.
 
-### Interface punctuation (both pages)
+### Interface punctuation (every page, any language)
 A full stop at the end of interface text reads as a document written by a machine. These pages are interfaces, not prose.
 - **No full stop** (`.` or `۔`) at the end of any interface string, in either language: headlines, subheads, ledes, buttons, links, nav, labels, badges, card titles and text, captions, prices, form hints, empty states, toasts.
 - **No full stop inside them either.** Two ideas in one line: join them with one comma (`،` in Arabic) or with و / "and", or split them into two lines or two elements.

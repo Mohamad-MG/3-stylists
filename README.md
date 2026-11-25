@@ -81,7 +81,7 @@ Start a new session in your project and name a mode and a target.
 /altero:polish Fix spacing and touch targets on the pricing page
 /altero:enhance Improve the quote request flow
 /altero:build Build the first page from my brief
-/altero:explore Compare three bilingual directions for my brief
+/altero:explore Show me three directions for my homepage
 ~~~
 
 In Codex and ChatGPT there are no slash commands. Say it in a sentence, or type `@` and pick the plugin:
@@ -98,7 +98,7 @@ Use Altero to audit the mobile product page. Findings only.
 | **polish** | The design is right and the details are not | Small fixes inside the existing design, with before and after evidence |
 | **enhance** | One journey or surface underperforms | Scoped changes to that journey, checked by using it |
 | **build** | You are starting from a brief | A working first slice in your stack |
-| **explore** | You want to see directions before you commit | Three independent Arabic and English variants to pick from |
+| **explore** | You want to see directions before you commit | Three independent directions of your page, one to apply |
 
 > [!TIP]
 > **An existing project:** start with `audit` on a page you know well, then `polish` or `enhance` what it finds.

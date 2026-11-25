@@ -1,6 +1,6 @@
 {
   "name": "altero",
-  "description": "Audit, polish, enhance, or build web interfaces. Explore three bilingual directions on demand.",
+  "description": "Audit, polish, enhance, or build web interfaces, measured in a real browser. Explore three design directions on demand.",
   "owner": {
     "name": "Altero contributors"
   },
@@ -8,7 +8,7 @@
     {
       "name": "altero",
       "source": "./",
-      "description": "Audit, polish, enhance, or build web interfaces. Explore three bilingual directions on demand."
+      "description": "Audit, polish, enhance, or build web interfaces, measured in a real browser. Explore three design directions on demand."
     }
   ]
 }

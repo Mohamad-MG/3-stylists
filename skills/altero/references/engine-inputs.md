@@ -5,10 +5,10 @@ Each engine performs best when it reads the inputs it was designed for. Write th
 Mark every inferred fact `(inferred)`. State absences plainly ("no product photographs exist"), because two of the engines are built to refuse fabrication and need to know what is missing.
 
 ## Contract lines
-Two contract rules travel inside every engine input, so each engine plans for them from the start. Wherever a template below says `<phone line>` or `<copy line>`, paste the line verbatim:
+Contract rules travel inside every engine input, so each engine plans for them from the start. Wherever a template below says `<phone line>` or `<copy line>`, paste the line verbatim; the Premium line and, on a snapshot run, the Page line go at the end of every input file:
 
 - **Phone line:** The phone version is designed as its own composition, not reflowed: sections may be reordered, merged, cut or replaced and restyled for the phone.
-- **Copy line:** No full stop at the end of any interface text, in Arabic or English (headlines, buttons, labels, card text, captions, ledes). Join two ideas with a comma or split them into two lines. Long-form reading text (legal pages, article bodies) is exempt.
+- **Copy line:** Interface text in any language (headlines, buttons, labels, card text, captions, ledes, testimonials) has no closing full stop, no decorative quotation marks and no ellipsis. Join two ideas with a comma or split them into two lines, and let a quotation read as one by its setting and attribution. Long-form reading text (legal pages, article bodies) is exempt.
 - **Premium line:** Meet the premium floor in `<plugin>/internal/contract.md`: a designed header with scroll state, a hero entrance with the main action visible within 200ms, background depth with slow ambient motion that belongs to this industry, designed hover, focus and press states, one motion system, and modern library imagery where it clearly lifts the page (never as the business's own work). Your motion role: <lead | supporting>. Evidence each item in NOTES.md.
 - **Page line (only when a snapshot exists):** The user's real page is in `page/`, a front-end-only copy. Rebuild it in your direction with its own text, word for word: you may cut, reorder and split lines, but never reword one or add one. Keep the meaning of its structure, invent nothing, and treat forms and live data as out of scope: they do not work in the copy and need no work. Append it as the last line of every engine input file, after the five choices from `answers.md`, the stylist's entry from `directions.md` and the Premium line.
 
@@ -16,7 +16,7 @@ Two contract rules travel inside every engine input, so each engine plans for th
 
 ## Manifesto → Impeccable: `manifesto/PRODUCT.md`
 
-Impeccable's init writes this file after interviewing. The Explore interview already did that interview, so write it in Impeccable's exact schema. Then Impeccable's completion gate is satisfied and its own init does not run again. Copy the schema comment verbatim.
+Impeccable's init writes this file after interviewing. Explore's snapshot and five questions already hold what that interview asks, so write it in Impeccable's exact schema. Then Impeccable's completion gate is satisfied and its own init does not run again. Copy the schema comment verbatim.
 
 ```markdown
 # Product
@@ -44,7 +44,7 @@ delegated: static HTML/CSS for the Altero demo slice; final build: <stack from a
 ## Product Principles
 <three to five strategic principles from the answers; no visual recipes>
 ## Accessibility & Inclusion
-<requirements if any; Arabic and English, RTL as a first-class reading direction>
+<requirements if any; the language scope from answers.md, with RTL as a first-class reading direction when Arabic is in scope>
 ```
 
 Do **not** write `DESIGN.md` (new-work creates the world) or `.impeccable/config.json` (Impeccable records only values the user chose). Put the five choices from `answers.md` under `## Product Principles` as stated choices (for example "feel: calm and refined", "distance: recomposed"), never as a described look. Impeccable's new-work step 2 is answered from `answers.md` and `directions.md`; the stylist cannot reach the user.

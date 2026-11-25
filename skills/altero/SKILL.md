@@ -1,6 +1,6 @@
 ---
 name: altero
-description: Audit, polish, enhance, or build web interfaces. Use to review UI quality, refine an existing design, improve a user journey, or build a new frontend from a brief. Explore three bilingual variants only on explicit request.
+description: Audit, polish, enhance, or build web interfaces, measured in a real browser, with Arabic and English as first-class. Use to review UI quality, refine an existing design, improve a user journey, or build a new frontend from a brief. Explore three design directions only on explicit request.
 ---
 
 # Altero
@@ -14,7 +14,7 @@ installation separate. Reply in the user's language.
 | polish | Small refinements within an existing design | Focused fixes with before/after evidence |
 | enhance | Improvement of a named flow or existing surface | Scoped changes with interaction checks |
 | build | A new frontend from a brief | Working first slice |
-| explore | Explicit request for three independent variants | Follow [Explore](references/explore.md) |
+| explore | Explicit request for three independent directions | Follow [Explore](references/explore.md) |
 
 Honor the requested mode and no-edit instructions. Treat plans and reviews as audit.
 Choose polish for localized refinements, enhance for flow-level changes, and build

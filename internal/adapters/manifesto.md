@@ -39,7 +39,7 @@ Impeccable's own phone method is `reference/adapt.md` → Mobile Adaptation ("th
 Run the two behaviour checks in `<plugin>/internal/contract.md` → Robustness before handback, and record them in `NOTES.md`.
 
 ## Bilingual
-Apply `<refs>/bilingual.md`. Build the **lead-language page** through the full Impeccable sequence above; the second page reuses the same world, recomposed natively. Impeccable's typography rules govern the Latin faces. The Arabic faces come from `<refs>/arabic-type/`, matched to the world Impeccable committed. Run the craft-floor Verify list and `detect` on both pages.
+When the language scope has one language, build that page and skip the rest of this section. With two, apply `<refs>/bilingual.md`. Build the **lead-language page** through the full Impeccable sequence above; the second page reuses the same world, recomposed natively. Impeccable's typography rules govern the Latin faces. The Arabic faces come from `<refs>/arabic-type/`, matched to the world Impeccable committed. Run the craft-floor Verify list and `detect` on both pages.
 
 ## Deliver
 - `NOTES.md` → **Phone cut**: the plan, the screening answers and what changed (`<refs>/phone.md`).

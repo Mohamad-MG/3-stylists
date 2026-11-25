@@ -3,7 +3,9 @@
 1. **Scope.** Identify the target, visitor's goal and primary action. Read project
    instructions. For existing work, preserve the brand, stack, content sources
    and agreed scope. For new work, ask only about decisions that block a useful
-   first slice. Keep unsupported claims, prices and testimonials out.
+   first slice. Keep unsupported claims, prices and testimonials out. With a live
+   URL but no access to the source, work on a light snapshot of the page
+   (`scripts/snapshot.mjs`, plugin root) and hand back a patch plan for the source.
 2. **Baseline.** Inspect affected sections and controls at mobile and desktop
    widths when a browser is available, and run the measured checks below. Review
    relevant languages and themes. Capture the affected state. Distinguish actual
@@ -43,6 +45,10 @@ oversized images, and the space between sections.
 - Never submit forms, send messages or trigger tracked contact actions on a
   live site while inspecting it.
 - Without a browser, say that these checks were not run.
+
+## Premium lens
+
+The premium floor in `internal/contract.md` (plugin root) is a lens for every mode: a designed header with a scroll state, a hero whose main action is visible at once, depth in the background, designed hover, focus and press states, one motion system, and modern imagery. **Build** and **enhance** deliver it for what they touch. **Polish** brings what exists up to it without changing the design. **Audit** reports the gaps against it as findings.
 
 ## Inspection checklist
 

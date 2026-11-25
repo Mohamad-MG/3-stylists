@@ -100,7 +100,10 @@ test('Explore asks five questions, from a snapshot of the real page', () => {
   // The premium floor is in the contract, every engine input carries it, and the gate checks it.
   assert.match(read('internal/contract.md'), /## Premium floor/);
   assert.match(read(REFS + '/engine-inputs.md'), /\*\*Premium line:\*\*/);
-  assert.match(read(REFS + '/gate-checklist.md'), /## G\. Premium floor/);
+  assert.match(read(REFS + '/gate-checklist.md'), /## F\. Premium floor/);
+  assert.match(read(REFS + '/gate-checklist.md'), /## G\. Jury screening/);
+  // One language scope, defined once, used everywhere instead of a fixed pair of pages.
+  assert.match(read('internal/contract.md'), /\*\*Language scope\.\*\*/);
   assert.match(read(SKILL + '/assets/probe.js'), /gate\.robotic/);
 });
 

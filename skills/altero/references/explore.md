@@ -15,7 +15,7 @@ Run from `<plugin>`:
 ```bash
 node scripts/engines.mjs doctor
 node scripts/engines.mjs fetch      # first run, or after a registry change
-node scripts/engines.mjs verify     # must pass before step 5
+node scripts/engines.mjs verify     # must pass before the fork (step 7)
 ```
 On a host other than Claude Code set `ALTERO_PLATFORM=codex`. If `verify` fails, stop and report: a stylist without its pinned engine falls back to paraphrased taste, which is the failure this workflow exists to prevent.
 
@@ -23,7 +23,7 @@ Then create `RUN_DIR` (`<project>/.altero/runs/<YYYYMMDD-HHMM>/`) and probe the 
 ```bash
 node scripts/env-probe.mjs <RUN_DIR> --image-generation <yes|no>   # yes only if you have an image-generation tool
 ```
-It writes `env.md` (what works here: npm, Playwright, fonts, WOFF2, CDNs, each engine's services, image generation) and `env.json` with a `degraded` list. **If `degraded` is not empty, tell the user before the questions, in one short message, what each item costs:** `impeccable-roll` → Manifesto runs Impeccable's degraded roll (no challengers, no QUALITY BAR boards); `no-image-generation` → Manifesto builds code-led and Cinema has no generated stills; `no-stock-photos` → photo frames become client slots; `no-browser-checks` → stop, nothing can be verified. The user may prefer to run on a machine where these work.
+It writes `env.md` (what works here: npm, Playwright, fonts, WOFF2, CDNs, each engine's services, image generation) and `env.json` with a `degraded` list. **If `degraded` is not empty, tell the user before the questions, in one short message, what each item costs:** `impeccable-roll` → Manifesto runs Impeccable's degraded roll (no challengers, no QUALITY BAR boards); `no-image-generation` → Manifesto builds code-led and Cinema has no generated stills; `no-stock-photos` → no library imagery, the page's own photographs only; `no-browser-checks` → stop, nothing can be verified. The user may prefer to run on a machine where these work.
 
 ## 1. Snapshot: a light copy of the front end
 Skip this step for a brief with no existing site. Otherwise take the copy **before anything else**, because every later step works on it and the user's repository, backend and database are never needed:
@@ -34,13 +34,13 @@ It saves the rendered page and the stylesheets, scripts, fonts and images it loa
 
 If the user has no URL but has a local project, ask for the dev server's address and snapshot that. If the host cannot reach any URL, work from the user's built front-end folder and copy only its HTML, CSS, fonts and images. Say so in `brief.md`.
 
-The snapshot is also the "before" of every comparison. It is served as the showcase's first panel, **Current site**.
+The snapshot is also the "before" of every comparison. **Start the showcase now** (step 9): the user sees the current site at once, and each direction fills in as it lands.
 
 ## 2. Intake
 - **The snapshot:** read `snapshot.json`, `baseline.json` and the saved page: content in each language present, the logo, the colours and fonts in use, the structure of the sections, imagery, and what the brand has committed to. Treat the current look as evidence, not authority.
 - **Brief:** read what the user wrote; infer only what it strongly implies and mark every inference.
 
-Write `brief.md`: product and offer · audience and situation (stated or inferred, marked) · current visual state (with the baseline's numbers) · constraints · real material on hand · the slice and why.
+Write `brief.md`: product and offer · audience and situation (stated or inferred, marked) · current visual state (with the baseline's numbers) · constraints · real material on hand · the slice and why · the language scope (`<plugin>/internal/contract.md` → Language scope).
 
 ## 3. Five questions
 Read `<refs>/interview.md`. Ask exactly five questions, together, all about how the page should look and feel, all closed: the user picks one of two or three options, or says "you choose". Never ask open questions, and never ask about the business, the call to action, the proof or the images: the snapshot already shows them, so Intake marks them `(inferred)`.
@@ -48,7 +48,7 @@ Read `<refs>/interview.md`. Ask exactly five questions, together, all about how 
 Ask in the user's language, with your structured question tool and its options. Write `answers.md` (the five choices and the derived fields listed in the reference).
 
 ## 4. Facts
-Write `facts.json` (`<refs>/facts-schema.md`). It is the lock: engines write their own copy, but every claim, price, number and promise must trace to it. With a snapshot, the page's existing content is the first source of facts, and nothing on it may change in meaning. Do not ask the user to confirm the page's own content: it is the user's, already live. Mention only what you inferred that the page does not state.
+Write `facts.json` (`<refs>/facts-schema.md`). It is the lock: every claim, price, number and promise on a page must trace to it. From a brief, engines write their own copy around it; from a snapshot, the page's own text is locked word for word (the copy lock), and its content is the first source of facts. Do not ask the user to confirm the page's own content: it is the user's, already live. Mention only what you inferred that the page does not state.
 
 ## 5. Directions
 Write `directions.md` as `<refs>/interview.md` describes, naming the motion lead: three short entries, one per stylist, saying what each engine will do for this visitor and what it will not do. Show them in one message and go straight on. It is a preview of the work, not a question.
@@ -71,7 +71,9 @@ Before Atelier starts, copy `<project>/.altero/taste-history/*` (if it exists) i
 
 ## 7b. Fresh-eyes reviews
 The engines want reviewers with a fresh context, and so does the phone layer. A stylist running as a subagent usually cannot spawn one, so it returns with a status, and you run the review:
-- **Manifesto, `"status": "awaiting-review"`:** start a new subagent whose instructions are the full text of Impeccable's shipped reviewer (`engines.mjs path impeccable` → `.claude/agents/impeccable-finish-reviewer.md`), with tool limits as that file declares, and the packet at `manifesto/.altero/review-packet.md`. Send its disposition back to the Manifesto stylist (continue the same agent), which acts on it under Impeccable's rules. Repeat as Impeccable's step 7 directs.
+**Two rounds at most per reviewer:** a review, the fixes, one re-check. Anything still open after that goes into the stylist's `NOTES.md` and the run moves on.
+
+- **Manifesto, `"status": "awaiting-review"`:** start a new subagent whose instructions are the full text of Impeccable's shipped reviewer (`engines.mjs path impeccable` → `.claude/agents/impeccable-finish-reviewer.md`), with tool limits as that file declares, and the packet at `manifesto/.altero/review-packet.md`. Send its disposition back to the Manifesto stylist (continue the same agent), which acts on it under Impeccable's rules. Run the reviewer once more on the fixes, then stop.
 - **Manifesto, `"status": "awaiting-motion-review"`:** the same, with Impeccable's shipped motion reviewer (`.claude/agents/impeccable-motion-reviewer.md`) and the packet at `manifesto/.altero/motion-packet.md`.
 - **Cinema, `"status": "awaiting-test-screening"`:** start a new subagent that sees only the contact sheets listed in `cinema/NOTES.md` and answers cinematic-ui's four test-screening questions (what the product is, what to do, what the lead is, which frame is the climax). Send the answers back to the Cinema stylist to compare with its logline.
 - **Any stylist, `"status": "awaiting-phone-screening"`:** start a new subagent that sees only the screenshots listed under `NOTES.md → Phone cut → screening` and the phone cut plan, and answers the four questions in `<refs>/phone.md` §3. Send the answers back to that stylist.
@@ -79,14 +81,19 @@ The engines want reviewers with a fresh context, and so does the phone layer. A 
 Never add your own opinion to any of these messages.
 
 ## 8. Gate
-Read `<refs>/gate-checklist.md`. For each variant: confirm its engine gate result in `NOTES.md` (for Atelier on an RTL page, the split result its adapter defines, backed by `scripts/rtl-edges.mjs`), then run the technical checks on both language pages at 390 and 1440 in a real browser with web fonts loaded. Fix only what the checklist allows; send anything else back to the stylist. On a snapshot run, also run the copy lock (`scripts/copy-diff.mjs`) for each variant. Check the premium floor's evidence (section G). Then the jury screening (section F) holds every variant to a premium bar. Write `gate-report.md`. A variant whose Arabic was only seen in fallback fonts is **unverified**, not passed.
+Read `<refs>/gate-checklist.md`. For each variant: confirm its engine gate result in `NOTES.md` (for Atelier on an RTL page, the split result its adapter defines, backed by `scripts/rtl-edges.mjs`), then run the technical checks on every page in the language scope at 390 and 1440 in a real browser with web fonts loaded, including the copy lock on a snapshot run (section B). Check the premium floor's evidence (section F), then the jury screening (section G) holds every variant to a premium bar. Fix only what the checklist allows; send anything else back to the stylist. Write `gate-report.md`. A variant whose Arabic was only seen in fallback fonts is **unverified**, not passed.
 
 ## 9. Showcase
 Start the showcase **as soon as the snapshot exists**, not when the stylists finish:
 ```bash
 node <this skill's folder>/scripts/serve.mjs <RUN_DIR>
 ```
-Open `<URL>/compare.html` in the user's browser or preview pane. It shows one direction at a time at full size, in tabs: **Current site** first, then each stylist. A tab still building says so and fills in by itself when its manifest lands, so the user watches the three directions arrive instead of waiting for all of them. Desktop renders at 1440 and scales to the window; Phone renders at 390 in a device frame. The arrow keys switch tabs, so comparing a direction with the current site is one key. If the user cannot reach a local server (a remote session) and the host can publish a multi-file page, publish `compare.html` as the entry with only the files the pages actually load (record them by loading each page at 390 and 1440 and scrolling it), never the engines' whole kits. Introduce each variant in two lines from its `NOTES.md`, naming its engine. Do not rank or hint at a favourite.
+Open `<URL>/compare.html` in the user's browser or preview pane.
+- One direction at a time at full size, in tabs: **Current site** first, then each stylist. A tab still building says so and fills in by itself when its manifest lands.
+- Desktop renders at 1440 and scales to the window; Phone renders at 390 in a device frame. The arrow keys switch tabs, so comparing a direction with the current site is one key.
+- Once the gate has run, add each variant's jury score and open items to its `stylist.json` `tagline`, so the user sees them on the tab.
+
+If the user cannot reach a local server (a remote session) and the host can publish a multi-file page, publish `compare.html` as the entry with only the files the pages actually load (record them by loading each page at 390 and 1440 and scrolling it), never the engines' whole kits. Introduce each variant in two lines from its `NOTES.md`, naming its engine. Do not rank or hint at a favourite.
 
 ## Apply one
 The user takes **one** direction, not three. Record `"picked"` in `run.json`. Then, only for the chosen stylist, in build or enhance mode on the user's real project:

@@ -67,6 +67,8 @@ const { chromium } = pw.load();
 const browser = await chromium.launch({ executablePath: chrome, headless: true });
 const probe = existsSync(probeFile) ? readFileSync(probeFile, 'utf8') : null;
 const baseline = {};
+let firstPage = '';
+let firstLang = '';
 
 for (const pagePath of pages) {
   for (const [name, width, height, mobile] of [['d1440', 1440, 900, false], ['m390', 390, 844, true]]) {
@@ -100,10 +102,16 @@ for (const pagePath of pages) {
     }
     await page.waitForTimeout(1200);
     await page.evaluate(() => window.scrollTo(0, 0));
+    // The first page decides the manifest: where it was saved (after any redirect) and its language.
+    if (!firstPage) {
+      firstPage = target(new URL(page.url()), 'text/html').replace(/^\//, '');
+      firstLang = (await page.evaluate(() => document.documentElement.lang || '')).slice(0, 2).toLowerCase();
+    }
     if (probe) {
       try { baseline[pagePath + ' @' + name] = await page.evaluate('(' + probe + '\n)({})'); } catch {}
     }
-    await page.screenshot({ path: path.join(out, `before-${name}.png`), fullPage: false });
+    const prefix = pages.length > 1 ? pages.indexOf(pagePath) + 1 + '-' : '';
+    await page.screenshot({ path: path.join(out, `before-${prefix}${name}.png`), fullPage: false });
     await ctx.close();
   }
 }
@@ -124,11 +132,11 @@ const manifest = {
 writeFileSync(path.join(out, 'snapshot.json'), JSON.stringify(manifest, null, 1));
 writeFileSync(path.join(out, 'baseline.json'), JSON.stringify(baseline, null, 1));
 // The showcase lists the snapshot as "Current site", so it carries the same manifest every stylist does.
-const home = pages[0] === '/' || pages[0] === entry.pathname + entry.search ? 'index.html' : path.posix.join(pages[0].replace(/^\//, ''), 'index.html');
+const pageLang = firstLang === 'ar' ? 'ar' : 'en';
 writeFileSync(path.join(out, 'stylist.json'), JSON.stringify({
   engine: 'Current site, light copy',
-  lead: 'en',
-  pages: { ar: home, en: home },
+  lead: pageLang,
+  pages: { [pageLang]: firstPage || 'index.html' },
   tagline: { ar: 'الموقع زي ما هو دلوقتي، نسخة واجهة بس', en: 'The site as it is now, front end only' },
 }, null, 1));
 console.log(`snapshot: ${saved.size} files, ${(bytes / 1048576).toFixed(1)} MB, ${pages.length} page(s) → ${out}`);

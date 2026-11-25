@@ -38,7 +38,7 @@ Taste plans the phone itself; use its method, not a reflow. Its phone rules are 
 Run the two behaviour checks in `<plugin>/internal/contract.md` → Robustness before handback, and record them in `NOTES.md`.
 
 ## Bilingual
-Apply `<refs>/bilingual.md`. Taste builds the **lead-language page** as `index.html` (set `<html lang>` to the lead language, as step 5 says). The second page lives in `<lang>/index.html` and reuses `../assets`; it is recomposed under `<refs>/bilingual.md`, inside the same dealt system.
+When the language scope has one language, build that page and skip the rest of this section. With two, apply `<refs>/bilingual.md`. Taste builds the **lead-language page** as `index.html` (set `<html lang>` to the lead language, as step 5 says). The second page lives in `<lang>/index.html` and reuses `../assets`; it is recomposed under `<refs>/bilingual.md`, inside the same dealt system.
 - Run `gate.mjs` on the second page too. If its links climb out of the page folder, pass Taste's `--root` with the atelier folder, as Taste documents for built pages.
 - `copy-lint.mjs` judges English copy. On the Arabic page, an English-only check that fails is waived in `.taste-skill/waivers.json` with the reason "Arabic page; English-only copy check" (Taste's own waiver mechanism). Never game a check or edit the kit's files.
 

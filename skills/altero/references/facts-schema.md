@@ -40,7 +40,7 @@ A visitor must be able to see which numbers and promises are not confirmed. An a
 - **Every element that shows an assumed fact carries `data-assumed`,** whatever the engine. This is what the gate counts.
 - **Each one shows a visible marker in the page's language,** inside or right next to the element: for example «للعرض» or «مفترض» in Arabic, and "display only" or "assumed" in English. The marker can be text in the markup or CSS `::after` content. The stylist picks the word and the styling, and they belong to the design, so the engine's own look decides how quiet the marker is. A marker smaller than the body text is fine; one smaller than 11px or below 4.5:1 contrast is not.
 - **One footer line is not a substitute.** A footer note may explain the markers, for example "prices and delivery times are for display only". It does not replace them.
-- Prices, delivery times and counts appear exactly as written here, in both languages.
+- Prices, delivery times and counts appear exactly as written here, in every language in scope.
 - `kind` uses Taste Skill's classification so its dealers run correctly; the other engines ignore it.
 
 ## run.json — the showcase index (run folder)

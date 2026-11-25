@@ -1,5 +1,20 @@
 # Changelog
 
+## 0.11.0 — 2026-11-25
+
+A consistency pass over the whole plugin.
+
+### Changed
+- **One language scope**, defined once in the contract and used everywhere: Arabic and English from a brief, the snapshotted pages' languages from a snapshot. Rules that assumed two pages now say every page in scope, and the adapters build one page when the scope has one.
+- **At most two rounds per fresh-eyes reviewer** (an engine's reviewer, the phone screening, the jury). Open items after that are recorded and shown, and the run moves on.
+- **The gate reads in order:** sections A to G, numbered once, with the premium floor (F) before the jury (G) and the punctuation checks in one place.
+- **The standard modes use the premium floor as a lens:** build and enhance deliver it, polish brings what exists up to it, audit reports the gaps. With a live URL but no source, they work on a snapshot and hand back a patch plan.
+- The showcase starts as soon as the snapshot exists, and shows each variant's jury score and open items on its tab.
+- Contradictions removed: support engines may now fill the premium floor for Atelier; the two punctuation rows are one; the copy line covers quotation marks and ellipses; old wording ("side-by-side", "the interview", "step 5") is gone.
+
+### Fixed
+- `snapshot.mjs` recorded every snapshot as English and assumed the saved path of the first page. It now reads the page's own language and the path it was saved at, after any redirect, and numbers the before screenshots when there are several pages.
+
 ## 0.10.0 — 2026-11-25
 
 ### Changed

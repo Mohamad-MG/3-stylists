@@ -30,12 +30,12 @@ Use the visitor's situation from `answers.md` (`use_scene`). Facts that matter f
 **A plan whose every row says "stacked" fails.** If the engine's method truly keeps a section as it is, say why in that row.
 
 ## 2. Build it
-- Both languages get their phone cut. The Arabic phone page is recomposed for RTL like the desktop one (`bilingual.md`), not mirrored from the English phone page.
+- Every page in the language scope gets its phone cut. The Arabic phone page is recomposed for RTL like the desktop one (`bilingual.md`), not mirrored from the English phone page.
 - Build the cut with the engine's own components and tokens. Phone-only markup is allowed when the plan calls for it; mark it `data-phone-only`, and mark desktop-only parts `data-desktop-only`, so the review can see what changed.
 - Run Emil's `mobile-native` on the phone layout (in Explore; see the contract's Robustness section).
 
 ## 3. Phone screening (fresh eyes)
-The person who built the phone cut cannot judge whether it reads as designed or squeezed. After the build, capture full-page screenshots of both languages at **390 × 844**, the desktop page at **1440 × 900**, and the first screen at **360 × 780** and **430 × 932**. List the paths in `NOTES.md` under **Phone cut → screening**.
+The person who built the phone cut cannot judge whether it reads as designed or squeezed. After the build, capture full-page screenshots of every page in the language scope at **390 × 844**, the desktop page at **1440 × 900**, and the first screen at **360 × 780** and **430 × 932**. List the paths in `NOTES.md` under **Phone cut → screening**.
 
 If you can spawn a fresh agent, give it only those screenshots and the phone cut plan and ask the four questions below. If you cannot, set `"status": "awaiting-phone-screening"` in `stylist.json` and return; the orchestrator holds the screening and continues you with the answers.
 
@@ -47,7 +47,7 @@ If you can spawn a fresh agent, give it only those screenshots and the phone cut
 Act on the answers with the engine's own method. A "no" on question 1, or a section named in question 2 that the plan did not keep on purpose, is a defect. Record the answers and what you changed. One screening round, then one re-check of what you changed; more only if the re-check still finds a defect.
 
 ## 4. Mechanical checks (also run by the gate)
-At 360 × 780, 390 × 844 and 430 × 932, in both languages:
+At 360 × 780, 390 × 844 and 430 × 932, on every page:
 - no horizontal overflow
 - the primary action is inside the first screen
 - every link and control outside running text is at least 44 × 44 px (the engine's own threshold if it is stricter)
