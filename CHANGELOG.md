@@ -5,7 +5,7 @@
 ### Fixed
 - `snapshot.mjs` also saves images the page names but never loaded (a carousel's hidden slides), so the copy no longer shows gaps the live site does not have. Images the browser already drew are not fetched again in another form, so the copy stays light.
 - `serve.mjs` serves an extensionless file (an API-served photo) with its real type when the snapshot that holds it sits deeper than the run folder, such as a stylist's `page/` copy.
-- Interface punctuation under a copy lock splits sentences into lines instead of joining them with a comma, because joining lowercased the next sentence (found by the first polish run on a real site).
+- Interface punctuation under a copy lock splits sentences into lines instead of joining them with a comma, because joining lowercased the next sentence (found by the first polish run on a real site). A legal line (© name, rights) keeps its own punctuation.
 - `snapshot.mjs` always captures the URL's own page first, even when `--page` names others, and reads back a `--page /ar` that Git Bash on Windows rewrote into a drive path.
 - The snapshot's `stylist.json` lists each captured page by its language (`{"en": "index.html", "ar": "ar/index.html"}`), so the showcase opens the right page per language for the current site too.
 
