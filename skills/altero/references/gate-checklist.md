@@ -21,6 +21,7 @@ Missing evidence fails this section: send the variant back.
 2. Facts lock: every price, number, delivery time, name and claim on both pages traces to `facts.json`; nothing in `forbidden` appears.
 3. Assumed facts are visibly marked (`facts-schema.md` → Assumed facts on the page). On both pages `gate.assumed.unmarked` must be empty, and `gate.assumed.count` must not be 0 when `facts.json` has assumed facts. If the stylist chose a different marker word, it is named in `NOTES.md`: pass it as `{ assumedMarkers: ['…'] }`.
 4. Brand commitments from `facts.json` are honoured.
+4c. **Modern punctuation.** On both pages `gate.robotic` must be empty, as well as `gate.fullStops`.
 4b. **Copy lock (snapshot runs).** `node <plugin>/scripts/copy-diff.mjs <base-url> <variant-url>` lists no new text. A reworded or added line goes back to the stylist; the gate never rewrites copy.
 5. **No full stop in interface text** (`bilingual.md` → Interface punctuation). On both pages `gate.fullStops` must be empty. It flags `.` or `۔` followed by a space or the end of a line, so decimals (450.5) and domains (example.com) pass, and it skips text inside `[data-longform]`.
 
@@ -45,8 +46,14 @@ Missing evidence fails this section: send the variant back.
 19. Mechanical checks at **360 × 780, 390 × 844 and 430 × 932**, both languages, at rest at the top of the page. Pass the primary action's label from `facts.json → product.primary_action.<lang>` as `{ primaryAction: '…' }`; `gate.phone` must be empty. It covers horizontal overflow, the primary action on the first screen, 44 px tap targets, 16 px inputs, and fixed bars over content. A tap finding inside an engine-documented exception (the engine names it in writing) is recorded, not failed.
 20. Look at the phone screenshots yourself only to confirm the evidence exists and matches the plan; never judge the cut's taste.
 
+## G. Premium floor (`<plugin>/internal/contract.md` → Premium floor)
+Evidence, not taste. For each of the seven items, `NOTES.md` names what was built and points to a capture (a frame sequence for motion, a screenshot for a state). A missing item, or one without a capture, goes back to the stylist.
+- The motion lead's page shows motion as the hero: at least one scroll-driven scene or section transition, captured.
+- `gate.robotic` from the probe is empty on both widths (no decorative quotation marks, no ellipses).
+- Library images are listed with source URL and licence, and none is presented as the business's own work, results, team or premises.
+
 ## F. Jury screening (a premium bar, judged with fresh eyes)
-After the checks above pass, start one fresh subagent per variant that sees only its screenshots at 1440 and 390 (top, middle and end of the page) and the award-jury rubric (`node <plugin>/scripts/engines.mjs path awwwards-rubric` → `references/01-scoring.md`, `14-anti-patterns.md`, `15-audit.md`). It scores Design, Usability, Creativity and Content from 0 to 10 with the rubric's weights and names the anti-patterns it sees, each with the screenshot it is in.
+After the checks above pass, start one fresh subagent per variant (on a snapshot run, tell it that the business's own photographs are real and approved, so it never marks them down as generated or stock) that sees only its screenshots at 1440 and 390 (top, middle and end of the page) and the award-jury rubric (`node <plugin>/scripts/engines.mjs path awwwards-rubric` → `references/01-scoring.md`, `14-anti-patterns.md`, `15-audit.md`). It scores Design, Usability, Creativity and Content from 0 to 10 with the rubric's weights and names the anti-patterns it sees, each with the screenshot it is in.
 - A weighted score of **7.0 or more** passes. Record it in `gate-report.md`.
 - Under 7.0, send the scores and the named anti-patterns, word for word, to that variant's stylist (continue the same agent) once. It fixes them **with its own engine's rules**, and the screening runs again. Report the second score as it is.
 - The jury never names a fix and never compares variants. It scores each one alone.

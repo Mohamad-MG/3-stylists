@@ -29,8 +29,9 @@ Ask all five together, in the user's language, with your structured question too
 - **Feeds:** layout and section rhythm in all three engines; the phone cut plan.
 
 ### Q4 — How much should the page move?
-- **Options:** Still: almost no motion · Subtle: small touches · Expressive: the page moves with the visitor
-- **AR:** الحركة: ثابتة تقريبًا · لمسات خفيفة · معبّرة والصفحة بتتحرك مع الزائر
+- **Options:** Supporting: crafted but quiet · Clear: motion you notice · Bold: the page moves with the visitor
+- **AR:** الحركة: داعمة وهادية · واضحة وملحوظة · جريئة والصفحة بتتحرك مع الزائر
+- **All three directions have motion** (the premium floor). This answer sets the level for two of them; the motion lead goes one step beyond it, and never below "Clear".
 - **Feeds:** Impeccable's motion layer, cinematic-ui's camera and scroll, Taste's moments. Motion never replaces content or delays the call to action.
 
 ### Q5 — How far from the current page?
@@ -48,7 +49,7 @@ After Intake, write `directions.md`: three short entries, one per stylist, each 
 
 - **Atelier (Taste Skill)** reads the answers as a company-grade page where the real material carries the page: photographs, proof and the main action first.
 - **Manifesto (Impeccable)** reads them as a page built around the one thing that is different here, with its own visual world.
-- **Cinema (cinematic-ui)** reads them as a single story that moves the visitor to the action.
+- **Cinema (cinematic-ui)** reads them as a single story that moves the visitor to the action. It is the **motion lead** unless the answers point elsewhere: its entry says what the motion will carry.
 
 Each entry ends with a "will not do" line, taken from the answers (for instance "will not leave the brand colours" when Q2 is the first option). Show the three entries in one message, then start. It is a preview of the work, not a question.
 
@@ -57,7 +58,7 @@ Each entry ends with a "will not do" line, taken from the answers (for instance 
 feel:                 calm-refined | warm-personal | bold-striking | engine decides
 colour_policy:        keep | same-family | open | engine decides
 density:              airy | balanced | rich | engine decides
-motion:               still | subtle | expressive | engine decides
+motion:               supporting | clear | bold | engine decides   # the motion lead goes one step beyond
 distance:             close | recomposed | reinvented | engine decides
 # From the snapshot and brief, each marked (inferred):
 primary_visitor:      ...

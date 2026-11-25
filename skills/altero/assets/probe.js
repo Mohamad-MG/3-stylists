@@ -153,6 +153,12 @@
     .filter((e) => [...e.childNodes].some((n) => n.nodeType === 3 && /[.۔](\s|$)/.test(n.textContent.trim() + ' ')))
     .map((e) => where(e) + ': ' + text(e).slice(0, 60));
 
+  // No decorative quotation marks or ellipses in interface text (a live truncation uses CSS, not a character).
+  gate.robotic = all('body *:not(script):not(style):not(noscript)')
+    .filter((e) => !e.closest('[data-longform]') && visible(e))
+    .filter((e) => [...e.childNodes].some((n) => n.nodeType === 3 && /["\u201C\u201D\u00AB\u00BB\u2026]|\.\.\./.test(n.textContent)))
+    .map((e) => where(e) + ': ' + text(e).slice(0, 60));
+
   // Assumed facts carry a visible marker (elements tagged data-assumed).
   const assumed = all('[data-assumed]').filter(visible);
   const marked = (e) => {

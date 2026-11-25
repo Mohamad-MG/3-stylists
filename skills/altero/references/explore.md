@@ -51,7 +51,7 @@ Ask in the user's language, with your structured question tool and its options. 
 Write `facts.json` (`<refs>/facts-schema.md`). It is the lock: engines write their own copy, but every claim, price, number and promise must trace to it. With a snapshot, the page's existing content is the first source of facts, and nothing on it may change in meaning. Do not ask the user to confirm the page's own content: it is the user's, already live. Mention only what you inferred that the page does not state.
 
 ## 5. Directions
-Write `directions.md` as `<refs>/interview.md` describes: three short entries, one per stylist, saying what each engine will do for this visitor and what it will not do. Show them in one message and go straight on. It is a preview of the work, not a question.
+Write `directions.md` as `<refs>/interview.md` describes, naming the motion lead: three short entries, one per stylist, saying what each engine will do for this visitor and what it will not do. Show them in one message and go straight on. It is a preview of the work, not a question.
 
 ## 6. Engine inputs
 Read `<refs>/engine-inputs.md` and write each engine's native input file into its stylist folder. Copy `../assets/compare.html` into the run folder and write `run.json` (schema in `<refs>/facts-schema.md`), listing `base` first when a snapshot exists.
@@ -79,7 +79,7 @@ The engines want reviewers with a fresh context, and so does the phone layer. A 
 Never add your own opinion to any of these messages.
 
 ## 8. Gate
-Read `<refs>/gate-checklist.md`. For each variant: confirm its engine gate result in `NOTES.md` (for Atelier on an RTL page, the split result its adapter defines, backed by `scripts/rtl-edges.mjs`), then run the technical checks on both language pages at 390 and 1440 in a real browser with web fonts loaded. Fix only what the checklist allows; send anything else back to the stylist. On a snapshot run, also run the copy lock (`scripts/copy-diff.mjs`) for each variant. Then the jury screening (section F) holds every variant to a premium bar. Write `gate-report.md`. A variant whose Arabic was only seen in fallback fonts is **unverified**, not passed.
+Read `<refs>/gate-checklist.md`. For each variant: confirm its engine gate result in `NOTES.md` (for Atelier on an RTL page, the split result its adapter defines, backed by `scripts/rtl-edges.mjs`), then run the technical checks on both language pages at 390 and 1440 in a real browser with web fonts loaded. Fix only what the checklist allows; send anything else back to the stylist. On a snapshot run, also run the copy lock (`scripts/copy-diff.mjs`) for each variant. Check the premium floor's evidence (section G). Then the jury screening (section F) holds every variant to a premium bar. Write `gate-report.md`. A variant whose Arabic was only seen in fallback fonts is **unverified**, not passed.
 
 ## 9. Showcase
 Start the showcase **as soon as the snapshot exists**, not when the stylists finish:

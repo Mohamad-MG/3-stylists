@@ -24,8 +24,11 @@ A full stop at the end of interface text reads as a document written by a machin
 - **No full stop inside them either.** Two ideas in one line: join them with one comma (`،` in Arabic) or with و / "and", or split them into two lines or two elements.
   - ✗ `كل حساباتك في مكان واحد.` → ✓ `كل حساباتك في مكان واحد`
   - ✗ `Connect your bank. We do the rest.` → ✓ `Connect your bank, we do the rest`
-- A question mark stays on a real question. The ellipsis (`…`) is only for truncation and loading.
-- **Exempt:** long-form reading text the visitor reads as a document: legal and policy pages, article and blog bodies. Mark the container with `data-longform`.
+- **No quotation marks as decoration.** No `"`, `“ ”`, `« »` or `' '` around testimonials, slogans or headings. A quotation reads as a quotation by its setting: size, weight or italic, and the person's name and role under it.
+- **No ellipsis** (`...` or `…`) in interface text, except a live truncation or a loading state.
+- **Several sentences in one block** (a testimonial, a lede): each sentence becomes its own line or element, or the sentences are joined with commas. The words never change.
+- A question mark stays on a real question.
+- **Exempt:** long-form reading text the visitor reads as a document: legal and policy pages, article and blog bodies. Mark the container with `data-longform`. Testimonials are interface text, not long-form.
 - This rule is part of the contract (level 1). It beats an engine's copy habits; it never changes the engine's words beyond the punctuation and the joining.
 
 ## 3. Arabic type

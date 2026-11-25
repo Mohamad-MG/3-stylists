@@ -53,6 +53,7 @@ oversized images, and the space between sections.
 - Languages: loaded fonts, legible wrapping and mixed-direction labels, numbers
   and icons. Use logical alignment and project typography in RTL. For any Arabic
   or right-to-left page, apply the rules in [Arabic and English](bilingual.md).
+- Punctuation: interface text has no closing full stop, no decorative quotation marks and no ellipsis (`gate.fullStops` and `gate.robotic`; `bilingual.md` → Interface punctuation).
 - Phone: a page that only reflows the desktop layout, an action out of reach,
   anything cut off or covered. See [the phone layer](phone.md).
 - Speed: inspect image sizes, font delivery, initial media, layout shifts and slow

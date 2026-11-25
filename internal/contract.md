@@ -26,12 +26,26 @@ Which engine each stylist runs, at which commit, and which engines support it: `
 | Level | Source | Covers |
 |---|---|---|
 | 0 | Hard limits | honesty (no invented facts, claims, reviews or figures), licences, privacy, safety |
-| 1 | This contract | the facts lock, the copy lock on a snapshot run, the deliverables, isolation, unattended behaviour, the Arabic layer, the interface punctuation rule, the phone rule |
+| 1 | This contract | the facts lock, the copy lock on a snapshot run, the premium floor, the deliverables, isolation, unattended behaviour, the Arabic layer, the interface punctuation rule, the phone rule |
 | 2 | The stylist's **primary engine** | everything about the design, including its mandatory steps and its own gates |
 | 3 | Support engines | only what level 2 leaves open or delegates |
 | 4 | Defaults | only when nothing above speaks |
 
 Level 1 is deliberately thin. It says *what must be delivered*, never *how it should look*. If a contract rule ever forces a taste decision, the rule is wrong: fix the rule, not the engine.
+
+## Premium floor (every direction)
+
+What a direction must have, never what it must look like. The engine decides every form; the floor only says the thing exists, is designed, and is evidenced in `NOTES.md` with captures.
+
+1. **Header.** Logo, navigation and the main action are composed as one designed bar, on desktop and as its own phone bar. It changes state on scroll (the engine chooses how: condense, blur, colour, hide and return) with the page's motion system.
+2. **Hero.** An entrance that ends within 800ms, with the main action visible within 200ms, and one quiet motion after it (idle or scroll-linked). Content is readable at rest.
+3. **Background depth.** No flat single-colour ground behind the page's main sections. Layered grounds (light, material, texture, atmosphere) with slow ambient motion that belongs to the product's industry and brand, not decoration from nowhere. Body text keeps AA contrast over it.
+4. **Hover, focus and press.** Every interactive element has a designed state, consistent across the page: cards, links, buttons, images, the menu.
+5. **One motion system.** A shared easing family and duration scale across header, hero, hovers and reveals. Reduced motion is respected: everything rests, nothing stays hidden.
+6. **Motion is in all three.** Each direction has designed motion. **One stylist is the motion lead** (Cinema unless `directions.md` names another): on its page motion is the hero, clear and bold (scroll-driven scenes, transitions between sections). The other two keep motion supporting, but present and crafted.
+7. **Modern imagery.** A stylist may replace or add atmosphere, background and hero imagery from free libraries (Pexels, Pixabay, StockCake, Unsplash, or the best free alternative) when it clearly lifts the page, with the source URL and licence in `NOTES.md`. A library image is never presented as the business's own work, results, team or premises: those stay the business's own photographs.
+
+The phone keeps the floor in its own composition: header, hero, depth and hovers (as press states) are designed for it, not inherited.
 
 ## Known collisions and how they resolve
 
@@ -50,6 +64,8 @@ Level 1 is deliberately thin. It says *what must be delivered*, never *how it sh
 | An engine ends interface lines with a full stop | The contract wins: no full stop in interface text in either language (`<refs>/bilingual.md` → Interface punctuation). The engine's words stay; only the punctuation and the joining change. |
 | An engine's phone method against the phone rule | The contract requires a planned, recomposed phone cut and its screening; **how** the phone is composed comes from the engine's own method. A plan of only stacked sections fails the contract. |
 | An engine bans something the brief needs | The engine's own rule decides; engines distinguish bans from defaults the brief can earn. |
+| An engine forbids effects, grounds or loops for this kind of page (Taste on a service page: flat grounds, the dealt moments only) | The premium floor wins (level 1). The engine still makes every form decision: its own moments, motion layer and ground system are used first, and where it has none, the stylist adds the floor's depth, ambient motion and hovers with the support engines (Emil's skills, GSAP) in the engine's own palette, type and spacing. Record it in `NOTES.md` as a floor addition. |
+| Punctuation an engine leaves on interface text (full stops, quotation marks, ellipses) | The contract wins: modern interface punctuation (`<refs>/bilingual.md` → Interface punctuation). Quotations are set by typography and attribution, never wrapped in quotation marks. |
 
 ## Run layout
 

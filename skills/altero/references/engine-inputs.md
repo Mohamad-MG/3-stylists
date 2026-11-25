@@ -9,7 +9,8 @@ Two contract rules travel inside every engine input, so each engine plans for th
 
 - **Phone line:** The phone version is designed as its own composition, not reflowed: sections may be reordered, merged, cut or replaced and restyled for the phone.
 - **Copy line:** No full stop at the end of any interface text, in Arabic or English (headlines, buttons, labels, card text, captions, ledes). Join two ideas with a comma or split them into two lines. Long-form reading text (legal pages, article bodies) is exempt.
-- **Page line (only when a snapshot exists):** The user's real page is in `page/`, a front-end-only copy. Rebuild it in your direction with its own text, word for word: you may cut, reorder and split lines, but never reword one or add one. Keep the meaning of its structure, invent nothing, and treat forms and live data as out of scope: they do not work in the copy and need no work. Append it as the last line of every engine input file, after the five choices from `answers.md` and the stylist's entry from `directions.md`.
+- **Premium line:** Meet the premium floor in `<plugin>/internal/contract.md`: a designed header with scroll state, a hero entrance with the main action visible within 200ms, background depth with slow ambient motion that belongs to this industry, designed hover, focus and press states, one motion system, and modern library imagery where it clearly lifts the page (never as the business's own work). Your motion role: <lead | supporting>. Evidence each item in NOTES.md.
+- **Page line (only when a snapshot exists):** The user's real page is in `page/`, a front-end-only copy. Rebuild it in your direction with its own text, word for word: you may cut, reorder and split lines, but never reword one or add one. Keep the meaning of its structure, invent nothing, and treat forms and live data as out of scope: they do not work in the copy and need no work. Append it as the last line of every engine input file, after the five choices from `answers.md`, the stylist's entry from `directions.md` and the Premium line.
 
 ---
 
@@ -96,7 +97,7 @@ cinematic-ui's stage 1 (development) needs the product truth, the audience, the 
 <forbidden>
 ## Asset call — answered in advance
 supplied by the client: <the page's own images with paths>
-free licensed library (photographs, footage): yes, when clearly better than the page's own, with the licence noted in NOTES.md
+free licensed library (photographs, footage): yes, from Pexels, Pixabay, StockCake or Unsplash, for atmosphere, background and hero, when it clearly lifts the page; source URL and licence in NOTES.md; never as the business's own work
 AI-generated assets: no, unless the host has an image tool and the user has already agreed
 otherwise: redesign the shot around a stand-in
 ## Language

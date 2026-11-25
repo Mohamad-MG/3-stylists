@@ -1,5 +1,15 @@
 # Changelog
 
+## 0.10.0 — 2026-11-25
+
+### Changed
+- **A premium floor for every Explore direction**, in the contract: a designed header with a scroll state, a hero entrance that shows the main action within 200ms, background depth with slow ambient motion that belongs to the product's industry, designed hover, focus and press states, one motion system, and modern library imagery. It says what must exist, never how it looks; the gate checks the evidence.
+- **Motion in all three directions, with one motion lead** (Cinema by default) where motion is the hero of the page. The motion question now sets the level for the other two.
+- **Modern interface punctuation:** no closing full stops, no decorative quotation marks, no ellipses. Quotations read as quotations by their setting and attribution. The probe adds `gate.robotic`.
+- **Library imagery:** stylists may use Pexels, Pixabay, StockCake or Unsplash for atmosphere, background and hero, never as the business's own work.
+- When an engine forbids depth or motion for a page kind (Taste on service pages), the floor wins and the support engines fill it in the engine's own palette and type.
+- The jury is told that the business's own photographs are real.
+
 ## 0.9.1 — 2026-11-25
 
 ### Changed

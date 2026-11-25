@@ -97,6 +97,11 @@ test('Explore asks five questions, from a snapshot of the real page', () => {
   assert.ok(existsSync(at('scripts/copy-diff.mjs')));
   assert.match(read('skills/altero/references/gate-checklist.md'), /copy-diff\.mjs/);
   assert.match(read('internal/adapters/atelier.md'), /snapshot run, do not write copy/);
+  // The premium floor is in the contract, every engine input carries it, and the gate checks it.
+  assert.match(read('internal/contract.md'), /## Premium floor/);
+  assert.match(read(REFS + '/engine-inputs.md'), /\*\*Premium line:\*\*/);
+  assert.match(read(REFS + '/gate-checklist.md'), /## G\. Premium floor/);
+  assert.match(read(SKILL + '/assets/probe.js'), /gate\.robotic/);
 });
 
 test('every engine in the registry is credited in SOURCES.md', () => {
